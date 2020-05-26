@@ -1,0 +1,10 @@
+cmake
+python
+cython
+gdal
+libgdal
+armadillo
+isce2
+libgomp
+gxx_linux-64
+
