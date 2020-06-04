@@ -2,44 +2,40 @@
 echo "source ~/tools/conda_envs/insar/config.rc"
 
 export TOOL_DIR=~/tools
-export DATA_DIR=~/nobak
+export DATA_DIR=~/data   # data / nobak
 
 if [ -z ${PYTHONPATH+x} ]; then export PYTHONPATH=""; fi
 
-##---------------------- ISCE2 ------------------------##
-# ISCE_HOME is set by conda
-echo "load ISCE-2.3.2 released at 18-Jul-2019 from "$ISCE_HOME
-export PATH=${PATH}:${ISCE_HOME}/bin:${ISCE_HOME}/applications:${TOOL_DIR}/isce2/contrib/PyCuAmpcor/examples
-export DEMDB=${DATA_DIR}/DEM
-
-# isce2 core module with GPU support compiled by Lijun
-alias load_isce_gpu='echo "load isce2 compiled with GPU support"; source /home/geomod/apps/rhel7/isce2.rc'
-
-# stack processor: topsStack/stripmapStack, source ONE ONLY at a time to avoid naming
-export STRIPMAP_STACK=${TOOL_DIR}/isce2/contrib/stack/stripmapStack
-export TOPS_STACK=${TOOL_DIR}/isce2/contrib/stack/topsStack
-export PYTHONPATH=${TOPS_STACK}/..:${PYTHONPATH}
-alias load_stripmap_stack='export ISCE_STACK=${STRIPMAP_STACK}; export PATH=${PATH}:${ISCE_STACK}; echo "load ISCE-2 stack processor from "${ISCE_STACK}'
-alias load_tops_stack='export ISCE_STACK=${TOPS_STACK}; export PATH=${PATH}:${ISCE_STACK}; echo "load ISCE-2 stack processor from "${ISCE_STACK}'
-
-##---------------------- MintPy & PyAPS ---------------##
+##---------------------- MintPy -----------------------##
 export MINTPY_HOME=${TOOL_DIR}/MintPy
-export PYAPS_HOME=${TOOL_DIR}/PyAPS
-export PYTHONPATH=${PYTHONPATH}:${MINTPY_HOME}:${PYAPS_HOME}
-export PATH=${PATH}:${MINTPY_HOME}/mintpy
+export PYTHONPATH=${PYTHONPATH}:${MINTPY_HOME}
+export PATH=${PATH}:${MINTPY_HOME}/mintpy:${MINTPY_HOME}/mintpy/dev
 export WEATHER_DIR=${DATA_DIR}/atmosphere
 
+##---------------------- PyAPS ------------------------##
+export PYAPS_HOME=${TOOL_DIR}/PyAPS
+export PYTHONPATH=${PYTHONPATH}:${PYAPS_HOME}
+
 ##---------------------- ARIA-tools -------------------##
-export ARIATOOLS_HOME=${TOOL_DIR}/ARIA-tools
-export PYTHONPATH=${PYTHONPATH}:${ARIATOOLS_HOME}/tools
-export PATH=${PATH}:${ARIATOOLS_HOME}/tools/bin
+export ARIATOOLS_HOME=${TOOL_DIR}/ARIA-tools/tools
+export PYTHONPATH=${PYTHONPATH}:${ARIATOOLS_HOME}
+export PATH=${PATH}:${ARIATOOLS_HOME}/bin
 
-##---------------------- unwrap_error -----------------##
-export UNW_ERR_HOME=${TOOL_DIR}/unwrap_error
-export PYTHONPATH=${PYTHONPATH}:${UNW_ERR_HOME}
+##---------------------- ISCE2 ------------------------##
+# ISCE_HOME/STACK are set by conda; overwrite ISCE_STACK to the dev version
+export ISCE_STACK=${TOOL_DIR}/isce2/contrib/stack
+export PYTHONPATH=${PYTHONPATH}:${ISCE_STACK}
+export PATH=${PATH}:${ISCE_HOME}/bin:${ISCE_HOME}/applications:${TOOL_DIR}/isce2/contrib/PyCuAmpcor/examples
+export DEMDB=${DATA_DIR}/DEM
+# source ONLY ONE AT A TIME to avoid naming conflicts
+alias load_stripmap_stack='export PATH=${PATH}:${ISCE_STACK}/stripmapStack; echo "load ISCE-2 stripmapStack from "${ISCE_STACK}/stripmapStack'
+alias load_tops_stack='export PATH=${PATH}:${ISCE_STACK}/topsStack; echo "load ISCE-2 topsStack from "${ISCE_STACK}/topsStack'
+# load isce2 core module with GPU support
+alias load_isce_gpu='echo "load ISCE-2 compiled with GPU support"; source /home/geomod/apps/rhel7/isce2.rc'
 
-export PATH=${PATH}:${TOOL_DIR}/giant2
+##---------------------- Miscellaneous ----------------##
+export VRT_SHARED_SOURCE=0
+export HDF5_DISABLE_VERSION_CHECK=2    # 0 for abort; 1 for printout warning message; 2 for supress the warning message
+export HDF5_USE_FILE_LOCKING=FALSE
 
-##for GIANT2
-export PYTHONPATH=${PYTHONPATH}:/home/zyunjun/tools/fourdvel
 
