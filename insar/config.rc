@@ -10,7 +10,7 @@ if [ -z ${PYTHONPATH+x} ]; then export PYTHONPATH=""; fi
 export MINTPY_HOME=${TOOL_DIR}/MintPy
 export PYTHONPATH=${PYTHONPATH}:${MINTPY_HOME}
 export PATH=${PATH}:${MINTPY_HOME}/mintpy:${MINTPY_HOME}/mintpy/dev
-export WEATHER_DIR=${DATA_DIR}/atmosphere
+export WEATHER_DIR=${DATA_DIR}/aux
 
 ##---------------------- PyAPS ------------------------##
 export PYAPS_HOME=${TOOL_DIR}/PyAPS
@@ -26,7 +26,7 @@ export PATH=${PATH}:${ARIATOOLS_HOME}/bin
 export ISCE_STACK=${TOOL_DIR}/isce2/contrib/stack
 export PYTHONPATH=${PYTHONPATH}:${ISCE_STACK}
 export PATH=${PATH}:${ISCE_HOME}/bin:${ISCE_HOME}/applications:${TOOL_DIR}/isce2/contrib/PyCuAmpcor/examples
-export DEMDB=${DATA_DIR}/DEM
+export DEMDB=${DATA_DIR}/aux/DEM
 # source ONLY ONE AT A TIME to avoid naming conflicts
 alias load_stripmap_stack='export PATH=${PATH}:${ISCE_STACK}/stripmapStack; echo "load ISCE-2 stripmapStack from "${ISCE_STACK}/stripmapStack'
 alias load_tops_stack='export PATH=${PATH}:${ISCE_STACK}/topsStack; echo "load ISCE-2 topsStack from "${ISCE_STACK}/topsStack'
@@ -37,5 +37,5 @@ alias load_isce_gpu='echo "load ISCE-2 compiled with GPU support"; source /home/
 export VRT_SHARED_SOURCE=0
 export HDF5_DISABLE_VERSION_CHECK=2    # 0 for abort; 1 for printout warning message; 2 for supress the warning message
 export HDF5_USE_FILE_LOCKING=FALSE
-
+export OMP_NUM_THREADS=2
 
