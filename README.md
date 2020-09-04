@@ -16,7 +16,7 @@ chmod +x Miniconda3-latest-MacOSX-x86_64.sh
 
 Close and restart the shell for changes to take effect.
 
-### 2. Install MintPy, PyAPS, ARIA-tools and ISCE
+### 2. Install ISCE-2, ARIA-tools, MintPy and PyAPS to `insar` environment
 
 Setup environment variables by sourcing the [`conda_envs/insar/config.rc`](./insar/config.rc) file, e.g. in [`~/.bash_profile`](./bash_profile.md) file.
 
@@ -34,11 +34,16 @@ git clone https://github.com/isce-framework/isce2.git
 git clone https://github.com/aria-tools/ARIA-tools.git
 git clone https://github.com/insarlab/MintPy.git
 git clone https://github.com/yunjunz/pyaps3.git $PYAPS_HOME/pyaps3
+git clone https://github.com/yunjunz/conda_envs.git
 
-# install dependencies to the default 'base' environment
-# one could run 'conda create --name insar' to install to an custom environment
+# create new environment
+$CONDA_PREFIX/bin/conda create --name insar
+$CONDA_PREFIX/bin/conda activate insar
+
+# install pre-requisites
+# gfortran_osx/linux-64 for solid earth tide in MintPy
 $CONDA_PREFIX/bin/conda config --add channels conda-forge
-$CONDA_PREFIX/bin/conda install isce2 nbdime pip --file ~/tools/MintPy/docs/conda.txt --file ~/tools/ARIA-tools/requirements.txt
+$CONDA_PREFIX/bin/conda install gfortran_linux-64 --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt --file ARIA-tools/requirements.txt
 $CONDA_PREFIX/bin/pip install git+https://github.com/tylere/pykml.git
 ```
 
