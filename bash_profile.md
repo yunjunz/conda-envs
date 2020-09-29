@@ -52,8 +52,10 @@ function igrepy() { grep -rn --color --include=*.{ipynb,py,sh,txt,cfg,m,cpp,h} "
 
 
 # Environments
-# fringe
-alias load_fringe='conda activate fringe; source ~/tools/conda_envs/fringe/config.rc'
 # base (default): mintpy, pyaps, aria-tools and isce2
 source ~/tools/conda_envs/insar/config.rc
+# isce_gpu
+alias load_isce_gpu='conda activate isce_gpu; source ~/tools/conda_envs/isce_gpu/config.rc'
+# fringe
+alias load_fringe='conda activate fringe; source ~/tools/conda_envs/fringe/config.rc'
 ```

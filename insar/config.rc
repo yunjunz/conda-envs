@@ -23,15 +23,15 @@ export PATH=${PATH}:${ARIATOOLS_HOME}/bin
 
 ##---------------------- ISCE2 ------------------------##
 # ISCE_HOME/STACK are set by conda; overwrite ISCE_STACK to the dev version
-export ISCE_STACK=${TOOL_DIR}/isce2/contrib/stack
+export ISCE_STACK=${TOOL_DIR}/isce2/src/isce2/contrib/stack
 export PYTHONPATH=${PYTHONPATH}:${ISCE_STACK}
-export PATH=${PATH}:${ISCE_HOME}/bin:${ISCE_HOME}/applications:${TOOL_DIR}/isce2/contrib/PyCuAmpcor/examples
+export PATH=${PATH}:${ISCE_HOME}/bin:${ISCE_HOME}/applications:${TOOL_DIR}/isce2/src/isce2/contrib/PyCuAmpcor/examples
 export DEMDB=${DATA_DIR}/aux/DEM
 # source ONLY ONE AT A TIME to avoid naming conflicts
 alias load_stripmap_stack='export PATH=${PATH}:${ISCE_STACK}/stripmapStack; echo "load ISCE-2 stripmapStack from "${ISCE_STACK}/stripmapStack'
 alias load_tops_stack='export PATH=${PATH}:${ISCE_STACK}/topsStack; echo "load ISCE-2 topsStack from "${ISCE_STACK}/topsStack'
-# load isce2 core module with GPU support
-alias load_isce_gpu='echo "load ISCE-2 compiled with GPU support"; source /home/geomod/apps/rhel7/isce2.rc'
+# load isce2 core module with GPU support installed by Lijun
+#alias load_isce_gpu='echo "load ISCE-2 compiled with GPU support"; source /home/geomod/apps/rhel7/isce2.rc'
 
 ##---------------------- Miscellaneous ----------------##
 export VRT_SHARED_SOURCE=0
