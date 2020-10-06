@@ -1,3 +1,13 @@
-isce2
-nbdime
 pip
+# ARIA-tools
+python>=3.6
+netcdf4
+shapely
+rise
+joblib
+scipy
+matplotlib
+pandas
+gdal>=3
+requests
+cartopy
