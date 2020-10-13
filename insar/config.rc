@@ -23,7 +23,7 @@ export PYTHONPATH=${PYTHONPATH}:${ARIATOOLS_HOME}
 export PATH=${PATH}:${ARIATOOLS_HOME}/bin
 
 ##---------------------- ISCE2 ------------------------##
-use_isce_conda=1  # 0 for source, 1 for conda
+use_isce_conda=1  # 0 for source (on kamb), 1 for conda (on laptop)
 
 if [ $use_isce_conda -eq 1 ]; then
     # >>> conda >>>

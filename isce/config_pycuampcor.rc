@@ -1,0 +1,35 @@
+# vim: set filetype=sh:
+echo "source ~/tools/conda_envs/isce/config_pycuampcor.rc"
+
+# root directory
+export TOOL_DIR=~/tools
+export DATA_DIR=~/data   # data / nobak
+
+if [ -z ${PYTHONPATH+x} ]; then export PYTHONPATH=""; fi
+
+##---------------------- MintPy -----------------------##
+export MINTPY_HOME=${TOOL_DIR}/MintPy
+export PYTHONPATH=${PYTHONPATH}:${MINTPY_HOME}
+export PATH=${PATH}:${MINTPY_HOME}/mintpy:${MINTPY_HOME}/mintpy/dev
+export WEATHER_DIR=${DATA_DIR}/aux
+
+##---------------------- ISCE2 ------------------------##
+# load required modules for compiling ISCE-2
+module load cuda/10.1
+module load /home/geomod/apps/rhel7/modules/gcc/7.3.1
+#module load /home/geomod/apps/rhel7/modules/python3/anaconda
+
+export ISCE_ROOT=${TOOL_DIR}/isce2_pycuampcor
+export ISCE_HOME=${ISCE_ROOT}/install/packages/isce
+export ISCE_STACK=${ISCE_ROOT}/src/isce2/contrib/stack
+
+# make isce apps/libraries available/importable
+export PATH=${PATH}:${ISCE_ROOT}/install/bin
+export LD_LIBRARY=${LD_LIBRARY}:${ISCE_ROOT}/install/lib
+export PYTHONPATH=${PYTHONPATH}:${ISCE_ROOT}/install/packages
+
+# make stack processors available
+export PATH=${PATH}:${ISCE_ROOT}/src/isce2/contrib/PyCuAmpcor/examples
+export PYTHONPATH=${PYTHONPATH}:${ISCE_STACK}
+export DEMDB=${DATA_DIR}/aux/DEM
+

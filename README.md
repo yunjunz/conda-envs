@@ -19,7 +19,10 @@ Close and restart the shell for changes to take effect.
 
 ### 2. Install ISCE-2, ARIA-tools, MintPy and PyAPS to `insar` environment
 
-Setup environment variables by sourcing the [`conda_envs/insar/config.rc`](./insar/config.rc) file, e.g. in [`~/.bash_profile`](./bash_profile.md) file.
+Setup environment variables by:
+
++ adjusting the `use_isce_conda` value in `conda_envs/insar/config.rc` according to the installation option.
++ sourcing the [`conda_envs/insar/config.rc`](./insar/config.rc) file, e.g. in [`~/.bash_profile`](./bash_profile.md) file.
 
 Run the following to download the source code and to install their dependencies.
 
@@ -58,11 +61,11 @@ conda config --add channels conda-forge
 
 # opt 1: install isce-2 with conda (for macOS and Linux)
 # set "use_isce_conda=1" in conda_envs/insar/config.rc file
-conda install gfortran_linux-64 isce2 nbdime --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt
+conda install gfortran_linux-64 isce2 nbdime --file conda_envs/insar/requirements4aria.txt --file MintPy/docs/conda.txt
 
 # opt 2: install isce-2 with conda and from source (for Linux on kamb only)
 # set "use_isce_conda=0" in conda_envs/insar/config.rc file
-conda install --file conda_envs/insar/requirements4isce2.txt --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt
+conda install --file conda_envs/isce/requirements.txt --file conda_envs/insar/requirements4aria.txt --file MintPy/docs/conda.txt
 
 $CONDA_PREFIX/bin/pip install git+https://github.com/tylere/pykml.git
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
