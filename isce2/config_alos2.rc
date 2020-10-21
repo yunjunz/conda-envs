@@ -1,5 +1,5 @@
 # vim: set filetype=sh:
-echo "source ~/tools/conda_envs/isce/config.rc"
+echo "source ~/tools/conda_envs/isce2/config_alos2.rc"
 
 # root directory
 export TOOL_DIR=~/tools
@@ -19,7 +19,7 @@ module load cuda/10.1
 module load /home/geomod/apps/rhel7/modules/gcc/7.3.1
 #module load /home/geomod/apps/rhel7/modules/python3/anaconda
 
-export ISCE_ROOT=${TOOL_DIR}/isce2_{your_feature_name}  #CHANGE THIS for each feature environment
+export ISCE_ROOT=${TOOL_DIR}/isce2_alos2
 export ISCE_HOME=${ISCE_ROOT}/install/packages/isce
 export ISCE_STACK=${ISCE_ROOT}/src/isce2/contrib/stack
 

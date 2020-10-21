@@ -6,22 +6,22 @@
 
 Below we use `alos2` feature branch as an example:
 + install the code in `~/tools/isce2_alos2` dir
-+ setup the environment in `~/tools/conda_envs/isce/config_alos2.rc` file
-+ create an alias `load_isce_alos2` in `~/.bash_profile` file for easy activattion
++ setup the environment in `~/tools/conda_envs/isce2/config_alos2.rc` file
++ create an alias `load_isce2_alos2` in `~/.bash_profile` file for easy activattion
 
 #### Setup
 
-+ copy & rename the config file via `cd ~/tools/conda_envs/isce; cp config.rc config_alos2.rc`
++ copy & rename the config file via `cd ~/tools/conda_envs/isce2; cp config.rc config_alos2.rc`
 + change `ISCE_ROOT` to `~/tools/isce2_alos2` in the `config_alos2.rc` file.
-+ add the following to `~/.bash_profile`, so that one could run `load_isce_alos2` to load the environment.
++ add the following to `~/.bash_profile`, so that one could run `load_isce2_alos2` to load the environment.
 
 ```bash
-alias load_isce_alos2='conda activate isce2_alos2; source ~/tools/conda_envs/isce/config_alos2.rc'
+alias load_isce2_alos2='conda activate isce2_alos2; source ~/tools/conda_envs/isce2/config_alos2.rc'
 ```
 
 #### Build and install
 
-```
+```bash
 export SUFFIX=alos2      #CHANGE THIS for each feature environment
 
 # download source file
@@ -36,14 +36,14 @@ git checkout ${SUFFIX}
 cd ~/tools
 git clone https://github.com/insarlab/MintPy.git
 git clone https://github.com/yunjunz/conda_envs.git
-source ~/tools/conda_envs/isce/config_${SUFFIX}.rc
+source ~/tools/conda_envs/isce2/config_${SUFFIX}.rc
 
 # create new environment
 conda create --name isce2_${SUFFIX}
 conda activate isce2_${SUFFIX}
 
 # install pre-requisites
-conda install -c conda-forge --file conda_envs/isce/requirements.txt --file MintPy/docs/conda.txt
+conda install -c conda-forge --file conda_envs/isce2/requirements.txt --file MintPy/docs/conda.txt
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
 $CONDA_PREFIX/bin/pip install git+https://github.com/tylere/pykml.git
 

@@ -65,7 +65,7 @@ conda install gfortran_linux-64 isce2 nbdime --file conda_envs/insar/requirement
 
 # opt 2: install isce-2 with conda and from source (for Linux on kamb only)
 # set "use_isce_conda=0" in conda_envs/insar/config.rc file
-conda install --file conda_envs/isce/requirements.txt --file conda_envs/insar/requirements4aria.txt --file MintPy/docs/conda.txt
+conda install --file conda_envs/isce2/requirements.txt --file conda_envs/insar/requirements4aria.txt --file MintPy/docs/conda.txt
 
 $CONDA_PREFIX/bin/pip install git+https://github.com/tylere/pykml.git
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
