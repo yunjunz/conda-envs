@@ -36,10 +36,6 @@ mkdir isce2; cd isce2
 mkdir build install src; cd src
 git clone https://github.com/isce-framework/isce2.git
 
-# use PyCuAmpcor branch rebased from Lijun's bugfixed version (temporary)
-cd isce2
-git checkout pycuampcor
-
 cd ~/tools
 git clone https://github.com/aria-tools/ARIA-tools.git
 git clone https://github.com/insarlab/MintPy.git
