@@ -33,3 +33,7 @@ export PATH=${PATH}:${ISCE_ROOT}/src/isce2/contrib/PyCuAmpcor/examples
 export PYTHONPATH=${PYTHONPATH}:${ISCE_STACK}
 export DEMDB=${DATA_DIR}/aux/DEM
 
+# source ONLY ONE AT A TIME to avoid naming conflicts
+alias load_stripmap_stack='export PATH=${PATH}:${ISCE_STACK}/stripmapStack; echo "load ISCE-2 stripmapStack from "${ISCE_STACK}/stripmapStack'
+alias load_tops_stack='export PATH=${PATH}:${ISCE_STACK}/topsStack; echo "load ISCE-2 topsStack from "${ISCE_STACK}/topsStack'
+
