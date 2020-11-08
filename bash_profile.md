@@ -5,7 +5,7 @@ export CLICOLOR=1
 export PS1="\h:\w>$ "
 
 
-use_port=0
+use_port=0  # 0 for conda, 1 for port
 
 if [ $use_port -eq 1 ]; then
     # >>> MacPorts >>>
@@ -49,11 +49,14 @@ alias matlab='/Applications/MATLAB_R2019a.app/bin/matlab'
 function ff() { find . -name \*"$@"\* -print; }
 function igrep() { grep -rn --color --include=*.{py,sh,txt,cfg,m,cpp,h} "$@" .; }
 function igrepy() { grep -rn --color --include=*.{ipynb,py,sh,txt,cfg,m,cpp,h} "$@" .; }
+alias julab='jupyter-lab'
+alias jubook='jupyter-notebook'
 
 
 # Environments
-# base (default): mintpy, pyaps, aria-tools and isce2
-source ~/tools/conda_envs/insar/config.rc
+export PATH=${PATH}:/usr/local/bin  #for manually installed nodejs and npm for jupyter-lab
+# insar: mintpy, pyaps, aria-tools and isce2
+alias load_insar='conda activate insar; source ~/tools/conda_envs/insar/config.rc'
 # isce_gpu
 alias load_isce_gpu='conda activate isce_gpu; source ~/tools/conda_envs/isce_gpu/config.rc'
 # fringe
