@@ -1,12 +1,12 @@
+jupyterlab
+nbdime
 # ARIA-tools (essential dependencies only)
 python>=3.6
-netcdf4
-shapely
-rise
-joblib
-scipy
-matplotlib
-pandas
 gdal>=3
+joblib
+matplotlib
+netcdf4
+pandas
 requests
-cartopy
+scipy
+shapely

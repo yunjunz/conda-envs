@@ -2,4 +2,5 @@
 *.pyc
 *ipynb_checkpoints*
 *isce.log
+*error.log
 
