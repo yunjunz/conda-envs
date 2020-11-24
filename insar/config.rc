@@ -22,6 +22,9 @@ export ARIATOOLS_HOME=${TOOL_DIR}/ARIA-tools/tools
 export PYTHONPATH=${PYTHONPATH}:${ARIATOOLS_HOME}
 export PATH=${PATH}:${ARIATOOLS_HOME}/bin
 
+##---------------------- SSARA ------------------------##
+export PATH=${PATH}:${TOOL_DIR}/utils/SSARA
+
 ##---------------------- ISCE2 ------------------------##
 use_isce_conda=1  # 0 for source (on kamb), 1 for conda (on laptop)
 

@@ -38,9 +38,10 @@ mkdir build install src; cd src
 git clone https://github.com/isce-framework/isce2.git
 
 cd ~/tools
-git clone https://github.com/aria-tools/ARIA-tools.git
 git clone https://github.com/insarlab/MintPy.git
 git clone https://github.com/yunjunz/pyaps3.git $PYAPS_HOME/pyaps3
+git clone https://github.com/aria-tools/ARIA-tools.git
+git clone https://github.com/bakerunavco/SSARA.git ~/tools/utils/SSARA
 
 git clone https://github.com/yunjunz/conda_envs.git
 source ~/tools/conda_envs/insar/config.rc
