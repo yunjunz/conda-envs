@@ -61,11 +61,12 @@ conda config --add channels conda-forge
 # set "use_isce_conda=1" in conda_envs/insar/config.rc file
 conda install gfortran_osx-64 isce2 --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt
 
-# opt 2: install isce-2 with conda and from source (for Linux on kamb only)
+# opt 2: install isce-2 from source (for Linux on kamb only)
 # set "use_isce_conda=0" in conda_envs/insar/config.rc file
 conda install --file conda_envs/isce2/requirements.txt --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt
 
 $CONDA_PREFIX/bin/pip install git+https://github.com/tylere/pykml.git
+#CONDA_PREFIX/bin/pip install --upgrade scalene
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
 
 ########## build and install isce2 (for opt 2 ONLY)
@@ -91,6 +92,12 @@ topsApp.py -h
 cuDenseOffsets.py -h   #for opt 2 only
 ariaDownload.py -h
 smallbaselineApp.py -v
+```
+
+Run the following for CPU and memory profiler via [`scalene`](https://github.com/emeryberger/scalene) of python script, e.g. `ifgram_inversion.py`:
+
+```bash
+scalene --reduced-profile ~/tools/MintPy/mintpy/ifgram_inversion.py ~/data/test/FernandinaSenDT128/mintpy/inputs/ifgramStack.h5 -w no
 ```
 
 ### 3. Install FRInGE to the `fringe` environment

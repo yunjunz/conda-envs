@@ -1,6 +1,9 @@
 jupyterlab
 nbdime
 wget
+# mintpy
+scikit-learn   #for bootstrap method in ts2vel
+rich           #for rich terminal output
 # unwrap_error
 pyfftw
 # ARIA-tools (essential dependencies only)
