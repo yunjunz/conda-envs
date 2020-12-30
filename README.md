@@ -66,7 +66,7 @@ conda install gfortran_osx-64 isce2 --file conda_envs/insar/requirements.txt --f
 conda install --file conda_envs/isce2/requirements.txt --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt
 
 $CONDA_PREFIX/bin/pip install git+https://github.com/tylere/pykml.git
-#CONDA_PREFIX/bin/pip install --upgrade scalene
+$CONDA_PREFIX/bin/pip install scalene
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
 
 ########## build and install isce2 (for opt 2 ONLY)
