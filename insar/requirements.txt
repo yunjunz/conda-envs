@@ -1,6 +1,8 @@
+gmt
 jupyterlab<3.0
 jupyter_nbextensions_configurator
 nbdime
+tree           #recursive directory listing program
 wget
 # mintpy
 scikit-learn   #for bootstrap method in ts2vel

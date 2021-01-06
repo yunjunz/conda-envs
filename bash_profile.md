@@ -45,7 +45,6 @@ alias ll='ls -GFhal'
 alias m='more'
 alias rrsync='rsync -avzh --progress'
 alias rm=~/tools/utils/shell-safe-rm/bin/rm.sh
-alias matlab='/Applications/MATLAB_R2019a.app/bin/matlab'
 function ff() { find . -name \*"$@"\* -print; }
 function igrep() { grep -rn --color --include=*.{py,sh,txt,cfg,m,cpp,h} "$@" .; }
 function igrepy() { grep -rn --color --include=*.{ipynb,py,sh,txt,cfg,m,cpp,h} "$@" .; }

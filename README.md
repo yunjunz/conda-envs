@@ -18,6 +18,10 @@ chmod +x Miniconda3-latest-MacOSX-x86_64.sh
 
 Close and restart the shell for changes to take effect.
 
+```
+conda install wget --yes
+```
+
 ### 2. Install ISCE-2, ARIA-tools, MintPy and PyAPS to `insar` environment
 
 Setup environment variables by:
