@@ -43,7 +43,7 @@ git clone https://github.com/isce-framework/isce2.git
 
 cd ~/tools
 git clone https://github.com/insarlab/MintPy.git
-git clone https://github.com/yunjunz/pyaps3.git $PYAPS_HOME/pyaps3
+git clone https://github.com/yunjunz/PyAPS.git
 git clone https://github.com/aria-tools/ARIA-tools.git
 git clone https://github.com/bakerunavco/SSARA.git ~/tools/utils/SSARA
 

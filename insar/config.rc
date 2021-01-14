@@ -9,13 +9,9 @@ if [ -z ${PYTHONPATH+x} ]; then export PYTHONPATH=""; fi
 
 ##---------------------- MintPy -----------------------##
 export MINTPY_HOME=${TOOL_DIR}/MintPy
-export PYTHONPATH=${PYTHONPATH}:${MINTPY_HOME}
+export PYTHONPATH=${PYTHONPATH}:${MINTPY_HOME}:${TOOL_DIR}/PyAPS:${TOOL_DIR}/PySolid
 export PATH=${PATH}:${MINTPY_HOME}/mintpy:${MINTPY_HOME}/mintpy/dev
 export WEATHER_DIR=${DATA_DIR}/aux
-
-##---------------------- PyAPS ------------------------##
-export PYAPS_HOME=${TOOL_DIR}/PyAPS
-export PYTHONPATH=${PYTHONPATH}:${PYAPS_HOME}
 
 ##---------------------- ARIA-tools -------------------##
 export ARIATOOLS_HOME=${TOOL_DIR}/ARIA-tools/tools
