@@ -43,6 +43,7 @@ git clone https://github.com/isce-framework/isce2.git
 
 cd ~/tools
 git clone https://github.com/insarlab/MintPy.git
+git clone https://github.com/insarlab/PySolid.git
 git clone https://github.com/yunjunz/PyAPS.git
 git clone https://github.com/aria-tools/ARIA-tools.git
 git clone https://github.com/bakerunavco/SSARA.git ~/tools/utils/SSARA
@@ -63,11 +64,11 @@ conda config --add channels conda-forge
 
 # opt 1: install isce-2 with conda (for macOS and Linux)
 # set "use_isce_conda=1" in conda_envs/insar/config.rc file
-conda install gfortran_osx-64 isce2 --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt
+conda install --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt isce2 
 
 # opt 2: install isce-2 from source (for Linux on kamb only)
 # set "use_isce_conda=0" in conda_envs/insar/config.rc file
-conda install --file conda_envs/isce2/requirements.txt --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt
+conda install --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt --file conda_envs/isce2/requirements.txt 
 
 $CONDA_PREFIX/bin/pip install git+https://github.com/tylere/pykml.git
 $CONDA_PREFIX/bin/pip install scalene

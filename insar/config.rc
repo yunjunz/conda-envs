@@ -7,21 +7,21 @@ export DATA_DIR=~/data   # data / nobak
 
 if [ -z ${PYTHONPATH+x} ]; then export PYTHONPATH=""; fi
 
-##---------------------- MintPy -----------------------##
+##-------------- MintPy / PyAPS / PySolid -------------##
 export MINTPY_HOME=${TOOL_DIR}/MintPy
 export PYTHONPATH=${PYTHONPATH}:${MINTPY_HOME}:${TOOL_DIR}/PyAPS:${TOOL_DIR}/PySolid
-export PATH=${PATH}:${MINTPY_HOME}/mintpy:${MINTPY_HOME}/mintpy/dev
+export PATH=${PATH}:${MINTPY_HOME}/mintpy
 export WEATHER_DIR=${DATA_DIR}/aux
 
-##---------------------- ARIA-tools -------------------##
+##-------------- ARIA-tools ---------------------------##
 export ARIATOOLS_HOME=${TOOL_DIR}/ARIA-tools/tools
 export PYTHONPATH=${PYTHONPATH}:${ARIATOOLS_HOME}
 export PATH=${PATH}:${ARIATOOLS_HOME}/bin
 
-##---------------------- SSARA ------------------------##
+##-------------- SSARA --------------------------------##
 export PATH=${PATH}:${TOOL_DIR}/utils/SSARA
 
-##---------------------- ISCE2 ------------------------##
+##-------------- ISCE2 --------------------------------##
 use_isce_conda=1  # 0 for source (on kamb), 1 for conda (on laptop)
 
 if [ $use_isce_conda -eq 1 ]; then
