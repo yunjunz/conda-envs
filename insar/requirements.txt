@@ -2,11 +2,12 @@ gmt
 jupyterlab<3.0
 jupyter_nbextensions_configurator
 nbdime
-tree           #recursive directory listing program
+tree              #recursive directory listing program
 wget
 # mintpy
-scikit-learn   #for bootstrap method in ts2vel
-rich           #for rich terminal output
+fortran-compiler  #for pysolid
+scikit-learn      #for bootstrap method in ts2vel
+rich              #for rich terminal output
 # unwrap_error
 pyfftw
 # ARIA-tools (essential dependencies only)

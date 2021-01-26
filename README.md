@@ -20,6 +20,7 @@ Close and restart the shell for changes to take effect.
 
 ```
 conda install wget --yes
+conda config --add channels conda-forge
 ```
 
 ### 2. Install ISCE-2, ARIA-tools, MintPy and PyAPS to `insar` environment
@@ -56,12 +57,7 @@ source ~/tools/conda_envs/insar/config.rc
 conda create --name insar
 conda activate insar
 
-# install pre-requisites
-# notes on compilers: https://docs.conda.io/projects/conda-build/en/latest/resources/compiler-tools.html
-# for macOS, use gfortran_osx-64 clang_osx-64 clangxx_osx-64
-# for Linux, use gfortran_linux-64 gcc_linux-64 gxx_linux-64
-conda config --add channels conda-forge
-
+########## install pre-requisites
 # opt 1: install isce-2 with conda (for macOS and Linux)
 # set "use_isce_conda=1" in conda_envs/insar/config.rc file
 conda install --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt isce2 
@@ -70,9 +66,14 @@ conda install --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.
 # set "use_isce_conda=0" in conda_envs/insar/config.rc file
 conda install --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt --file conda_envs/isce2/requirements.txt 
 
+# install packages not available from conda
+ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
 $CONDA_PREFIX/bin/pip install git+https://github.com/tylere/pykml.git
 $CONDA_PREFIX/bin/pip install scalene
-ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
+
+# compile PySolid
+cd ~/tools/PySolid/pysolid
+f2py -c -m solid solid.for
 
 ########## build and install isce2 (for opt 2 ONLY)
 ## run cmake

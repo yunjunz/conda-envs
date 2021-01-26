@@ -1,5 +1,8 @@
 # vim: set filetype=sh:
-echo "source ~/tools/conda_envs/isce2/config_pycuampcor.rc"
+export SUFFIX='_pycuampcor'  #CHANGE THIS for each feature environment
+
+##### DO NOT CHANGE THE FOLLOWING
+echo "source ~/tools/conda_envs/isce2/config"${SUFFIX}".rc"
 
 # root directory
 export TOOL_DIR=~/tools
@@ -10,7 +13,7 @@ if [ -z ${PYTHONPATH+x} ]; then export PYTHONPATH=""; fi
 ##---------------------- MintPy -----------------------##
 export MINTPY_HOME=${TOOL_DIR}/MintPy
 export PYTHONPATH=${PYTHONPATH}:${MINTPY_HOME}
-export PATH=${PATH}:${MINTPY_HOME}/mintpy:${MINTPY_HOME}/mintpy/dev
+export PATH=${PATH}:${MINTPY_HOME}/mintpy
 export WEATHER_DIR=${DATA_DIR}/aux
 
 ##---------------------- ISCE2 ------------------------##
@@ -19,14 +22,14 @@ module load cuda/10.1
 module load /home/geomod/apps/rhel7/modules/gcc/7.3.1
 #module load /home/geomod/apps/rhel7/modules/python3/anaconda
 
-export ISCE_ROOT=${TOOL_DIR}/isce2_pycuampcor
-export ISCE_HOME=${ISCE_ROOT}/install/packages/isce
+export ISCE_ROOT=${TOOL_DIR}/isce2
+export ISCE_HOME=${ISCE_ROOT}/install${SUFFIX}/packages/isce  #not used by the following
 export ISCE_STACK=${ISCE_ROOT}/src/isce2/contrib/stack
 
 # make isce apps/libraries available/importable
-export PATH=${PATH}:${ISCE_ROOT}/install/bin
-export LD_LIBRARY=${LD_LIBRARY}:${ISCE_ROOT}/install/lib
-export PYTHONPATH=${PYTHONPATH}:${ISCE_ROOT}/install/packages
+export PATH=${PATH}:${ISCE_ROOT}/install${SUFFIX}/bin
+export LD_LIBRARY=${LD_LIBRARY}:${ISCE_ROOT}/install${SUFFIX}/lib
+export PYTHONPATH=${PYTHONPATH}:${ISCE_ROOT}/install${SUFFIX}/packages
 
 # make stack processors available
 export PATH=${PATH}:${ISCE_ROOT}/src/isce2/contrib/PyCuAmpcor/examples
@@ -36,5 +39,4 @@ export DEMDB=${DATA_DIR}/aux/DEM
 # source ONLY ONE AT A TIME to avoid naming conflicts
 alias load_stripmap_stack='export PATH=${PATH}:${ISCE_STACK}/stripmapStack; echo "load ISCE-2 stripmapStack from "${ISCE_STACK}/stripmapStack'
 alias load_tops_stack='export PATH=${PATH}:${ISCE_STACK}/topsStack; echo "load ISCE-2 topsStack from "${ISCE_STACK}/topsStack'
-
 

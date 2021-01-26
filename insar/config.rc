@@ -65,5 +65,5 @@ alias load_tops_stack='export PATH=${PATH}:${ISCE_STACK}/topsStack; echo "load I
 export VRT_SHARED_SOURCE=0
 export HDF5_DISABLE_VERSION_CHECK=2    # 0 for abort; 1 for printout warning message; 2 for supress the warning message
 export HDF5_USE_FILE_LOCKING=FALSE
-export OMP_NUM_THREADS=8
+export OMP_NUM_THREADS=4
 

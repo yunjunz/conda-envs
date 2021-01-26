@@ -2,61 +2,68 @@
 
 ### 1. [Install conda](../master/README.md#1-install-conda)
 
-### 2. Install MintPy and ISCE-2 to `isce2_{suffix}` environment
-
-Below we use `alos2` feature branch as an example:
-+ install the code in `~/tools/isce2_alos2` dir
-+ setup the environment in `~/tools/conda_envs/isce2/config_alos2.rc` file
-+ create an alias `load_isce2_alos2` in `~/.bash_profile` file for easy activattion
-
-#### Setup
-
-+ copy & rename the config file via `cd ~/tools/conda_envs/isce2; cp config.rc config_alos2.rc`
-+ change `ISCE_ROOT` to `~/tools/isce2_alos2` in the `config_alos2.rc` file.
-+ add the following to `~/.bash_profile`, so that one could run `load_isce2_alos2` to load the environment.
-
-```bash
-alias load_isce2_alos2='conda activate isce2_alos2; source ~/tools/conda_envs/isce2/config_alos2.rc'
-```
+### 2. Install MintPy and ISCE-2 to `isce2${SUFFIX}` environment
 
 #### Build and install
 
+Run the following to build and install ISCE-2 in `~/tools/isce2/install${SUFFIX}` dir.
+
 ```bash
-export SUFFIX=alos2      #CHANGE THIS for each feature environment
+#CHANGE THIS for each feature environment
+export SUFFIX=''  #'_pycuampcor'
 
 # download source file
 cd ~/tools
-mkdir isce2_${SUFFIX}; cd isce2_${SUFFIX}
-mkdir build install src; cd src
-git clone https://github.com/yunjunz/isce2.git; cd isce2
-
-# checkout feature branch where your code of interest is, i.e. pycuampcor, alos2, etc.
-git checkout ${SUFFIX}
-
-cd ~/tools
 git clone https://github.com/insarlab/MintPy.git
 git clone https://github.com/yunjunz/conda_envs.git
-source ~/tools/conda_envs/isce2/config_${SUFFIX}.rc
+
+cd ~/tools
+mkdir -p isce2; cd isce2
+mkdir -p src build install${SUFFIX}; cd src
+git clone https://github.com/yunjunz/isce2.git; cd isce2
+# [optional] checkout feature branch where your code of interest is, i.e. pycuampcor, alos2, etc.
+git checkout pycuampcor
 
 # create new environment
-conda create --name isce2_${SUFFIX}
-conda activate isce2_${SUFFIX}
+conda create --name isce2${SUFFIX} --yes
+conda activate isce2${SUFFIX}
 
 # install pre-requisites
-conda install -c conda-forge --file conda_envs/isce2/requirements.txt --file MintPy/docs/conda.txt
+cd ~/tools
+conda install -c conda-forge --file conda_envs/isce2/requirements.txt --file MintPy/docs/conda.txt --yes
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
 $CONDA_PREFIX/bin/pip install git+https://github.com/tylere/pykml.git
+module load cuda/10.1
 
 # run cmake
 # before re-run, delete existing contents in build folder
-# use GCC-7.3.1 installed by Lijun (the old CUDA-10.1 version does not like GCC-7.5; GCC-7.3.0 also does not work, do not know why)
 # use -DCMAKE_BUILD_TYPE=Release flag, otherwise it is Debug mode by default and will dump intermediate results and slow down (11 mins vs. 24 secs)
-cd ~/tools/isce2_${SUFFIX}/build
-export GCC_BIN=/net/kraken/home1/geomod/apps/rhel7/gcc7/bin
-CC=${GCC_BIN}/gcc CXX=${GCC_BIN}/g++ FC=${GCC_BIN}/gfortran cmake -DCMAKE_INSTALL_PREFIX=~/tools/isce2_${SUFFIX}/install -DCMAKE_CUDA_FLAGS="-arch=sm_60" -DCMAKE_PREFIX_PATH=${CONDA_PREFIX} -DCMAKE_BUILD_TYPE=Release ~/tools/isce2_${SUFFIX}/src/isce2
+# more notes on https://github.com/lijun99/isce2-install
+cd ~/tools/isce2/build
+cmake ~/tools/isce2/src/isce2 -DCMAKE_INSTALL_PREFIX=~/tools/isce2/install${SUFFIX} -DCMAKE_CUDA_FLAGS="-arch=sm_60" -DCMAKE_PREFIX_PATH=${CONDA_PREFIX} -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=${GCC} -DCMAKE_CXX_COMPILER=${GXX} -DCMAKE_Fortran_COMPILER=${GFORTRAN}
 
 # compile and install
-# then under the $ISCE_ROOT/install, there should be `bin` and `packages` folder
+# then under the ~/tools/isce2/install${SUFFIX}, there should be `bin` and `packages` folder
+# add `make VERBOSE=1` to see details if run into errors.
 make -j 16 # use multiple threads to accelerate
 make install
+```
+
+#### Setup
+
+If ${SUFFIX} is not empty:
+1. copy and rename the config file via `cd ~/tools/conda_envs/isce2; cp config.rc config_pycuampcor.rc`
+2. update `SUFFIX` in `config_pycuampcor.rc` file.
+
+Create an alias `load_isce2${SUFFIX}` in `~/.bash_profile` file for easy activattion. Below is an example for `SUFFIX='_pycuampcor'`:
+
+```bash
+alias load_isce2_pycuampcor='conda activate isce2_pycuampcor; source ~/tools/conda_envs/isce2/config_pycuampcor.rc'
+```
+
+#### Test the installation
+
+```bash
+topsApp.py -h
+cuDenseOffsets.py -h
 ```
