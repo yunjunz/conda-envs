@@ -10,10 +10,10 @@ opencv
 requests
 scipy
 scikit-image
-#for PyCuAmpcor with CUDA 10.1, use GNU<=7.3
-gcc_linux-64=7.3
-gxx_linux-64=7.3
-gfortran_linux-64=7.3
+#for PyCuAmpcor with CUDA 10.1, use GNU=7.3.1
+#gcc_linux-64=7.3
+#gxx_linux-64=7.3
+#gfortran_linux-64=7.3
 #for mdx compile/install
 libiconv
 openmotif
