@@ -1,5 +1,5 @@
 # vim: set filetype=sh:
-# NOTE: require ${ISCE_SUFFIX}, e.g. in .bash_profile
+# NOTE: require ${ISCE_VERSION}, e.g. in .bash_profile
 echo "source ~/tools/conda_envs/isce2/config.rc"
 
 # root directory
@@ -21,13 +21,13 @@ module load /home/geomod/apps/rhel7/modules/gcc/7.3.1
 #module load /home/geomod/apps/rhel7/modules/python3/anaconda
 
 export ISCE_ROOT=${TOOL_DIR}/isce2
-export ISCE_HOME=${ISCE_ROOT}/install${ISCE_SUFFIX}/packages/isce
+export ISCE_HOME=${ISCE_ROOT}/install${ISCE_VERSION}/packages/isce
 echo "load ISCE-2 core modules from "$ISCE_HOME
 
 # make isce apps/libraries available/importable
-export PATH=${PATH}:${ISCE_ROOT}/install${ISCE_SUFFIX}/bin
-export PYTHONPATH=${PYTHONPATH}:${ISCE_ROOT}/install${ISCE_SUFFIX}/packages
-#export LD_LIBRARY=${LD_LIBRARY}:${ISCE_ROOT}/install${ISCE_SUFFIX}/lib
+export PATH=${PATH}:${ISCE_ROOT}/install${ISCE_VERSION}/bin
+export PYTHONPATH=${PYTHONPATH}:${ISCE_ROOT}/install${ISCE_VERSION}/packages
+#export LD_LIBRARY=${LD_LIBRARY}:${ISCE_ROOT}/install${ISCE_VERSION}/lib
 
 # source stack processors and PyCuAmpcor
 export ISCE_STACK=${TOOL_DIR}/isce2/src/isce2/contrib/stack                     #set ISCE_STACK to the dev version
