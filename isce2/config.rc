@@ -1,4 +1,5 @@
 # vim: set filetype=sh:
+# NOTE: require ${ISCE_SUFFIX}, e.g. in .bash_profile
 echo "source ~/tools/conda_envs/isce2/config.rc"
 
 # root directory
@@ -18,23 +19,26 @@ export WEATHER_DIR=${DATA_DIR}/aux
 module load cuda/10.1
 module load /home/geomod/apps/rhel7/modules/gcc/7.3.1
 #module load /home/geomod/apps/rhel7/modules/python3/anaconda
-export OMP_NUM_THREADS=4
 
-export ISCE_STACK=${TOOL_DIR}/isce2/src/isce2/contrib/stack
-export ISCE_ROOT=${TOOL_DIR}/isce2/install${ISCE_SUFFIX}   #define ISCE_SUFFIX in .bash_profile
-export ISCE_HOME=${ISCE_ROOT}/packages/isce
-echo "load ISCE-2 from "${ISCE_ROOT}
+export ISCE_ROOT=${TOOL_DIR}/isce2
+export ISCE_HOME=${ISCE_ROOT}/install${ISCE_SUFFIX}/packages/isce
+echo "load ISCE-2 core modules from "$ISCE_HOME
 
 # make isce apps/libraries available/importable
-export PATH=${PATH}:${ISCE_ROOT}/bin
-export PYTHONPATH=${PYTHONPATH}:${ISCE_ROOT}/packages
-#export LD_LIBRARY=${LD_LIBRARY}:${ISCE_ROOT}/lib
+export PATH=${PATH}:${ISCE_ROOT}/install${ISCE_SUFFIX}/bin
+export PYTHONPATH=${PYTHONPATH}:${ISCE_ROOT}/install${ISCE_SUFFIX}/packages
+#export LD_LIBRARY=${LD_LIBRARY}:${ISCE_ROOT}/install${ISCE_SUFFIX}/lib
 
-# make stack processors available
-export PATH=${PATH}:${TOOL_DIR}/isce2/src/isce2/contrib/PyCuAmpcor/examples
-export PYTHONPATH=${PYTHONPATH}:${ISCE_STACK}
+# source stack processors and PyCuAmpcor
+export ISCE_STACK=${TOOL_DIR}/isce2/src/isce2/contrib/stack                     #set ISCE_STACK to the dev version
+export PATH=${PATH}:${TOOL_DIR}/isce2/src/isce2/contrib/PyCuAmpcor/examples     #for cuDenseOffsets
+export PYTHONPATH=${PYTHONPATH}:${ISCE_STACK}                                   #import tops/stripmapStack as python modules
 export DEMDB=${DATA_DIR}/aux/DEM
 
 # source ONLY ONE AT A TIME to avoid naming conflicts
 alias load_stripmap_stack='export PATH=${PATH}:${ISCE_STACK}/stripmapStack; echo "load ISCE-2 stripmapStack from "${ISCE_STACK}/stripmapStack'
 alias load_tops_stack='export PATH=${PATH}:${ISCE_STACK}/topsStack; echo "load ISCE-2 topsStack from "${ISCE_STACK}/topsStack'
+
+##---------------------- Miscellaneous ----------------##
+export VRT_SHARED_SOURCE=0
+export OMP_NUM_THREADS=4

@@ -1,4 +1,5 @@
 # vim: set filetype=sh:
+# NOTE: adjust use_isce_conda according to the machine: laptop/kamb
 echo "source ~/tools/conda_envs/insar/config.rc"
 
 # root directory
@@ -39,31 +40,28 @@ else
 
     export ISCE_ROOT=~/tools/isce2
     export ISCE_HOME=${ISCE_ROOT}/install/packages/isce
+    echo "load ISCE-2 core modules from "$ISCE_HOME
 
     export PATH=${PATH}:${ISCE_ROOT}/install/bin
-    export LD_LIBRARY=${LD_LIBRARY}:${ISCE_ROOT}/install/lib
     export PYTHONPATH=${PYTHONPATH}:${ISCE_ROOT}/install/packages
-
-    echo "load ISCE-2 core modules installed from source at "$ISCE_HOME
+    #export LD_LIBRARY=${LD_LIBRARY}:${ISCE_ROOT}/install/lib
 
     # load isce2 core module with GPU support installed by Lijun
     #alias load_isce_gpu='echo "load ISCE-2 compiled with GPU support"; source /home/geomod/apps/rhel7/isce2.rc'
 fi
 
-# common settings
-export DEMDB=${DATA_DIR}/aux/DEM
-export PATH=${PATH}:${TOOL_DIR}/isce2/src/isce2/contrib/PyCuAmpcor/examples     #for cuDenseOffsets
+# common settings (source stack processors and PyCuAmpcor)
 export ISCE_STACK=${TOOL_DIR}/isce2/src/isce2/contrib/stack                     #set ISCE_STACK to the dev version
+export PATH=${PATH}:${TOOL_DIR}/isce2/src/isce2/contrib/PyCuAmpcor/examples     #for cuDenseOffsets
 export PYTHONPATH=${PYTHONPATH}:${ISCE_STACK}                                   #import tops/stripmapStack as python modules
+export DEMDB=${DATA_DIR}/aux/DEM
 
 # source ONLY ONE AT A TIME to avoid naming conflicts
 alias load_stripmap_stack='export PATH=${PATH}:${ISCE_STACK}/stripmapStack; echo "load ISCE-2 stripmapStack from "${ISCE_STACK}/stripmapStack'
 alias load_tops_stack='export PATH=${PATH}:${ISCE_STACK}/topsStack; echo "load ISCE-2 topsStack from "${ISCE_STACK}/topsStack'
-
 
 ##---------------------- Miscellaneous ----------------##
 export VRT_SHARED_SOURCE=0
 export HDF5_DISABLE_VERSION_CHECK=2    # 0 for abort; 1 for printout warning message; 2 for supress the warning message
 export HDF5_USE_FILE_LOCKING=FALSE
 export OMP_NUM_THREADS=4
-
