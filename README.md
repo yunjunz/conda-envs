@@ -19,24 +19,15 @@ chmod +x Miniconda3-latest-MacOSX-x86_64.sh
 Close and restart the shell for changes to take effect.
 
 ```
-conda install wget --yes
+conda install wget git --yes
 conda config --add channels conda-forge
 ```
 
-### 2. Install ISCE-2, ARIA-tools, MintPy and PyAPS to `insar` environment
+### 2. Install ISCE-2, ARIA-tools and MintPy to `insar` environment
 
-Setup environment variables by:
-
-+ adjusting the `use_isce_conda` value in `conda_envs/insar/config.rc` according to the installation option (source or conda).
-+ sourcing the [`conda_envs/insar/config.rc`](./insar/config.rc) file, e.g. in [`~/.bash_profile`](./bash_profile.md) file.
-
-Run the following to download the source code and to install their dependencies.
+#### Download source code
 
 ```bash
-# install the latest git, if the current git version < 2.0
-conda install git
-
-# download source code
 cd ~/tools
 mkdir isce2; cd isce2
 mkdir build install src; cd src
@@ -45,50 +36,74 @@ git clone https://github.com/isce-framework/isce2.git
 cd ~/tools
 git clone https://github.com/insarlab/MintPy.git
 git clone https://github.com/insarlab/PySolid.git
-git clone https://github.com/yunjunz/PyAPS.git
 git clone https://github.com/aria-tools/ARIA-tools.git
 git clone https://github.com/bakerunavco/SSARA.git ~/tools/utils/SSARA
-
+git clone https://github.com/yunjunz/PyAPS.git
 git clone https://github.com/yunjunz/conda_envs.git
-source ~/tools/conda_envs/insar/config.rc
+```
 
-# create new environment "insar"
-# OR skip to install into "base" environment
+#### Create `insar` environment and install pre-requisites
+
+```bash
+# create new environment
 conda create --name insar
 conda activate insar
 
-########## install pre-requisites
 # opt 1: install isce-2 with conda (for macOS and Linux)
 # set "use_isce_conda=1" in conda_envs/insar/config.rc file
-conda install --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt isce2 
+conda install --yes --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt isce2 
 
 # opt 2: install isce-2 from source (for Linux on kamb only)
 # set "use_isce_conda=0" in conda_envs/insar/config.rc file
-conda install --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt --file conda_envs/isce2/requirements.txt 
+conda install --yes --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt --file conda_envs/isce2/requirements.txt
 
-# install packages not available from conda
+# install dependencies not available from conda
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
 $CONDA_PREFIX/bin/pip install git+https://github.com/tylere/pykml.git
 $CONDA_PREFIX/bin/pip install scalene
+```
+
+#### Build and install ISCE-2 and PySolid from source
+
+For opt 2 (building and installing the development version of ISCE-2 from source) ONLY.
+
+```bash
+# load CUDA and compilers module on kamb
+# only gcc=7.3.1 works, but not available from conda-forge: https://anaconda.org/conda-forge/gcc_linux-64/files?type=conda
+module load cuda/10.1
+module load /home/geomod/apps/rhel7/modules/gcc/7.3.1
 
 # compile PySolid
 cd ~/tools/PySolid/pysolid
 f2py -c -m solid solid.for
 
-########## build and install isce2 (for opt 2 ONLY)
-## run cmake
+# generate build system for ISCE-2
 # before re-run, delete existing contents in build folder
 # use GCC-7.3.1 installed by Lijun (the old CUDA-10.1 version does not like GCC-7.5; GCC-7.3.0 also does not work, do not know why)
-# use "-DCMAKE_BUILD_TYPE=Release" flag, otherwise it is Debug mode by default and will dump intermediate results and slow down (11 mins vs. 24 secs)
+# more notes on https://github.com/lijun99/isce2-install
 cd ~/tools/isce2/build
 export GCC_BIN=/net/kraken/home1/geomod/apps/rhel7/gcc7/bin
-CC=${GCC_BIN}/gcc CXX=${GCC_BIN}/g++ FC=${GCC_BIN}/gfortran cmake -DCMAKE_INSTALL_PREFIX=~/tools/isce2/install -DCMAKE_CUDA_FLAGS="-arch=sm_60" -DCMAKE_PREFIX_PATH=${CONDA_PREFIX} -DCMAKE_BUILD_TYPE=Release ~/tools/isce2/src/isce2
+cmake ~/tools/isce2/src/isce2 -DCMAKE_INSTALL_PREFIX=~/tools/isce2/install -DCMAKE_CUDA_FLAGS="-arch=sm_60" -DCMAKE_PREFIX_PATH=${CONDA_PREFIX} -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=${GCC_BIN}/gcc -DCMAKE_CXX_COMPILER=${GCC_BIN}/g++ -DCMAKE_Fortran_COMPILER=${GCC_BIN}/gfortran
 
-## compile and install
+# compile and install
 # then under the $ISCE_ROOT/install, there should be `bin` and `packages` folder
 make -j 16 # use multiple threads to accelerate
 make install
 ```
+
+#### Setup
+
+For opt 2 (building and installing the development version of ISCE-2 from source): 
+
++ set `use_isce_conda=0` in `conda_envs/insar/config.rc` file.
+
+Create an alias `load_insar` in `~/.bash_profile` file for easy activation, _e.g._:
+
+```bash
+alias load_insar='conda activate insar; source ~/tools/conda_envs/insar/config.rc'
+```
+
+#### Test the installation
 
 Run the following to test the installation:
 
