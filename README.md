@@ -61,9 +61,13 @@ conda install --yes --file conda_envs/insar/requirements.txt --file MintPy/docs/
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
 $CONDA_PREFIX/bin/pip install git+https://github.com/tylere/pykml.git
 $CONDA_PREFIX/bin/pip install scalene
+
+# compile PySolid
+cd ~/tools/PySolid/pysolid
+f2py -c -m solid solid.for
 ```
 
-#### Build and install ISCE-2 and PySolid from source
+#### Build and install ISCE-2 from source
 
 For opt 2 (building and installing the development version of ISCE-2 from source) ONLY.
 
@@ -73,11 +77,7 @@ For opt 2 (building and installing the development version of ISCE-2 from source
 module load cuda/10.1
 module load /home/geomod/apps/rhel7/modules/gcc/7.3.1
 
-# compile PySolid
-cd ~/tools/PySolid/pysolid
-f2py -c -m solid solid.for
-
-# generate build system for ISCE-2
+# generate build system
 # before re-run, delete existing contents in build folder
 # use GCC-7.3.1 installed by Lijun (the old CUDA-10.1 version does not like GCC-7.5; GCC-7.3.0 also does not work, do not know why)
 # more notes on https://github.com/lijun99/isce2-install
