@@ -60,7 +60,8 @@ conda install --yes --file conda_envs/insar/requirements.txt --file MintPy/docs/
 # install dependencies not available from conda
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
 $CONDA_PREFIX/bin/pip install git+https://github.com/tylere/pykml.git
-$CONDA_PREFIX/bin/pip install scalene
+$CONDA_PREFIX/bin/pip install scalene      # CPU, GPU and memory profiler
+$CONDA_PREFIX/bin/pip install ipynb        # import functions from ipynb files
 
 # compile PySolid
 cd ~/tools/PySolid/pysolid
