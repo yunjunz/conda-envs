@@ -48,7 +48,7 @@ mkdir install${ISCE_VERSION}
 
 # load CUDA and compilers module on kamb
 # only gcc=7.3.1 works, but not available from conda-forge: https://anaconda.org/conda-forge/gcc_linux-64/files?type=conda
-module load cuda/10.1
+module load cuda/11.2
 module load /home/geomod/apps/rhel7/modules/gcc/7.3.1
 
 # run cmake

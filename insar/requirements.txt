@@ -2,6 +2,7 @@ gmt
 jupyterlab<3.0
 jupyter_nbextensions_configurator
 nbdime
+seaborn
 tree              #recursive directory listing program
 wget
 # mintpy
