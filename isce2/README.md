@@ -53,9 +53,11 @@ module load /home/geomod/apps/rhel7/modules/gcc/7.3.1
 
 # run cmake
 # before re-run, delete existing contents in build folder
+# use GCC-7.3.1 installed by Lijun (GCC-7.5/-7.3.0 do not work, do not know why)
 # more notes on https://github.com/lijun99/isce2-install
 cd ~/tools/isce2/build
-cmake ~/tools/isce2/src/isce2 -DCMAKE_INSTALL_PREFIX=~/tools/isce2/install${ISCE_VERSION} -DCMAKE_CUDA_FLAGS="-arch=sm_60" -DCMAKE_PREFIX_PATH=${CONDA_PREFIX} -DCMAKE_BUILD_TYPE=Release
+export GCC_BIN=/net/kraken/home1/geomod/apps/rhel7/gcc7/bin
+cmake ~/tools/isce2/src/isce2 -DCMAKE_INSTALL_PREFIX=~/tools/isce2/install${ISCE_VERSION} -DCMAKE_CUDA_FLAGS="-arch=sm_60" -DCMAKE_PREFIX_PATH=${CONDA_PREFIX} -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=${GCC_BIN}/gcc -DCMAKE_CXX_COMPILER=${GCC_BIN}/g++ -DCMAKE_Fortran_COMPILER=${GCC_BIN}/gfortran
 
 # compile and install
 # then under the ~/tools/isce2/install${ISCE_VERSION}, there should be `bin` and `packages` folder
