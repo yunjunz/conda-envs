@@ -55,7 +55,7 @@ alias jubook='jupyter-notebook'
 # Environments
 export PATH=${PATH}:/usr/local/bin  #for manually installed nodejs and npm for jupyter-lab
 # insar: mintpy, pyaps, aria-tools and isce2
-alias load_insar='conda activate insar; source ~/tools/conda_envs/insar/config.rc'
+alias load_insar='conda activate insar; source ~/tools/conda_envs/insar/config.rc; rm -f isce.log'
 # isce_gpu
 alias load_isce_gpu='conda activate isce_gpu; source ~/tools/conda_envs/isce_gpu/config.rc'
 # fringe
