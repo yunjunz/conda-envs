@@ -19,8 +19,8 @@ chmod +x Miniconda3-latest-MacOSX-x86_64.sh
 Close and restart the shell for changes to take effect.
 
 ```
-conda install wget git --yes
 conda config --add channels conda-forge
+conda install wget git tree --yes
 ```
 
 ### 2. Install ISCE-2, ARIA-tools and MintPy to `insar` environment
@@ -51,11 +51,11 @@ conda activate insar
 
 # opt 1: install isce-2 with conda (for macOS and Linux)
 # set "use_isce_conda=1" in conda_envs/insar/config.rc file
-conda install --yes --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt isce2 
+conda install --yes --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt --file ARIA-tools/requirements.txt isce2 
 
 # opt 2: install isce-2 from source (for Linux on kamb only)
 # set "use_isce_conda=0" in conda_envs/insar/config.rc file
-conda install --yes --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt --file conda_envs/isce2/requirements.txt
+conda install --yes --file conda_envs/insar/requirements.txt --file MintPy/docs/conda.txt --file ARIA-tools/requirements.txt --file conda_envs/isce2/requirements.txt
 
 # install dependencies not available from conda
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3

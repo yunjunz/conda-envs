@@ -3,22 +3,10 @@ jupyterlab<3.0
 jupyter_nbextensions_configurator
 nbdime
 seaborn
-tree              #recursive directory listing program
-wget
 # mintpy
 fortran-compiler  #for pysolid
 scikit-learn      #for bootstrap method in ts2vel
 rich              #for rich terminal output
 # unwrap_error
 pyfftw
-# ARIA-tools (essential dependencies only)
-python>=3.6
-gdal>=3
-joblib
-matplotlib
-netcdf4
-pandas
-requests
-scipy
-shapely
 
