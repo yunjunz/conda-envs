@@ -1,9 +1,10 @@
 gmt
-jupyterlab<3.0
+seaborn
+# notebook
+jupyterlab
 jupyter_nbextensions_configurator
 nbdime
-seaborn
-# mintpy
+# mintpy extra
 fortran-compiler  #for pysolid
 scikit-learn      #for bootstrap method in ts2vel
 rich              #for rich terminal output
