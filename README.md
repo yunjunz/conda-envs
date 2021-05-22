@@ -34,10 +34,9 @@ mkdir build install src; cd src
 git clone https://github.com/isce-framework/isce2.git
 
 cd ~/tools
+git clone https://github.com/aria-tools/ARIA-tools.git
 git clone https://github.com/insarlab/MintPy.git
 git clone https://github.com/insarlab/PySolid.git
-git clone https://github.com/aria-tools/ARIA-tools.git
-git clone https://github.com/bakerunavco/SSARA.git ~/tools/utils/SSARA
 git clone https://github.com/yunjunz/PyAPS.git
 git clone https://github.com/yunjunz/conda_envs.git
 ```
@@ -94,26 +93,28 @@ make install
 
 #### Setup
 
-For opt 2 (building and installing the development version of ISCE-2 from source): 
-
-+ set `use_isce_conda=0` in `conda_envs/insar/config.rc` file.
-
 Create an alias `load_insar` in `~/.bash_profile` file for easy activation, _e.g._:
 
 ```bash
 alias load_insar='conda activate insar; source ~/tools/conda_envs/insar/config.rc'
 ```
 
+For opt 2 (building and installing the development version of ISCE-2 from source) ONLY: 
+
++ set `use_isce_conda=0` in `conda_envs/insar/config.rc` file.
+
 #### Test the installation
 
 Run the following to test the installation:
 
 ```bash
-load_insar
-topsApp.py -h
-cuDenseOffsets.py -h   #for opt 2 only
-ariaDownload.py -h
-smallbaselineApp.py -v
+load_insar               # warm up conda environment
+topsApp.py -h            # test ISCE-2
+cuDenseOffsets.py -h     # test ISCE-2/PyCuAmpcor (for opt 2 only)
+ariaDownload.py -h       # test ARIA-tools
+smallbaselineApp.py -h   # test MintPy
+solid_earth_tides.py -h  # test PySolid
+tropo_pyaps3.py -h       # test PyAPS
 ```
 
 Run the following for CPU and memory profiler via [`scalene`](https://github.com/emeryberger/scalene) of python script, e.g. `ifgram_inversion.py`:
