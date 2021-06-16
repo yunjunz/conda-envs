@@ -10,5 +10,7 @@ nbdime
 fortran-compiler  #for pysolid
 scikit-learn      #for bootstrap method in ts2vel
 rich              #for rich terminal output
+# ASF HyP3
+hyp3_sdk
 # unwrap_error
 pyfftw
