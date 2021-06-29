@@ -1,8 +1,28 @@
 # vim: set filetype=sh:
+echo "source ~/tools/conda_envs/fringe/config.rc"
 
-export FRINGE_HOME=~/tools/FRInGE/install
-export PATH=$PATH:$ISCE_HOME/bin:$ISCE_HOME/applications:$FRINGE_HOME/bin
+# root directory
+export TOOL_DIR=~/tools
+
+##-------------- FRInGE -------------------------------##
+export FRINGE_HOME=${TOOL_DIR}/FRInGE/install
+export PATH=$PATH:$FRINGE_HOME/bin
 export PYTHONPATH=$PYTHONPATH:$FRINGE_HOME/python
 export LD_LIBRARY_PATH=$FRINGE_HOME/lib
 echo "load FRInGE from "$FRINGE_HOME
+
+##-------------- ISCE2 --------------------------------##
+# ISCE_HOME/STACK are set by conda
+export PATH=$PATH:$ISCE_HOME/bin:$ISCE_HOME/applications
+echo "load ISCE-2 core modules installed by conda at "${ISCE_HOME}
+
+# set ISCE_STACK to the dev version
+export ISCE_STACK=${TOOL_DIR}/isce2/src/isce2/contrib/stack    
+# source ONLY ONE AT A TIME to avoid naming conflicts
+alias load_stripmap_stack='export PATH=${PATH}:${ISCE_STACK}/stripmapStack; echo "load ISCE-2 stripmapStack from "${ISCE_STACK}/stripmapStack'
+alias load_tops_stack='export PATH=${PATH}:${ISCE_STACK}/topsStack; echo "load ISCE-2 topsStack from "${ISCE_STACK}/topsStack'
+
+# adjust according to available computing resource
+export OMP_NUM_THREADS=8
+
 

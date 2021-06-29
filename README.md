@@ -133,7 +133,7 @@ conda create --name fringe
 conda activate fringe
 
 # install pre-requisites
-conda install --yes --file tools/conda_envs/fringe/requirements.txt
+mamba install --yes --file tools/conda_envs/fringe/requirements.txt
 
 # install from source code
 source conda_envs/fringe/config.rc
@@ -144,7 +144,7 @@ cd src
 git clone https://github.com/isce-framework/fringe.git
 
 cd ../build
-cmake -DCMAKE_INSTALL_PREFIX=../install ../src/fringe
+cmake -DCMAKE_INSTALL_PREFIX=../install ../src/fringe -DBLA_VENDOR=Generic
 make -j 8 all
 make install
 ```

@@ -1,4 +1,5 @@
 cmake
+defusedxml
 python
 cython
 gdal
@@ -7,4 +8,3 @@ armadillo
 isce2
 libgomp
 gxx_linux-64
-
