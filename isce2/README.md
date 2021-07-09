@@ -27,7 +27,7 @@ conda activate isce2
 
 # install pre-requisites
 cd ~/tools
-conda install -c conda-forge --file conda_envs/isce2/requirements.txt --file MintPy/docs/conda.txt --yes
+conda install -c conda-forge --file conda_envs/isce2/requirements.txt --file MintPy/docs/requirements.txt --yes
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
 $CONDA_PREFIX/bin/pip install git+https://github.com/tylere/pykml.git
 ```
