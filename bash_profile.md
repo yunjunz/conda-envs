@@ -38,7 +38,7 @@ else
 fi
 
 
-# User specific aliases and functions
+## User specific aliases and functions
 alias sou='source ~/.bash_profile; echo "sourceing ~/.bash_profile"'
 alias ls='ls -GFh'
 alias ll='ls -GFhal'
@@ -50,14 +50,15 @@ function igrep() { grep -rn --color --include=*.{py,sh,txt,cfg,m,cpp,h} "$@" .; 
 function igrepy() { grep -rn --color --include=*.{ipynb,py,sh,txt,cfg,m,cpp,h} "$@" .; }
 alias julab='jupyter-lab'
 alias jubook='jupyter-notebook'
+alias cona='conda activate'
+alias cond='conda deactivate'
 
 
-# Environments
-export PATH=${PATH}:/usr/local/bin  #for manually installed nodejs and npm for jupyter-lab
+## Environments
 # insar: mintpy, pyaps, aria-tools and isce2
 alias load_insar='conda activate insar; source ~/tools/conda_envs/insar/config.rc; rm -f isce.log'
-# isce_gpu
-alias load_isce_gpu='conda activate isce_gpu; source ~/tools/conda_envs/isce_gpu/config.rc'
+# isce_dev: the latest ISCE-2 version on GitHub
+alias load_isce_dev='export ISCE_VERSION="_dev"; conda activate isce2; source ~/tools/conda_envs/isce2/config.rc; rm -f isce.log'
 # fringe
 alias load_fringe='conda activate fringe; source ~/tools/conda_envs/fringe/config.rc'
 ```
