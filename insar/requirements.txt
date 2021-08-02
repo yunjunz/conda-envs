@@ -10,5 +10,9 @@ nbdime
 fortran-compiler  #for pysolid
 scikit-learn      #for bootstrap method in ts2vel
 rich              #for rich terminal output
+setuptools        #for PyPI distribution
+wheel             #for PyPI distribution
+twine             #for PyPI distribution
+pv                #for tar progress bar during decompression
 # unwrap_error
 pyfftw
