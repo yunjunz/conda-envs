@@ -56,9 +56,9 @@ alias cond='conda deactivate'
 
 ## Environments
 # insar: mintpy, pyaps, aria-tools and isce2
-alias load_insar='conda activate insar; source ~/tools/conda_envs/insar/config.rc; rm -f isce.log'
+alias load_insar='conda activate insar; source ~/tools/conda_envs/insar/config.rc'
 # isce_dev: the latest ISCE-2 version on GitHub
-alias load_isce_dev='export ISCE_VERSION="_dev"; conda activate isce2; source ~/tools/conda_envs/isce2/config.rc; rm -f isce.log'
+alias load_isce_dev='export ISCE_VERSION="_dev"; conda activate isce2; source ~/tools/conda_envs/isce2/config.rc'
 # fringe
 alias load_fringe='conda activate fringe; source ~/tools/conda_envs/fringe/config.rc'
 ```

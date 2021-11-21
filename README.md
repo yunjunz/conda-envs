@@ -24,7 +24,15 @@ conda install wget git tree mamba --yes
 
 ### 2. Install ISCE-2, ARIA-tools and MintPy to `insar` environment
 
-#### Download source code
+Both ISCE-2 and MintPy are now available on the `conda-forge` channel, thus, one could install them by running:
+
+```bash
+mamba install -c conda-forge isce2 mintpy
+```
+
+The note below installs ISCE-2 from conda or source and ARIA-tools, MintPy, PySolid and PyAPS from source in development mode.
+
+#### a. Download source code
 
 ```bash
 cd ~/tools
@@ -36,11 +44,11 @@ cd ~/tools
 git clone https://github.com/aria-tools/ARIA-tools.git
 git clone https://github.com/insarlab/MintPy.git
 git clone https://github.com/insarlab/PySolid.git
-git clone https://github.com/yunjunz/PyAPS.git
+git clone https://github.com/insarlab/PyAPS.git
 git clone https://github.com/yunjunz/conda_envs.git
 ```
 
-#### Create `insar` environment and install pre-requisites
+#### b. Install dependencies to `insar` environment
 
 ```bash
 # create new environment
@@ -48,25 +56,26 @@ conda create --name insar
 conda activate insar
 
 # opt 1: install isce-2 with conda (for macOS and Linux)
-# set "use_isce_conda=1" in conda_envs/insar/config.rc file
-mamba install --yes --file conda_envs/insar/requirements.txt --file MintPy/docs/requirements.txt --file ARIA-tools/requirements.txt isce2 
+# set "use_isce_conda=1" in conda_envs/insar/config.rc filef
+mamba install -y --file conda_envs/insar/requirements.txt --file MintPy/docs/requirements.txt --file ARIA-tools/requirements.txt isce2
 
 # opt 2: install isce-2 from source (for Linux on kamb only)
 # set "use_isce_conda=0" in conda_envs/insar/config.rc file
-mamba install --yes --file conda_envs/insar/requirements.txt --file MintPy/docs/requirements.txt --file ARIA-tools/requirements.txt --file conda_envs/isce2/requirements.txt
+mamba install -y --file conda_envs/insar/requirements.txt --file MintPy/docs/requirements.txt --file ARIA-tools/requirements.txt --file conda_envs/isce2/requirements.txt
+
+# install MintPy in development mode
+# overwrite PySolid and PyAPS installation from conda to the local development mode
+python -m pip install -e MintPy
+python -m pip install -e PySolid
+python -m pip install -e PyAPS
 
 # install dependencies not available from conda
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
-$CONDA_PREFIX/bin/pip install git+https://github.com/tylere/pykml.git
-$CONDA_PREFIX/bin/pip install scalene      # CPU, GPU and memory profiler
-$CONDA_PREFIX/bin/pip install ipynb        # import functions from ipynb files
-
-# compile PySolid
-cd ~/tools/PySolid/pysolid
-f2py -c -m solid solid.for
+python -m pip install scalene      # CPU, GPU and memory profiler
+python -m pip install ipynb        # import functions from ipynb files
 ```
 
-#### Build and install ISCE-2 from source
+#### c. Build and install ISCE-2 from source
 
 For opt 2 (building and installing the development version of ISCE-2 from source) ONLY.
 
@@ -90,7 +99,7 @@ make -j 16 # use multiple threads to accelerate
 make install
 ```
 
-#### Setup
+#### d. Setup
 
 Create an alias `load_insar` in `~/.bash_profile` file for easy activation, _e.g._:
 
@@ -102,7 +111,7 @@ For opt 2 (building and installing the development version of ISCE-2 from source
 
 + set `use_isce_conda=0` in `conda_envs/insar/config.rc` file.
 
-#### Test the installation
+#### e. Test the installation
 
 Run the following to test the installation:
 

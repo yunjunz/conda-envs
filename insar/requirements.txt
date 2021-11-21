@@ -3,17 +3,17 @@ gmt
 geopandas
 joblib
 seaborn
+scikit-learn
 # notebook
 jupyterlab
 jupyter_nbextensions_configurator
 nbdime
 # mintpy extra
-fortran-compiler  #for pysolid
-scikit-learn      #for bootstrap method in ts2vel
 rich              #for rich terminal output
 setuptools        #for PyPI distribution
 wheel             #for PyPI distribution
 twine             #for PyPI distribution
 pv                #for tar progress bar during decompression
+fortran-compiler  #for pysolid installation in development mode
 # unwrap_error
 pyfftw
