@@ -19,7 +19,7 @@ Close and restart the shell for changes to take effect.
 
 ```
 conda config --add channels conda-forge
-conda install wget git tree mamba --yes
+conda install wget git tree mamba jupyterlab nb_conda --yes
 ```
 
 ### 2. Install ISCE-2, ARIA-tools and MintPy to `insar` environment
