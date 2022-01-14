@@ -1,4 +1,5 @@
 geopandas
+s1etad
 # notebook
 jupyterlab
 jupyter_nbextensions_configurator
@@ -9,5 +10,4 @@ setuptools        #for PyPI distribution
 wheel             #for PyPI distribution
 twine             #for PyPI distribution
 pv                #for tar progress bar during decompression
-fortran-compiler  #for pysolid installation in development mode
 

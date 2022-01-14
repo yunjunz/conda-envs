@@ -9,9 +9,16 @@ export DATA_DIR=~/data   # data / nobak
 if [ -z ${PYTHONPATH+x} ]; then export PYTHONPATH=""; fi
 
 
+##-------------- sentinel1-burst-id -------------------##
 export S1_BURST_ID_HOME=${TOOL_DIR}/sentinel1-burst-id
 export PYTHONPATH=${PYTHONPATH}:${S1_BURST_ID_HOME}/src
 export PATH=${PATH}:${S1_BURST_ID_HOME}/bin
+
+##-------------- sentinel1-reader ---------------------##
+export S1_READER_HOME=${TOOL_DIR}/sentinel1-reader
+export PYTHONPATH=${PYTHONPATH}:${S1_READER_HOME}/src
+export PATH=${PATH}:${S1_READER_HOME}/bin
+
 
 ##-------------- SSARA --------------------------------##
 export PATH=${PATH}:${TOOL_DIR}/utils/SSARA
@@ -23,7 +30,7 @@ if [ $use_isce_conda -eq 1 ]; then
     # >>> conda >>>
     # ISCE_HOME/STACK are set by conda
     export PATH=${PATH}:${ISCE_HOME}/bin:${ISCE_HOME}/applications
-    echo "load ISCE-2 core modules installed by conda at "$ISCE_HOME
+    #echo "load ISCE-2 core modules installed by conda at "$ISCE_HOME
 
 else
     # >>> build from source >>>
@@ -34,7 +41,7 @@ else
 
     export ISCE_ROOT=~/tools/isce2
     export ISCE_HOME=${ISCE_ROOT}/install/packages/isce
-    echo "load ISCE-2 core modules from "$ISCE_HOME
+    #echo "load ISCE-2 core modules from "$ISCE_HOME
 
     export PATH=${PATH}:${ISCE_ROOT}/install/bin
     export PYTHONPATH=${PYTHONPATH}:${ISCE_ROOT}/install/packages
