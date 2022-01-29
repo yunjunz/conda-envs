@@ -9,15 +9,20 @@ export DATA_DIR=~/data   # data / nobak
 if [ -z ${PYTHONPATH+x} ]; then export PYTHONPATH=""; fi
 
 
-##-------------- sentinel1-burst-id -------------------##
-export S1_BURST_ID_HOME=${TOOL_DIR}/sentinel1-burst-id
-export PYTHONPATH=${PYTHONPATH}:${S1_BURST_ID_HOME}/src
-export PATH=${PATH}:${S1_BURST_ID_HOME}/bin
+##-------------- COMPASS ------------------------------##
+export COMPASS_HOME=${TOOL_DIR}/COMPASS
+export PYTHONPATH=${PYTHONPATH}:${COMPASS_HOME}/src
+export PATH=${PATH}:${COMPASS_HOME}/bin
 
 ##-------------- sentinel1-reader ---------------------##
 export S1_READER_HOME=${TOOL_DIR}/sentinel1-reader
 export PYTHONPATH=${PYTHONPATH}:${S1_READER_HOME}/src
 export PATH=${PATH}:${S1_READER_HOME}/bin
+
+##-------------- sentinel1-burst-id -------------------##
+export S1_BURST_ID_HOME=${TOOL_DIR}/sentinel1-burst-id
+export PYTHONPATH=${PYTHONPATH}:${S1_BURST_ID_HOME}/src
+export PATH=${PATH}:${S1_BURST_ID_HOME}/bin
 
 
 ##-------------- SSARA --------------------------------##
