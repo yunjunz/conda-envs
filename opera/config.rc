@@ -25,6 +25,12 @@ export PYTHONPATH=${PYTHONPATH}:${S1_BURST_ID_HOME}/src
 export PATH=${PATH}:${S1_BURST_ID_HOME}/bin
 
 
+##-------------- MintPy -------------------------------##
+export MINTPY_HOME=~/tools/MintPy
+export PATH=${PATH}:${MINTPY_HOME}/mintpy
+export PYTHONPATH=${PYTHONPATH}:${MINTPY_HOME}
+
+
 ##-------------- SSARA --------------------------------##
 export PATH=${PATH}:${TOOL_DIR}/utils/SSARA
 

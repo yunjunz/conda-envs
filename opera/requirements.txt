@@ -4,10 +4,4 @@ s1etad
 jupyterlab
 jupyter_nbextensions_configurator
 nbdime
-# mintpy extra
-rich              #for rich terminal output
-setuptools        #for PyPI distribution
-wheel             #for PyPI distribution
-twine             #for PyPI distribution
-pv                #for tar progress bar during decompression
 
