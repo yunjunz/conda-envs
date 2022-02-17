@@ -1,4 +1,4 @@
-## Install [FRInGE](https://github.com/isce-framework/fringe.git)
+## Install FRInGE from source
 
 ### 1. [Install conda](../README.md#1-install-conda)
 

@@ -52,7 +52,7 @@ git clone https://github.com/yunjunz/conda_envs.git
 
 ```bash
 # create new environment
-conda create --name insar
+conda create --name insar --yes
 conda activate insar
 
 # opt 1: install isce-2 with conda (for macOS and Linux)
@@ -71,8 +71,8 @@ python -m pip install -e PyAPS
 
 # install dependencies not available from conda
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
-python -m pip install scalene      # CPU, GPU and memory profiler
-python -m pip install ipynb        # import functions from ipynb files
+python -m pip install scalene   # CPU, GPU and memory profiler
+python -m pip install ipynb     # import functions from *.ipynb files
 ```
 
 #### c. Build and install ISCE-2 from source
@@ -121,8 +121,6 @@ topsApp.py -h            # test ISCE-2
 cuDenseOffsets.py -h     # test ISCE-2/PyCuAmpcor (for opt 2 only)
 ariaDownload.py -h       # test ARIA-tools
 smallbaselineApp.py -h   # test MintPy
-solid_earth_tides.py -h  # test PySolid
-tropo_pyaps3.py -h       # test PyAPS
 ```
 
 Run the following for CPU and memory profiler via [`scalene`](https://github.com/emeryberger/scalene) of python script, e.g. `ifgram_inversion.py`:

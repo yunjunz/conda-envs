@@ -1,10 +1,10 @@
-## Install ISCE-2 dev version to an independent environment
+## Install ISCE-2 development version(s) from source and MintPy
 
 ### 1. [Install conda](../README.md#1-install-conda)
 
 ### 2. Install MintPy and ISCE-2 to `isce2` environment
 
-#### Download
+#### a. Download
 
 ```bash
 # download source file
@@ -18,7 +18,7 @@ mkdir -p src build; cd src
 git clone https://github.com/yunjunz/isce2.git
 ```
 
-#### Create `isce2` environment and install pre-requisites
+#### b. Create `isce2` environment and install pre-requisites
 
 ```bash
 # create new environment
@@ -31,11 +31,11 @@ mamba install -c conda-forge --file conda_envs/isce2/requirements.txt --file Min
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
 ```
 
-#### Build and install feature branch to `isce2/install_$version$`
+#### c. Build and install feature branch to `isce2/install_$version$`
 
 ```bash
 #CHANGE THIS for each feature environment
-export ISCE_VERSION='_dev'  #'_pycuampcor'
+export ISCE_VERSION='_pycuampcor'  #'_pycuampcor', '_dev'
 
 # checkout feature / default main branch where your code of interest is, i.e. pycuampcor, alos2, main, etc.
 cd ~/tools/isce2/src/isce2
@@ -65,7 +65,7 @@ make -j 16 # use multiple threads to accelerate
 make install
 ```
 
-#### Setup
+#### d. Setup
 
 Define environment variable `ISCE_VERSION` and create an alias `load_isce2${ISCE_VERSION}` in `~/.bash_profile` file for easy activattion, _e.g._:
 
@@ -73,7 +73,7 @@ Define environment variable `ISCE_VERSION` and create an alias `load_isce2${ISCE
 alias load_isce2_dev='export ISCE_VERSION="_dev"; conda activate isce2; source ~/tools/conda_envs/isce2/config.rc'
 ```
 
-#### Test the installation
+#### e. Test the installation
 
 ```bash
 topsApp.py -h

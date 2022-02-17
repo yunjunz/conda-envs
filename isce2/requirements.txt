@@ -5,6 +5,7 @@ fftw
 gdal
 h5py
 libgdal
+libgomp
 numpy
 opencv
 requests

@@ -29,8 +29,9 @@ else
     else
         if [ -f "/Users/yunjunz/tools/miniconda3/etc/profile.d/conda.sh" ]; then
             . "/Users/yunjunz/tools/miniconda3/etc/profile.d/conda.sh"
-        else
-            export PATH="/Users/yunjunz/tools/miniconda3/bin:$PATH"
+        # not recommended anymore in conda 4.4+
+        #else
+        #    export PATH="/Users/yunjunz/tools/miniconda3/bin:$PATH"
         fi
     fi
     unset __conda_setup
