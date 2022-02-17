@@ -4,10 +4,11 @@ geopandas
 joblib
 seaborn
 scikit-learn
-# notebook
+# notebooks
 jupyterlab
 jupyter_nbextensions_configurator
 nbdime
+nb_conda
 # mintpy extra
 rich              #for rich terminal output
 setuptools        #for PyPI distribution
@@ -17,3 +18,4 @@ pv                #for tar progress bar during decompression
 fortran-compiler  #for pysolid installation in development mode
 # unwrap_error
 pyfftw
+

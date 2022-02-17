@@ -1,7 +1,8 @@
 geopandas
 s1etad
-# notebook
+# notebooks
 jupyterlab
 jupyter_nbextensions_configurator
 nbdime
+nb_conda
 
