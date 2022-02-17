@@ -1,10 +1,9 @@
-cmake
-defusedxml
 python
-cython
-gdal
-libgdal
 armadillo
+cmake
+cython
+defusedxml
+gdal
 isce2
-libgomp
-gxx_linux-64
+libgdal
+cxx-compiler   # A generic way to obtain the C++ compiler across platforms through conda-forge channel

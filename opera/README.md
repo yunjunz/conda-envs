@@ -32,7 +32,7 @@ conda activate opera
 
 # install dependencies
 cd ~/tools
-conda install --file conda_envs/opera/requirements.txt --file sentinel1-reader/requirements.txt --file sentinel1-burst-id/requirements.txt
+mamba install --file conda_envs/opera/requirements.txt --file sentinel1-reader/requirements.txt --file sentinel1-burst-id/requirements.txt
 ```
 
 Create an alias in `~/.bash_profile` file for easy activation.

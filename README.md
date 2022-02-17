@@ -131,39 +131,6 @@ Run the following for CPU and memory profiler via [`scalene`](https://github.com
 scalene --reduced-profile ~/tools/MintPy/mintpy/ifgram_inversion.py ~/data/test/FernandinaSenDT128/mintpy/inputs/ifgramStack.h5 -w no
 ```
 
-### 3. Install FRInGE to the `fringe` environment
-
-Modify the install directory in **conda_envs/fringe/config.rc** file.
-
-```bash
-# create new environment
-conda create --name fringe
-conda activate fringe
-
-# install pre-requisites
-mamba install --yes --file tools/conda_envs/fringe/requirements.txt
-
-# install from source code
-source conda_envs/fringe/config.rc
-mkdir FRInGE; cd FRInGE
-mkdir install build src
-
-cd src
-git clone https://github.com/isce-framework/fringe.git
-
-cd ../build
-cmake -DCMAKE_INSTALL_PREFIX=../install ../src/fringe -DBLA_VENDOR=Generic
-make -j 8 all
-make install
-```
-
-Test installation:
-
-```bash
-load_fringe
-sequential.py -h
-```
-
 ### Useful resources
 
 + [conda cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)
