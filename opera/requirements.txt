@@ -4,5 +4,4 @@ s1etad
 jupyterlab
 jupyter_nbextensions_configurator
 nbdime
-nb_conda
 
