@@ -19,6 +19,7 @@ Close and restart the shell for changes to take effect.
 
 ```
 conda config --add channels conda-forge
+conda config --set channel_priority strict
 conda install wget git tree mamba --yes
 ```
 
@@ -27,7 +28,7 @@ conda install wget git tree mamba --yes
 Both ISCE-2 and MintPy are now available on the `conda-forge` channel, thus, one could install them by running:
 
 ```bash
-mamba install -c conda-forge isce2 mintpy
+mamba install isce2 mintpy
 ```
 
 The note below installs ISCE-2 from conda or source and ARIA-tools, MintPy, PySolid and PyAPS from source in development mode.
