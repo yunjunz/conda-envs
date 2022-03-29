@@ -1,8 +1,10 @@
 astropy
 geopandas
+imagemagick
 joblib
 seaborn
 scikit-learn
+wget
 # notebooks
 jupyterlab
 jupyter_nbextensions_configurator
