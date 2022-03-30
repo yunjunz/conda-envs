@@ -14,8 +14,8 @@ export COMPASS_HOME=${TOOL_DIR}/COMPASS
 export PYTHONPATH=${PYTHONPATH}:${COMPASS_HOME}/src
 export PATH=${PATH}:${COMPASS_HOME}/bin
 
-##-------------- sentinel1-reader ---------------------##
-export S1_READER_HOME=${TOOL_DIR}/sentinel1-reader
+##-------------- s1-reader ----------------------------##
+export S1_READER_HOME=${TOOL_DIR}/s1-reader
 export PYTHONPATH=${PYTHONPATH}:${S1_READER_HOME}/src
 export PATH=${PATH}:${S1_READER_HOME}/bin
 
@@ -23,6 +23,20 @@ export PATH=${PATH}:${S1_READER_HOME}/bin
 export S1_BURST_ID_HOME=${TOOL_DIR}/sentinel1-burst-id
 export PYTHONPATH=${PYTHONPATH}:${S1_BURST_ID_HOME}/src
 export PATH=${PATH}:${S1_BURST_ID_HOME}/bin
+
+##-------------- ISCE3 --------------------------------##
+# colorful ctest for gtest
+export GTEST_COLOR=1
+# load CUDA and compilers module on kamb
+module load cuda/11.2
+export CUDACXX=/usr/local/cuda/bin/nvcc
+export CUDAHOSTCXX=${CXX}
+# isce
+export ISCE_HOME=${TOOL_DIR}/isce3/install
+export PATH=${PATH}:${ISCE_HOME}/bin:${ISCE_HOME}/packages/nisar/workflows
+export PYTHONPATH=${PYTHONPATH}:${ISCE_HOME}/packages
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${ISCE_HOME}/lib64
+echo "load ISCE-3 core modules from "$ISCE_HOME
 
 
 ##-------------- MintPy -------------------------------##
@@ -34,43 +48,6 @@ export PYTHONPATH=${PYTHONPATH}:${MINTPY_HOME}
 ##-------------- SSARA --------------------------------##
 export PATH=${PATH}:${TOOL_DIR}/utils/SSARA
 
-##-------------- ISCE2 --------------------------------##
-use_isce_conda=1  # 0 for source (on kamb), 1 for conda (on laptop)
-
-if [ $use_isce_conda -eq 1 ]; then
-    # >>> conda >>>
-    # ISCE_HOME/STACK are set by conda
-    export PATH=${PATH}:${ISCE_HOME}/bin:${ISCE_HOME}/applications
-    #echo "load ISCE-2 core modules installed by conda at "$ISCE_HOME
-
-else
-    # >>> build from source >>>
-    # load required modules for compiling ISCE-2
-    module load cuda/11.2
-    module load /home/geomod/apps/rhel7/modules/gcc/7.3.1
-    #module load /home/geomod/apps/rhel7/modules/python3/anaconda
-
-    export ISCE_ROOT=~/tools/isce2
-    export ISCE_HOME=${ISCE_ROOT}/install/packages/isce
-    #echo "load ISCE-2 core modules from "$ISCE_HOME
-
-    export PATH=${PATH}:${ISCE_ROOT}/install/bin
-    export PYTHONPATH=${PYTHONPATH}:${ISCE_ROOT}/install/packages
-    #export LD_LIBRARY=${LD_LIBRARY}:${ISCE_ROOT}/install/lib
-
-    # load isce2 core module with GPU support installed by Lijun
-    #alias load_isce_gpu='echo "load ISCE-2 compiled with GPU support"; source /home/geomod/apps/rhel7/isce2.rc'
-fi
-
-# common settings (source stack processors and PyCuAmpcor)
-export ISCE_STACK=${TOOL_DIR}/isce2/src/isce2/contrib/stack                     #set ISCE_STACK to the dev version
-export PATH=${PATH}:${TOOL_DIR}/isce2/src/isce2/contrib/PyCuAmpcor/examples     #for cuDenseOffsets
-export PYTHONPATH=${PYTHONPATH}:${ISCE_STACK}                                   #import tops/stripmapStack as python modules
-export DEMDB=${DATA_DIR}/aux/DEM
-
-# source ONLY ONE AT A TIME to avoid naming conflicts
-alias load_stripmap_stack='export PATH=${PATH}:${ISCE_STACK}/stripmapStack; echo "load ISCE-2 stripmapStack from "${ISCE_STACK}/stripmapStack'
-alias load_tops_stack='export PATH=${PATH}:${ISCE_STACK}/topsStack; echo "load ISCE-2 topsStack from "${ISCE_STACK}/topsStack'
 
 ##---------------------- Miscellaneous ----------------##
 export VRT_SHARED_SOURCE=0

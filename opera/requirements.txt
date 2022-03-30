@@ -1,5 +1,30 @@
 geopandas
 s1etad
+# isce3
+python>=3.8,<=3.9
+cmake
+cython
+eigen
+fftw>=3
+gdal>=2.3
+git
+gmock
+gtest
+compilers   # cross-platform c, cxx and fortran compilers
+h5py
+hdf5>=1.10.2
+jupyter
+matplotlib
+numpy
+pybind11
+# pyre      # auto-downloaded (together with journal) during cmake
+pytest
+ruamel.yaml
+scikit-image
+scipy
+shapely
+#tiledb==2.2
+yamale
 # notebooks
 jupyterlab
 jupyter_nbextensions_configurator
