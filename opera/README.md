@@ -39,13 +39,18 @@ Close and restart the shell for changes to take effect.
 #### c. Build and install `isce3` from source
 
 ```bash
+conda activate opera
+
 # load CUDA and compilers module on kamb
 module load cuda/11.2
+CUDACXX=/usr/local/cuda-11.2/bin/nvcc
+CUDAHOSTCXX=${CXX}
 
 # run cmake
 # before re-run, delete existing contents in build folder
+# add "-DWITH_CUDA=OFF" to turn off the default CUDA compilation
 cd ~/tools/isce3/build
-CUDAHOSTCXX=$CXX CUDACXX=/usr/local/cuda/bin/nvcc cmake -DCMAKE_INSTALL_PREFIX=../install ../src/isce3/ -DWITH_CUDA=ON
+cmake -DCMAKE_INSTALL_PREFIX=../install ../src/isce3/
 
 # compile, install and test
 # add `make VERBOSE=1` to see details if run into errors.

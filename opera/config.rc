@@ -29,7 +29,7 @@ export PATH=${PATH}:${S1_BURST_ID_HOME}/bin
 export GTEST_COLOR=1
 # load CUDA and compilers module on kamb
 module load cuda/11.2
-export CUDACXX=/usr/local/cuda/bin/nvcc
+export CUDACXX=/usr/local/cuda-11.2/bin/nvcc
 export CUDAHOSTCXX=${CXX}
 # isce
 export ISCE_HOME=${TOOL_DIR}/isce3/install

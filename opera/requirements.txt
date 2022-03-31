@@ -2,6 +2,7 @@ geopandas
 s1etad
 # isce3
 python>=3.8,<=3.9
+compilers           # cross-platform c/cxx/fortran compilers. use the latest version to avoid pyre compilation errors
 cmake
 cython
 eigen
@@ -10,20 +11,19 @@ gdal>=2.3
 git
 gmock
 gtest
-compilers   # cross-platform c, cxx and fortran compilers
 h5py
 hdf5>=1.10.2
 jupyter
 matplotlib
 numpy
 pybind11
-# pyre      # auto-downloaded (together with journal) during cmake
+pyre                # auto-downloaded (together with journal) during cmake
+gsl                 # need to avoid pyre compilation error
 pytest
 ruamel.yaml
 scikit-image
 scipy
 shapely
-#tiledb==2.2
 yamale
 # notebooks
 jupyterlab
