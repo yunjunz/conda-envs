@@ -5,9 +5,10 @@ export CLICOLOR=1
 export PS1="\h:\w>$ "
 
 
-use_port=0  # 0 for conda, 1 for port
+# Python environment
+python_env='conda'  # port / conda
 
-if [ $use_port -eq 1 ]; then
+if [ $python_env == 'port' ]; then
     # >>> MacPorts >>>
     if [ -z ${MANPATH+x} ]; then export MANPATH=""; fi
     export GDAL_DRIVER_PATH=/opt/local/lib/gdalplugins
@@ -39,7 +40,18 @@ else
 fi
 
 
-## User specific aliases and functions
+# Conda environments
+if [ -z ${PYTHONPATH+x} ]; then export PYTHONPATH=""; fi
+export PATH=${PATH}:/usr/local/bin           #for manually installed nodejs and npm for jupyter-lab
+# insar: mintpy, aria-tools and isce2
+alias load_insar='conda activate insar; source ~/tools/conda_envs/insar/config.rc'
+# isce_dev: the latest ISCE-2 version on GitHub
+alias load_isce_dev='export ISCE_VERSION="_dev"; conda activate isce2; source ~/tools/conda_envs/isce2/config.rc'
+# fringe
+alias load_fringe='conda activate fringe; source ~/tools/conda_envs/fringe/config.rc'
+
+
+# Useful aliases and functions
 alias sou='source ~/.bash_profile; echo "sourceing ~/.bash_profile"'
 alias ls='ls -GFh'
 alias ll='ls -GFhal'
@@ -55,11 +67,8 @@ alias cona='conda activate'
 alias cond='conda deactivate'
 
 
-## Environments
-# insar: mintpy, pyaps, aria-tools and isce2
-alias load_insar='conda activate insar; source ~/tools/conda_envs/insar/config.rc'
-# isce_dev: the latest ISCE-2 version on GitHub
-alias load_isce_dev='export ISCE_VERSION="_dev"; conda activate isce2; source ~/tools/conda_envs/isce2/config.rc'
-# fringe
-alias load_fringe='conda activate fringe; source ~/tools/conda_envs/fringe/config.rc'
+# Miscellaneous
+export PYTHONPATH=${PYTHONPATH}:~/tools/utils/geoidheight
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk11/Contents/Home
+
 ```
