@@ -2,9 +2,11 @@
 
 This recipe works only on Linux (with pre-installed GPU on Caltech/Kamb). isce3 installation on macOS failed for me.
 
+It installs packages used by the OPERA projects, including `isce3`, `mintpy`, `s1-reader`, `compass` etc.
+
 ### 1. [Install conda](../README.md#1-install-conda)
 
-### 2. Install `isce3` and `opera-adt` packages
+### 2. Install OPERA related packages
 
 #### a. Download source code
 
@@ -19,7 +21,9 @@ git clone https://github.com/yunjunz/conda_envs.git
 git clone https://github.com/opera-adt/COMPASS.git
 git clone https://github.com/opera-adt/s1-reader.git
 git clone https://github.com/opera-adt/sentinel1-burst-id.git
+
 git clone https://gitlab.com/s1-etad/s1-etad.git
+git clone https://github.com/insarlab/MintPy.git
 ```
 
 #### b. Install dependencies to `opera` enrivonment
@@ -31,7 +35,7 @@ conda activate opera
 
 # install dependencies
 cd ~/tools
-mamba install -c avalentino --file conda_envs/opera/requirements.txt --file s1-reader/requirements.txt --file COMPASS/requirements.txt
+mamba install -c avalentino --file conda_envs/opera/requirements.txt --file s1-reader/requirements.txt --file COMPASS/requirements.txt --file MintPy/docs/requirements.txt
 ```
 
 Close and restart the shell for changes to take effect.
