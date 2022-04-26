@@ -1,29 +1,10 @@
 geopandas
 s1etad
-# isce3
-python>=3.8,<=3.9
-backoff             # used isce3.nisar.workflows.stage_dem.py
-compilers           # cross-platform c/cxx/fortran compilers. use the latest version to avoid pyre compilation errors
-cmake
-cython
-eigen
-fftw>=3
-gdal>=2.3
-git
-gmock
-gtest
-h5py
-hdf5>=1.10.2
-jupyter
-matplotlib
+# compass and s1reader
+python>=3.9
 numpy
-pybind11
-pyre                # auto-downloaded (together with journal) during cmake
-gsl                 # need to avoid pyre compilation error
-pytest
+gdal>=3
 ruamel.yaml
-scikit-image
-scipy
 shapely
 yamale
 # notebooks

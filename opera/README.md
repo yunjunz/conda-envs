@@ -1,7 +1,5 @@
 ## Install the development environment for OPERA project
 
-This recipe works only on Linux (with pre-installed GPU on Caltech/Kamb). isce3 installation on macOS failed for me.
-
 It installs packages used by the OPERA projects, including `isce3`, `mintpy`, `s1-reader`, `compass` etc.
 
 ### 1. [Install conda](../README.md#1-install-conda)
@@ -33,19 +31,29 @@ git clone https://github.com/insarlab/MintPy.git
 conda create --name opera --yes
 conda activate opera
 
-# install dependencies
+# option 1: install isce3 with conda
+# set "isce_install_method='conda'" in conda_envs/opera/config.rc file
+# remove mintpy dependencies as it leads to the error below:
+# ImportError: dlopen(/Users/yunjunz/tools/miniconda3/envs/opera/lib/python3.9/site-packages/pybind_isce3.cpython-39-darwin.so, 2): Library not loaded: @rpath/libhdf5_cpp.103.dylib
 cd ~/tools
-mamba install -c avalentino --file conda_envs/opera/requirements.txt --file s1-reader/requirements.txt --file COMPASS/requirements.txt --file MintPy/docs/requirements.txt
+mamba install -c avalentino --file conda_envs/opera/requirements.txt isce3
+
+# option 2: install isce3 from source (for Linux only)
+# set "isce_install_method='source'" in conda_envs/opera/config.rc file
+cd ~/tools
+mamba install -c avalentino --file conda_envs/opera/requirements.txt --file MintPy/docs/requirements.txt --file conda_envs/isce3/requirements.txt
 ```
 
 Close and restart the shell for changes to take effect.
 
 #### c. Build and install `isce3` from source
 
+For option 2 (install the development version of isce3 from source) ONLY.
+
 ```bash
 conda activate opera
 
-# load CUDA and compilers module on kamb
+# load CUDA module on kamb
 module load cuda/11.2
 CUDACXX=/usr/local/cuda-11.2/bin/nvcc
 CUDAHOSTCXX=${CXX}
@@ -72,6 +80,8 @@ alias load_opera='conda activate opera; source ~/tools/conda_envs/opera/config.r
 ```
 
 #### e. Test the installation
+
+For option 2 (install the development version of isce3 from source) ONLY.
 
 ```bash
 insar.py --help    # isce3
