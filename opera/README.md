@@ -20,7 +20,7 @@ git clone https://github.com/opera-adt/COMPASS.git
 git clone https://github.com/opera-adt/s1-reader.git
 git clone https://github.com/opera-adt/sentinel1-burst-id.git
 
-git clone https://gitlab.com/s1-etad/s1-etad.git
+git clone https://gitlab.com/s1-etad/s1-etad.git ~/tools/utils/s1-etad
 git clone https://github.com/insarlab/MintPy.git
 ```
 
@@ -39,7 +39,7 @@ cd ~/tools
 mamba install -c avalentino --file conda_envs/opera/requirements.txt isce3
 
 # option 2: install isce3 from source (for Linux only)
-# set "isce_install_method='source'" in conda_envs/opera/config.rc file
+# set "isce_install_method='source'" in conda_envs/opera/config.rc file [default]
 cd ~/tools
 mamba install -c avalentino --file conda_envs/opera/requirements.txt --file MintPy/docs/requirements.txt --file conda_envs/isce3/requirements.txt
 ```
