@@ -31,7 +31,7 @@ Both ISCE-2 and MintPy are now available on the `conda-forge` channel, thus, one
 mamba install isce2 mintpy
 ```
 
-The note below installs ISCE-2 from conda or source and ARIA-tools, MintPy, PySolid and PyAPS from source in development mode.
+The note below installs ISCE-2 from conda or source, ARIA-tools and MintPy from source in development mode.
 
 #### a. Download source code
 
@@ -44,9 +44,10 @@ git clone https://github.com/isce-framework/isce2.git
 cd ~/tools
 git clone https://github.com/aria-tools/ARIA-tools.git
 git clone https://github.com/insarlab/MintPy.git
-git clone https://github.com/insarlab/PySolid.git
 git clone https://github.com/insarlab/PyAPS.git
+git clone https://github.com/insarlab/PySolid.git
 git clone https://github.com/yunjunz/conda_envs.git
+git clone https://www.unavco.org/gitlab/unavco_public/ssara_client.git utils/SSARA
 ```
 
 #### b. Install dependencies to `insar` environment
@@ -58,17 +59,17 @@ conda activate insar
 
 # opt 1: install isce-2 with conda (for macOS and Linux)
 # set "use_isce_conda=1" in conda_envs/insar/config.rc filef
-mamba install -y --file conda_envs/insar/requirements.txt --file MintPy/docs/requirements.txt --file ARIA-tools/requirements.txt isce2
+mamba install -y --file conda_envs/insar/requirements.txt --file MintPy/requirements.txt --file ARIA-tools/requirements.txt isce2
 
 # opt 2: install isce-2 from source (for Linux on kamb only)
 # set "use_isce_conda=0" in conda_envs/insar/config.rc file
-mamba install -y --file conda_envs/insar/requirements.txt --file MintPy/docs/requirements.txt --file ARIA-tools/requirements.txt --file conda_envs/isce2/requirements.txt
+mamba install -y --file conda_envs/insar/requirements.txt --file MintPy/requirements.txt --file ARIA-tools/requirements.txt --file conda_envs/isce2/requirements.txt
 
 # install MintPy in development mode
-# overwrite PySolid and PyAPS installation from conda to the local development mode
+# overwrite PyAPS and PySolid installation from conda to the local development mode
 python -m pip install -e MintPy
-python -m pip install -e PySolid
 python -m pip install -e PyAPS
+python -m pip install -e PySolid
 
 # install dependencies not available from conda
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3

@@ -27,7 +27,7 @@ conda activate isce2
 
 # install pre-requisites
 cd ~/tools
-mamba install -c conda-forge --file conda_envs/isce2/requirements.txt --file MintPy/docs/requirements.txt --yes
+mamba install -c conda-forge --file conda_envs/isce2/requirements.txt --file MintPy/requirements.txt --yes
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
 ```
 

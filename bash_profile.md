@@ -59,8 +59,8 @@ alias m='more'
 alias rrsync='rsync -avzh --progress'
 alias rm=~/tools/utils/shell-safe-rm/bin/rm.sh
 function ff() { find . -name \*"$@"\* -print; }
-function igrep() { grep -rn --color --include=*.{py,sh,txt,cfg,m,cpp,h} "$@" .; }
-function igrepy() { grep -rn --color --include=*.{ipynb,py,sh,txt,cfg,m,cpp,h} "$@" .; }
+function igrep() { grep -rn --color --include=*.{py,sh,txt,cfg,xml,rst,md,yml,yaml,html,m,cpp,h} "$@" .; }
+function igrepy() { grep -rn --color --include=*.{ipynb} "$@" .; }
 alias julab='jupyter-lab'
 alias jubook='jupyter-notebook'
 alias cona='conda activate'

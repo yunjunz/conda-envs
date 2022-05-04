@@ -41,7 +41,7 @@ mamba install -c avalentino --file conda_envs/opera/requirements.txt isce3
 # option 2: install isce3 from source (for Linux only)
 # set "isce_install_method='source'" in conda_envs/opera/config.rc file [default]
 cd ~/tools
-mamba install -c avalentino --file conda_envs/opera/requirements.txt --file MintPy/docs/requirements.txt --file conda_envs/isce3/requirements.txt
+mamba install -c avalentino --file conda_envs/opera/requirements.txt --file MintPy/requirements.txt --file conda_envs/isce3/requirements.txt
 ```
 
 Close and restart the shell for changes to take effect.
