@@ -1,3 +1,4 @@
+python<=3.9       #isce2 does not work on python 3.10 yet
 astropy
 geopandas
 imagemagick
