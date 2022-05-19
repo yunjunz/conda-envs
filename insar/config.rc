@@ -23,9 +23,9 @@ export PATH=${PATH}:${ARIATOOLS_HOME}/bin
 export PATH=${PATH}:${TOOL_DIR}/utils/SSARA
 
 ##-------------- ISCE2 --------------------------------##
-use_isce_conda=1  # 0 for source (on kamb), 1 for conda (on laptop)
+isce_install_method='source'  # source / conda
 
-if [ $use_isce_conda -eq 1 ]; then
+if [ $isce_install_method == 'conda' ]; then
     # >>> conda >>>
     # ISCE_HOME/STACK are set by conda
     export PATH=${PATH}:${ISCE_HOME}/bin:${ISCE_HOME}/applications
