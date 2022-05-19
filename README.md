@@ -134,3 +134,4 @@ scalene --reduced-profile ~/tools/MintPy/mintpy/ifgram_inversion.py ~/data/test/
 ### Useful resources
 
 + [conda cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)
++ [Jupyter: Display hidden files](https://jupyterlab.readthedocs.io/en/stable/user/files.html#displaying-hidden-files)

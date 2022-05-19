@@ -9,7 +9,8 @@ wget
 # notebooks
 jupyterlab
 jupyter_nbextensions_configurator
-nbdime
+nbdime            #for readable nb differences
+ipympl            #for interactive matplotlib
 # mintpy extra
 rich              #for rich terminal output
 setuptools        #for PyPI distribution
