@@ -25,8 +25,8 @@ export PYTHONPATH=${PYTHONPATH}:${S1_BURST_ID_HOME}/src
 export PATH=${PATH}:${S1_BURST_ID_HOME}/bin
 
 ##-------------- ISCE3 --------------------------------##
-isce_install_method='source'  # source / conda
-if [ $isce_install_method == 'conda' ]; then
+if [ -z ${ISCE_INSTALL_METHOD+x} ]; then export ISCE_INSTALL_METHOD="conda"; fi
+if [ $ISCE_INSTALL_METHOD == 'conda' ]; then
     echo "load ISCE-3 installed via conda-forge channel"
 else
     # colorful ctest for gtest

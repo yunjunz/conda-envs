@@ -23,13 +23,12 @@ export PATH=${PATH}:${ARIATOOLS_HOME}/bin
 export PATH=${PATH}:${TOOL_DIR}/utils/SSARA
 
 ##-------------- ISCE2 --------------------------------##
-isce_install_method='source'  # source / conda
-
-if [ $isce_install_method == 'conda' ]; then
+if [ -z ${ISCE_INSTALL_METHOD+x} ]; then export ISCE_INSTALL_METHOD="conda"; fi
+if [ $ISCE_INSTALL_METHOD == 'conda' ]; then
     # >>> conda >>>
     # ISCE_HOME/STACK are set by conda
     export PATH=${PATH}:${ISCE_HOME}/bin:${ISCE_HOME}/applications
-    echo "load ISCE-2 core modules installed by conda at "$ISCE_HOME
+    echo "load ISCE-2 core modules installed by conda-forge channel"
 
 else
     # >>> build from source >>>
@@ -40,7 +39,7 @@ else
 
     export ISCE_ROOT=~/tools/isce2
     export ISCE_HOME=${ISCE_ROOT}/install/packages/isce
-    echo "load ISCE-2 core modules from "$ISCE_HOME
+    echo "load ISCE-2 core modules installed from source at "$ISCE_HOME
 
     export PATH=${PATH}:${ISCE_ROOT}/install/bin
     export PYTHONPATH=${PYTHONPATH}:${ISCE_ROOT}/install/packages

@@ -43,13 +43,17 @@ fi
 # Conda environments
 if [ -z ${PYTHONPATH+x} ]; then export PYTHONPATH=""; fi
 export PATH=${PATH}:/usr/local/bin           #for manually installed nodejs and npm for jupyter-lab
+# set isce2/3 installation method for insar/opera environment
+export ISCE_INSTALL_METHOD='conda'           # conda / source
 # insar: mintpy, aria-tools and isce2
 alias load_insar='conda activate insar; source ~/tools/conda_envs/insar/config.rc'
+alias load_atbd='conda activate atbd; source ~/tools/ATBD/docs/config.rc'
 # isce_dev: the latest ISCE-2 version on GitHub
 alias load_isce_dev='export ISCE_VERSION="_dev"; conda activate isce2; source ~/tools/conda_envs/isce2/config.rc'
 # fringe
 alias load_fringe='conda activate fringe; source ~/tools/conda_envs/fringe/config.rc'
-
+# opera
+alias load_opera='conda activate opera; source ~/tools/conda_envs/opera/config.rc'
 
 # Useful aliases and functions
 alias sou='source ~/.bash_profile; echo "sourceing ~/.bash_profile"'

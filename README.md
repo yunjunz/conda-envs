@@ -58,11 +58,9 @@ conda create --name insar --yes
 conda activate insar
 
 # opt 1: install isce-2 with conda (for macOS and Linux)
-# set "isce_install_method='conda'" in conda_envs/insar/config.rc file
 mamba install -y --file conda_envs/insar/requirements.txt --file MintPy/requirements.txt --file ARIA-tools/requirements.txt isce2
 
 # opt 2: install isce-2 from source (for Linux on kamb only)
-# set "isce_install_method='source'" in conda_envs/insar/config.rc file [default]
 mamba install -y --file conda_envs/insar/requirements.txt --file MintPy/requirements.txt --file ARIA-tools/requirements.txt --file conda_envs/isce2/requirements.txt
 
 # install MintPy in development mode
@@ -96,6 +94,8 @@ cmake ~/tools/isce2/src/isce2 -DCMAKE_INSTALL_PREFIX=~/tools/isce2/install -DCMA
 make -j 16 # use multiple threads to accelerate
 make install
 ```
+
+Set `ISCE_INSTALL_METHOD="source"` in `~/.bash_profile` file.
 
 #### d. Setup
 

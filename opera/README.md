@@ -32,14 +32,12 @@ conda create --name opera --yes
 conda activate opera
 
 # option 1: install isce3 with conda
-# set "isce_install_method='conda'" in conda_envs/opera/config.rc file
 # remove mintpy dependencies as it leads to the error below:
 # ImportError: dlopen(/Users/yunjunz/tools/miniconda3/envs/opera/lib/python3.9/site-packages/pybind_isce3.cpython-39-darwin.so, 2): Library not loaded: @rpath/libhdf5_cpp.103.dylib
 cd ~/tools
 mamba install -c avalentino --file conda_envs/opera/requirements.txt isce3
 
 # option 2: install isce3 from source (for Linux only)
-# set "isce_install_method='source'" in conda_envs/opera/config.rc file [default]
 cd ~/tools
 mamba install -c avalentino --file conda_envs/opera/requirements.txt --file MintPy/requirements.txt --file conda_envs/isce3/requirements.txt
 ```
@@ -70,6 +68,8 @@ make all -j 16 # use multiple threads to accelerate
 make install
 ctest
 ```
+
+Set `ISCE_INSTALL_METHOD="source"` in `~/.bash_profile` file.
 
 #### d. Setup
 
