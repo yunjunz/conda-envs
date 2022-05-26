@@ -82,18 +82,14 @@ python -m pip install ipynb     # import functions from *.ipynb files
 For opt 2 (building and installing the development version of ISCE-2 from source) ONLY.
 
 ```bash
-# load CUDA and compilers module on kamb
-# only gcc=7.3.1 works, but not available from conda-forge: https://anaconda.org/conda-forge/gcc_linux-64/files?type=conda
+# load CUDA module on kamb
 module load cuda/11.2
-module load /home/geomod/apps/rhel7/modules/gcc/7.3.1
 
 # generate build system
 # before re-run, delete existing contents in build folder
-# use GCC-7.3.1 installed by Lijun (the old CUDA-10.1 version does not like GCC-7.5; GCC-7.3.0 also does not work, do not know why)
 # more notes on https://github.com/lijun99/isce2-install
 cd ~/tools/isce2/build
-export GCC_BIN=/net/kraken/home1/geomod/apps/rhel7/gcc7/bin
-cmake ~/tools/isce2/src/isce2 -DCMAKE_INSTALL_PREFIX=~/tools/isce2/install -DCMAKE_CUDA_FLAGS="-arch=sm_60" -DCMAKE_PREFIX_PATH=${CONDA_PREFIX} -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=${GCC_BIN}/gcc -DCMAKE_CXX_COMPILER=${GCC_BIN}/g++ -DCMAKE_Fortran_COMPILER=${GCC_BIN}/gfortran
+cmake ~/tools/isce2/src/isce2 -DCMAKE_INSTALL_PREFIX=~/tools/isce2/install -DCMAKE_CUDA_FLAGS="-arch=sm_60" -DCMAKE_PREFIX_PATH=${CONDA_PREFIX} -DCMAKE_BUILD_TYPE=Release
 
 # compile and install
 # then under the $ISCE_ROOT/install, there should be `bin` and `packages` folder
