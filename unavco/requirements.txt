@@ -1,0 +1,11 @@
+python<3.10        #isce2 does not work on python 3.10 yet
+isce2=2.6=*_1      #pin isce2 to the specific version and build for the bugfix
+mintpy>=1.4
+# notebooks
+wget
+jupyterlab
+jupyter_nbextensions_configurator
+nbdime            #for readable nb differences
+ipympl            #for interactive matplotlib
+# mintpy extra
+rich              #for rich terminal output
