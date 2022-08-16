@@ -1,6 +1,6 @@
 python<3.10         #isce2 does not work on python 3.10 yet
 isce2=2.6=*_1       #pin isce2 to the specific version and build for the bugfix
-mintpy>=1.4
+mintpy>=1.4.1
 # notebooks
 wget                #download pre-staged dataset
 awscli              #download pre-staged dataset
