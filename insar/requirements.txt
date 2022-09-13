@@ -3,6 +3,7 @@ astropy
 geopandas
 imagemagick
 joblib
+pre-commit
 seaborn
 scikit-learn
 wget
