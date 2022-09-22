@@ -2,11 +2,12 @@ python<=3.9       #isce2 does not work on python 3.10 yet
 astropy
 geopandas
 imagemagick
-joblib
 pre-commit
 seaborn
 scikit-learn
-wget
+awscli            #download
+wget              #download
+pyfftw            #for unwrap_error
 # notebooks
 jupyterlab
 jupyter_nbextensions_configurator
@@ -21,6 +22,4 @@ pv                #for tar progress bar during decompression
 # compilers
 cxx-compiler      #for scalene installation on Linux
 fortran-compiler  #for pysolid installation in development mode
-# unwrap_error
-pyfftw
 
