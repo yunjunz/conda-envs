@@ -7,18 +7,13 @@ seaborn
 scikit-learn
 awscli            #download
 wget              #download
+pv                #for tar progress bar during decompression
 pyfftw            #for unwrap_error
 # notebooks
 jupyterlab
 jupyter_nbextensions_configurator
 nbdime            #for readable nb differences
 ipympl            #for interactive matplotlib
-# mintpy extra
-rich              #for rich terminal output
-setuptools        #for PyPI distribution
-wheel             #for PyPI distribution
-twine             #for PyPI distribution
-pv                #for tar progress bar during decompression
 # compilers
 cxx-compiler      #for scalene installation on Linux
 fortran-compiler  #for pysolid installation in development mode
