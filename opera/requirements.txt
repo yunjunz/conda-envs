@@ -4,11 +4,10 @@ s1etad
 python>=3.9
 numpy
 gdal>=3
+pysolid
 ruamel.yaml
 shapely
 yamale
-# isce3
-backoff
 # notebooks
 jupyterlab
 jupyter_nbextensions_configurator
