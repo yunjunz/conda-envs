@@ -31,7 +31,9 @@ Both ISCE-2 and MintPy are now available on the `conda-forge` channel, thus, one
 mamba install isce2 mintpy
 ```
 
-The note below installs ISCE-2 from conda or source, ARIA-tools and MintPy from source in development mode.
+Then go to [d. Setup](#d-setup) and continue for setup and tests.
+
+Notes a-c below installs ISCE-2 from conda or source, ARIA-tools and MintPy from source in development mode.
 
 #### a. Download source code
 
@@ -63,9 +65,10 @@ mamba install -y --file conda_envs/insar/requirements.txt --file MintPy/requirem
 # opt 2: install isce-2 from source (for Linux on kamb only)
 mamba install -y --file conda_envs/insar/requirements.txt --file MintPy/requirements.txt --file ARIA-tools/requirements.txt --file conda_envs/isce2/requirements.txt
 
-# install MintPy in development mode
-# overwrite PyAPS and PySolid installation from conda to the local development mode
+# install MintPy and ARIA-tools in development mode
 python -m pip install -e MintPy
+python -m pip install -e ARIA-tools
+# [optional] overwrite PyAPS and PySolid installation from conda to the local development mode [for developers]
 python -m pip install -e PyAPS
 python -m pip install -e PySolid
 
