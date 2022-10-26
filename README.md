@@ -25,15 +25,7 @@ conda install wget git tree mamba --yes
 
 ### 2. Install ISCE-2, ARIA-tools and MintPy to `insar` environment
 
-Both ISCE-2 and MintPy are now available on the `conda-forge` channel, thus, one could install them by running:
-
-```bash
-mamba install isce2 mintpy
-```
-
-Then go to [d. Setup](#d-setup) and continue for setup and tests.
-
-Notes a-c below installs ISCE-2 from conda or source, ARIA-tools and MintPy from source in development mode.
+Notes below installs ISCE-2 from conda or source, ARIA-tools and MintPy from source in development mode.
 
 #### a. Download source code
 
