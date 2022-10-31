@@ -75,7 +75,7 @@ python -m pip install ipynb     # import functions from *.ipynb files
 For opt 2 (building and installing the development version of ISCE-2 from source) ONLY.
 
 ```bash
-# load CUDA module on kamb
+# load CUDA module on Caltech kamb/HPC
 module load cuda/11.2
 
 # generate build system

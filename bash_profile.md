@@ -1,3 +1,20 @@
++ `.bashrc` file:
+
+```bash
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+
+source ~/.bash_profile
+
+```
+
++ `.bash_profile` file:
+
 ```bash
 # .bash_profile
 export VISUAL=/usr/bin/vi
