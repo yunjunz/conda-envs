@@ -18,10 +18,21 @@ bash Miniconda3-latest-MacOSX-x86_64.sh -b -p ~/tools/miniconda3
 Close and restart the shell for changes to take effect.
 
 ```
+# setup conda-forge channel
 conda config --add channels conda-forge
 conda config --set channel_priority strict
+
+# install utilities
 conda install wget git tree mamba --yes
+
+# install utilities not available from conda
+# msrsync - multi-stream rsync for file transfer
+cd ~/tools
+mkdir bin; cd bin
+wget https://raw.githubusercontent.com/jbd/msrsync/master/msrsync3 -O msrsync && chmod +x msrsync
 ```
+
+Add `export PATH=${PATH}:~/tools/bin` to the `~/.bash_profile` file.
 
 ### 2. Install ISCE-2, ARIA-tools and MintPy to `insar` environment
 
@@ -90,7 +101,7 @@ make -j 16 # use multiple threads to accelerate
 make install
 ```
 
-Set `ISCE_INSTALL_METHOD="source"` in `~/.bash_profile` file.
+Add `export ISCE_INSTALL_METHOD="source"` to the `~/.bash_profile` file.
 
 #### d. Setup
 

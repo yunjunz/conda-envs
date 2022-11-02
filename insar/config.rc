@@ -19,8 +19,6 @@ export PATH=${PATH}:${SAR_PROC_HOME}/tools
 
 ##-------------- ARIA-tools ---------------------------##
 export ARIATOOLS_HOME=${TOOL_DIR}/ARIA-tools/tools
-#export PYTHONPATH=${PYTHONPATH}:${ARIATOOLS_HOME}
-#export PATH=${PATH}:${ARIATOOLS_HOME}/bin
 
 ##-------------- SSARA --------------------------------##
 export PATH=${PATH}:${TOOL_DIR}/utils/SSARA
