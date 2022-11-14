@@ -4,6 +4,8 @@ It installs packages used by the OPERA projects, including `isce3`, `mintpy`, `s
 
 ### 1. [Install conda](../README.md#1-install-conda)
 
+Add `avalentino` channel to the `.condarc` file for `s1etad` module.
+
 ### 2. Install OPERA related packages
 
 #### a. Download source code
@@ -18,10 +20,7 @@ cd ~/tools
 git clone https://github.com/yunjunz/conda_envs.git
 git clone https://github.com/opera-adt/COMPASS.git
 git clone https://github.com/opera-adt/s1-reader.git
-git clone https://github.com/opera-adt/sentinel1-burst-id.git
-
 git clone https://gitlab.com/s1-etad/s1-etad.git ~/tools/utils/s1-etad
-git clone https://github.com/insarlab/MintPy.git
 ```
 
 #### b. Install dependencies to `opera` enrivonment
@@ -32,17 +31,11 @@ conda create --name opera --yes
 conda activate opera
 
 # option 1: install isce3 with conda
-# remove mintpy dependencies as it leads to the error below:
-# ImportError: dlopen(/Users/yunjunz/tools/miniconda3/envs/opera/lib/python3.9/site-packages/pybind_isce3.cpython-39-darwin.so, 2): Library not loaded: @rpath/libhdf5_cpp.103.dylib
-cd ~/tools
-mamba install -c avalentino --file conda_envs/opera/requirements.txt isce3
+mamba install --file ~/tools/conda_envs/opera/requirements.txt isce3
 
 # option 2: install isce3 from source (for Linux only)
-cd ~/tools
-mamba install -c avalentino --file conda_envs/opera/requirements.txt --file MintPy/requirements.txt --file conda_envs/isce3/requirements.txt
+mamba install --file ~/tools/conda_envs/opera/requirements.txt --file ~/tools/conda_envs/isce3/requirements.txt
 ```
-
-Close and restart the shell for changes to take effect.
 
 #### c. Build and install `isce3` from source
 
@@ -71,7 +64,15 @@ ctest
 
 Set `ISCE_INSTALL_METHOD="source"` in `~/.bash_profile` file.
 
-#### d. Setup
+#### d. Install OPERA packages
+
+```bash
+cd ~/tools
+python -m pip install -e ./s1-reader
+python -m pip install -e ./COMPASS
+```
+
+#### e. Setup
 
 Create an alias in `~/.bash_profile` file for easy activation.
 
@@ -79,7 +80,11 @@ Create an alias in `~/.bash_profile` file for easy activation.
 alias load_opera='conda activate opera; source ~/tools/conda_envs/opera/config.rc'
 ```
 
-#### e. Test the installation
+#### f. Test the installation
+
+```bash
+s1_cslc.py -h      # compass
+```
 
 For option 2 (install the development version of isce3 from source) ONLY.
 
