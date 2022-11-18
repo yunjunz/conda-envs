@@ -81,9 +81,10 @@ python -m pip install scalene   # CPU, GPU and memory profiler
 python -m pip install ipynb     # import functions from *.ipynb files
 ```
 
-#### c. Build and install ISCE-2 from source
+<details>
+<summary><h4>c. Build and install ISCE-2 from source (for opt 2 ONLY)</h4></summary>
 
-For opt 2 (building and installing the development version of ISCE-2 from source) ONLY.
+This is for opt 2 (building and installing the development version of ISCE-2 from source) ONLY.
 
 ```bash
 # load CUDA module on Caltech kamb/HPC
@@ -102,6 +103,7 @@ make install
 ```
 
 Add `export ISCE_INSTALL_METHOD="source"` to the `~/.bash_profile` file.
+</details>
 
 #### d. Setup
 
