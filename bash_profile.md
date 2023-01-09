@@ -63,7 +63,7 @@ if [ -z ${PYTHONPATH+x} ]; then export PYTHONPATH=""; fi
 export PYTHONPATH=${PYTHONPATH}:~/tools/dev
 export PATH=${PATH}:~/tools/dev/tools
 # manually installed packages: nodejs and npm (for jupyter-lab) and msrsync
-export PATH=${PATH}:/usr/local/bin:~/tools/bin      
+export PATH=${PATH}:/usr/local/bin:~/tools/bin
 
 # set isce2/3 installation method for insar/opera environment
 export ISCE_INSTALL_METHOD='conda'           # conda / source
