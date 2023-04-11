@@ -5,26 +5,20 @@ fftw
 gdal
 h5py
 libgdal
-libgomp
 numpy
 opencv
-pybind11
 requests
 scipy
-scikit-image
+scikit-image    # for autoRIFT
 #for compilation [cross-platform names from conda-forge]
 c-compiler
 cxx-compiler
 fortran-compiler
 #for mdx compile/install
-libiconv
 openmotif
 openmotif-dev
-xorg-libx11
-xorg-libxau
 xorg-libxdmcp
 xorg-libxft
 xorg-libxmu
-xorg-libxrender
 xorg-libxt
 
