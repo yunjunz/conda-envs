@@ -1,4 +1,4 @@
-python<=3.9       #isce2 does not work on python 3.10 yet
+python
 astropy
 geopandas
 imagemagick
@@ -17,4 +17,3 @@ ipympl            #for interactive matplotlib
 # compilers
 cxx-compiler      #for scalene installation on Linux
 fortran-compiler  #for pysolid installation in development mode
-
