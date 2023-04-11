@@ -2,30 +2,25 @@
 
 Setup InSAR data processing codes on Linux / macOS using `conda` environments.
 
-### 1. Install conda
+### 1. Install conda via [miniforge](https://github.com/conda-forge/miniforge)
 
 ```bash
 mkdir -p ~/tools; cd ~/tools
 
-# download, install and setup (mini/ana)conda
-# for Linux, use Miniconda3-latest-Linux-x86_64.sh
-# for macOS, opt 2: curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -o Miniconda3-latest-MacOSX-x86_64.sh
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-bash Miniconda3-latest-MacOSX-x86_64.sh -b -p ~/tools/miniconda3
-~/tools/miniconda3/bin/conda init bash
+# download, install and setup miniforge
+# or for macOS: curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
+wget "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
+bash Mambaforge-$(uname)-$(uname -m).sh -b -p ~/tools/mambaforge
+~/tools/mambaforge/bin/mamba init bash
 ```
 
 Close and restart the shell for changes to take effect.
 
 ```
-# setup conda-forge channel
-conda config --add channels conda-forge
-conda config --set channel_priority strict
-
 # install utilities
-conda install wget git tree mamba --yes
+mamba install wget git tree htop --yes
 
-# install utilities not available from conda
+# [not used currently] install utilities not available from conda
 # msrsync - multi-stream rsync for file transfer
 cd ~/tools
 mkdir bin; cd bin
