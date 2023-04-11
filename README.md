@@ -37,13 +37,13 @@ Add `export PATH=${PATH}:~/tools/bin` to the `~/.bash_profile` file.
 cd ~/tools
 mkdir isce2; cd isce2
 mkdir build install src; cd src
-git clone https://github.com/isce-framework/isce2.git
+git clone git@github.com:isce-framework/isce2.git
 
 cd ~/tools
-git clone https://github.com/insarlab/MintPy.git
-git clone https://github.com/insarlab/PyAPS.git
-git clone https://github.com/insarlab/PySolid.git
-git clone https://github.com/yunjunz/conda_envs.git
+git clone git@github.com:insarlab/MintPy.git
+git clone git@github.com:insarlab/PyAPS.git
+git clone git@github.com:insarlab/PySolid.git
+git clone git@github.com:yunjunz/conda_envs.git
 git clone https://www.unavco.org/gitlab/unavco_public/ssara_client.git utils/SSARA
 ```
 
