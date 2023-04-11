@@ -2,12 +2,12 @@
 
 Setup InSAR data processing codes on Linux / macOS using `conda` environments.
 
-### 1. Install conda via [miniforge](https://github.com/conda-forge/miniforge)
+### 1. Install conda via [mambaforge](https://github.com/conda-forge/miniforge)
 
 ```bash
 mkdir -p ~/tools; cd ~/tools
 
-# download, install and setup miniforge
+# download, install and setup mambaforge
 # or for macOS: curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
 wget "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
 bash Mambaforge-$(uname)-$(uname -m).sh -b -p ~/tools/mambaforge
@@ -29,9 +29,7 @@ wget https://raw.githubusercontent.com/jbd/msrsync/master/msrsync3 -O msrsync &&
 
 Add `export PATH=${PATH}:~/tools/bin` to the `~/.bash_profile` file.
 
-### 2. Install ISCE-2, ARIA-tools and MintPy to `insar` environment
-
-Notes below installs ISCE-2 from conda or source, ARIA-tools and MintPy from source in development mode.
+### 2. Install ISCE-2 and MintPy to `insar` environment
 
 #### a. Download source code
 
@@ -42,7 +40,6 @@ mkdir build install src; cd src
 git clone https://github.com/isce-framework/isce2.git
 
 cd ~/tools
-git clone https://github.com/aria-tools/ARIA-tools.git
 git clone https://github.com/insarlab/MintPy.git
 git clone https://github.com/insarlab/PyAPS.git
 git clone https://github.com/insarlab/PySolid.git
@@ -58,14 +55,13 @@ conda create --name insar --yes
 conda activate insar
 
 # opt 1: install isce-2 with conda (for macOS and Linux)
-mamba install -y --file conda_envs/insar/requirements.txt --file MintPy/requirements.txt --file ARIA-tools/requirements.txt isce2
+mamba install -y --file conda_envs/insar/requirements.txt --file MintPy/requirements.txt isce2
 
 # opt 2: install isce-2 from source (for Linux on kamb only)
-mamba install -y --file conda_envs/insar/requirements.txt --file MintPy/requirements.txt --file ARIA-tools/requirements.txt --file conda_envs/isce2/requirements.txt
+mamba install -y --file conda_envs/insar/requirements.txt --file MintPy/requirements.txt --file conda_envs/isce2/requirements.txt
 
 # install MintPy and ARIA-tools in development mode
 python -m pip install -e MintPy
-python -m pip install -e ARIA-tools
 # [optional] overwrite PyAPS and PySolid installation from conda to the local development mode [for developers]
 python -m pip install -e PyAPS
 python -m pip install -e PySolid
@@ -116,7 +112,6 @@ Run the following to test the installation:
 load_insar               # warm up conda environment
 topsApp.py -h            # test ISCE-2
 cuDenseOffsets.py -h     # test ISCE-2/PyCuAmpcor (for opt 2 only)
-ariaDownload.py -h       # test ARIA-tools
 smallbaselineApp.py -h   # test MintPy
 ```
 
