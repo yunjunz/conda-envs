@@ -18,7 +18,7 @@ Close and restart the shell for changes to take effect.
 
 ```
 # install utilities
-mamba install wget git tree htop --yes
+mamba install wget git tree --yes
 
 # [not used currently] install utilities not available from conda
 # msrsync - multi-stream rsync for file transfer
