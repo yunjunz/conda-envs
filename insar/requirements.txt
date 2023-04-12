@@ -2,6 +2,7 @@ python
 astropy
 geopandas
 imagemagick
+numpy<1.24
 pre-commit
 seaborn
 scikit-learn
