@@ -81,8 +81,10 @@ alias ll='ls -GFhal'
 alias m='more'
 alias rrsync='rsync -avzh --progress'
 alias rm=~/tools/utils/shell-safe-rm/bin/rm.sh
+alias nvidia='watch -n 1 nvidia-smi'
 function ff() { find . -name \*"$@"\* -print; }
-function igrep() { grep -rn --color --include=*.{py,ipynb,sh,txt,cfg,xml,rst,md,yml,yaml,html,m,cpp,h} --exclude=*{checkpoint.,.egg-info}* "$@" .; }
+function igrep() { grep -rn --color --include=*.{py,ipynb,sh,txt,cfg,xml,rst,md,yml,yaml,html,m,cpp,h} \
+    --exclude=*{checkpoint.,.egg-info}* "$@" .; }
 alias julab='jupyter-lab'
 alias jubook='jupyter-notebook'
 alias cona='conda activate'

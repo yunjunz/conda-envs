@@ -8,8 +8,8 @@ Setup InSAR data processing codes on Linux / macOS using `conda` environments.
 mkdir -p ~/tools; cd ~/tools
 
 # download, install and setup mambaforge
-# or for macOS: curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-MacOSX-x86_64.sh"
-wget "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh"
+# for macOS, use Mambaforge-MacOSX-x86_64.sh, and optionally use `curl -L -O https://...` syntax to download
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
 bash Mambaforge-Linux-x86_64.sh -b -p ~/tools/mambaforge
 ~/tools/mambaforge/bin/mamba init bash
 ```
