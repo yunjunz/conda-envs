@@ -1,0 +1,33 @@
+# vim: set filetype=sh:
+echo "source ~/tools/conda_envs/gamma/config.rc"
+
+# root directory
+export TOOL_DIR=~/tools
+export DATA_DIR=~/data   # data / nobak
+
+if [ -z ${PYTHONPATH+x} ]; then export PYTHONPATH=""; fi
+
+##-------------- GAMMA --------------------------------##
+export GAMMA_HOME=${TOOL_DIR}/gamma/GAMMA_SOFTWARE-20220630
+export DIFF_HOME=$GAMMA_HOME/DIFF
+export DISP_HOME=$GAMMA_HOME/DISP
+export GEO_HOME=$GAMMA_HOME/GEO
+export IPTA_HOME=$GAMMA_HOME/IPTA
+export ISP_HOME=$GAMMA_HOME/ISP
+export LAT_HOME=$GAMMA_HOME/LAT
+export MSP_HOME=$GAMMA_HOME/MSP
+
+export PATH=$PATH:$MSP_HOME/bin:$ISP_HOME/bin:$DIFF_HOME/bin:$LAT_HOME/bin:$DISP_HOME/bin:$IPTA_HOME/bin
+export PATH=$PATH:$MSP_HOME/scripts:$ISP_HOME/scripts:$DIFF_HOME/scripts:$LAT_HOME/scripts:$IPTA_HOME/scripts
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GAMMA_HOME/lib:${CONDA_PREFIX}/lib
+export PYTHONPATH=$GAMMA_HOME:$PYTHONPATH
+
+export HDF5_DISABLE_VERSION_CHECK=1
+export GAMMA_RASTER="BMP"
+export GNUTERM=wxt
+export CC="gcc"
+export OS=linux64
+
+##-------------- LuTan-1 Tools ------------------------##
+export PATH=$PATH:$GAMMA_HOME/lutan2gamma
+

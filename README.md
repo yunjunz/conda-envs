@@ -2,7 +2,7 @@
 
 Setup InSAR data processing codes on Linux / macOS using `conda` environments.
 
-### 1. Install conda via [mambaforge](https://github.com/conda-forge/miniforge)
+### 1. Install conda
 
 ```bash
 mkdir -p ~/tools; cd ~/tools

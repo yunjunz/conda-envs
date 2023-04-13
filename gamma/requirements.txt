@@ -1,0 +1,16 @@
+python>=3.7
+blas
+cmocean
+colorcet
+fftw
+gdal
+#gimp       # not available on conda(-forge)
+gnuplot
+hdf5
+lapack
+matplotlib
+numpy
+pandas
+scipy
+seaborn
+
