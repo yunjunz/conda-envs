@@ -60,11 +60,11 @@ mamba install -y --file conda_envs/insar/requirements.txt --file MintPy/requirem
 # opt 2: install isce-2 from source (for Linux on kamb only)
 mamba install -y --file conda_envs/insar/requirements.txt --file MintPy/requirements.txt --file conda_envs/isce2/requirements.txt
 
-# install MintPy and ARIA-tools in development mode
+# install MintPy in editable mode
 python -m pip install -e MintPy
-# [optional] overwrite PyAPS and PySolid installation from conda to the local development mode [for developers]
+# [optional] overwrite PyAPS and PySolid installation from conda to the editable mode [for developers]
 python -m pip install -e PyAPS
-python -m pip install -e PySolid
+export SETUPTOOLS_ENABLE_FEATURES="legacy-editable"; python -m pip install -e PySolid
 
 # install dependencies not available from conda
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
