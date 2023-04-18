@@ -12,10 +12,10 @@ if [ -z ${PYTHONPATH+x} ]; then export PYTHONPATH=""; fi
 export MINTPY_HOME=${TOOL_DIR}/MintPy
 export WEATHER_DIR=${DATA_DIR}/aux
 
-##-------------- sar-proc -----------------------------##
-export SAR_PROC_HOME=${TOOL_DIR}/sar-proc
-export PYTHONPATH=${PYTHONPATH}:${SAR_PROC_HOME}
-export PATH=${PATH}:${SAR_PROC_HOME}/tools
+##-------------- isce-proc ----------------------------##
+export ISCE_PROC_HOME=~/tools/isce-proc
+export PYTHONPATH=${PYTHONPATH}:${ISCE_PROC_HOME}/src
+export PATH=${PATH}:${ISCE_PROC_HOME}/src/isce_proc
 
 ##-------------- ARIA-tools ---------------------------##
 export ARIATOOLS_HOME=${TOOL_DIR}/ARIA-tools/tools
