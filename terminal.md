@@ -1,19 +1,32 @@
-+ `.bashrc` file:
+## Terminal setup for a new machine
+
+#### Vim: `~/.vimrc` file
 
 ```bash
-# .bashrc
+"syntax
+syntax on
 
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-        . /etc/bashrc
-fi
+"General useful settings
+set pastetoggle=<F2>
+set modeline
+set modelines=5
 
+set guifont=Menlo\ Regular:h14
+set ruler
+set showmode
+set wrap
+set ignorecase
+set smartcase
 
-source ~/.bash_profile
-
+"Python settings
+set nowrap
+set tabstop=8
+set shiftwidth=4
+set softtabstop=4
+set expandtab
 ```
 
-+ `.bash_profile` file:
+#### Bash: `~/.bash_profile` file
 
 ```bash
 # .bash_profile
@@ -56,7 +69,7 @@ alias load_isce2_dev='export ISCE_VERSION="_dev"; conda activate isce2; source ~
 alias load_fringe='conda activate fringe; source ~/tools/conda_envs/fringe/config.rc'
 alias load_opera='conda activate opera; source ~/tools/conda_envs/opera/config.rc'
 
-# Useful aliases and functions
+# useful aliases and functions
 alias sou='source ~/.bash_profile; echo "sourceing ~/.bash_profile"'
 alias ls='ls -GFh'
 alias ll='ls -GFhal'
@@ -73,8 +86,20 @@ alias cona='conda activate'
 alias cond='conda deactivate'
 
 
-# Miscellaneous
+# miscellaneous
 export PYTHONPATH=${PYTHONPATH}:~/tools/utils/geoidheight
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk11/Contents/Home
+```
 
+#### Bash: `~/.bashrc` file [optional]
+
+```bash
+# .bashrc
+
+# source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+source ~/.bash_profile
 ```
