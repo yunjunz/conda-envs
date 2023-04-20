@@ -1,4 +1,4 @@
-# conda_envs
+## conda_envs
 
 Setup InSAR data processing codes on Linux / macOS using `conda` environments.
 
@@ -6,32 +6,39 @@ Setup InSAR data processing codes on Linux / macOS using `conda` environments.
 
 ```bash
 mkdir -p ~/tools; cd ~/tools
-
-# download, install and setup mambaforge
 # for macOS, use Mambaforge-MacOSX-x86_64.sh, and optionally use `curl -L -O https://...` syntax to download
 wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
 bash Mambaforge-Linux-x86_64.sh -b -p ~/tools/mambaforge
 ~/tools/mambaforge/bin/mamba init bash
 ```
 
-Close and restart the shell for changes to take effect.
+Close and restart the shell for changes to take effect. Then install the following utilities:
 
 ```
-# install utilities
 mamba install wget git tree --yes
-
-# [not used currently] install utilities not available from conda
-# msrsync - multi-stream rsync for file transfer
-cd ~/tools
-mkdir bin; cd bin
-wget https://raw.githubusercontent.com/jbd/msrsync/master/msrsync3 -O msrsync && chmod +x msrsync
 ```
 
-Add `export PATH=${PATH}:~/tools/bin` to the `~/.bash_profile` file.
+### 2. Install ISCE-2 and MintPy
 
-### 2. Install ISCE-2 and MintPy to `insar` environment
+<details>
+<summary><h4>Option 1: Install isce2 (conda version) and mintpy (conda version)</h4></summary>
 
-#### a. Download source code
+Both isce2 and mintpy are available on the conda-forge channel and can be install via `mamba` as:
+
+```bash
+mamba install isce2 mintpy
+```
+
+Add below in your source file, e.g. `~/.bash_profile` for _bash_ users or `~/.cshrc` for _csh/tcsh_ users:
+
+```bash
+export PATH=${PATH}:${ISCE_HOME}/bin:${ISCE_HOME}/applications  # ISCE_HOME/STACK are set by conda
+```
+</details>
+
+#### Option 2: Install isce2 (conda version) and mintpy (development version)
+
+##### a. Download source code
 
 ```bash
 cd ~/tools
@@ -47,18 +54,16 @@ git clone git@github.com:yunjunz/conda_envs.git
 git clone https://www.unavco.org/gitlab/unavco_public/ssara_client.git utils/SSARA
 ```
 
-#### b. Install dependencies to `insar` environment
+##### b. Install to `insar` environment
 
 ```bash
 # create new environment
 conda create --name insar --yes
 conda activate insar
 
-# opt 1: install isce-2 with conda (for macOS and Linux)
-mamba install -y --file conda_envs/insar/requirements.txt --file MintPy/requirements.txt isce2
-
-# opt 2: install isce-2 from source (for Linux on kamb only)
-mamba install -y --file conda_envs/insar/requirements.txt --file MintPy/requirements.txt --file conda_envs/isce2/requirements.txt
+# install dependenciues and isce2
+cd ~/tools
+mamba install --file conda_envs/insar/requirements.txt --file MintPy/requirements.txt isce2">2.6.3" --yes
 
 # install MintPy in editable mode
 python -m pip install -e MintPy
@@ -68,35 +73,10 @@ export SETUPTOOLS_ENABLE_FEATURES="legacy-editable"; python -m pip install -e Py
 
 # install dependencies not available from conda
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
-python -m pip install scalene   # CPU, GPU and memory profiler
 python -m pip install ipynb     # import functions from *.ipynb files
 ```
 
-<details>
-<summary><h4>c. Build and install ISCE-2 from source (for opt 2 ONLY)</h4></summary>
-
-This is for opt 2 (building and installing the development version of ISCE-2 from source) ONLY.
-
-```bash
-# load CUDA module on Caltech kamb/HPC
-module load cuda/11.2
-
-# generate build system
-# before re-run, delete existing contents in build folder
-# more notes on https://github.com/lijun99/isce2-install
-cd ~/tools/isce2/build
-cmake ~/tools/isce2/src/isce2 -DCMAKE_INSTALL_PREFIX=~/tools/isce2/install -DCMAKE_CUDA_FLAGS="-arch=sm_60" -DCMAKE_PREFIX_PATH=${CONDA_PREFIX} -DCMAKE_BUILD_TYPE=Release
-
-# compile and install
-# then under the $ISCE_ROOT/install, there should be `bin` and `packages` folder
-make -j 16 # use multiple threads to accelerate
-make install
-```
-
-Add `export ISCE_INSTALL_METHOD="source"` to the `~/.bash_profile` file.
-</details>
-
-#### d. Setup
+##### c. Setup
 
 Create an alias `load_insar` in `~/.bash_profile` file for easy activation, _e.g._:
 
@@ -104,22 +84,17 @@ Create an alias `load_insar` in `~/.bash_profile` file for easy activation, _e.g
 alias load_insar='conda activate insar; source ~/tools/conda_envs/insar/config.rc'
 ```
 
-#### e. Test the installation
+##### d. Test the installation
 
 Run the following to test the installation:
 
 ```bash
 load_insar               # warm up conda environment
 topsApp.py -h            # test ISCE-2
-cuDenseOffsets.py -h     # test ISCE-2/PyCuAmpcor (for opt 2 only)
 smallbaselineApp.py -h   # test MintPy
 ```
 
-Run the following for CPU and memory profiler via [`scalene`](https://github.com/emeryberger/scalene) of python script, e.g. `ifgram_inversion.py`:
-
-```bash
-scalene --reduced-profile ~/tools/MintPy/mintpy/ifgram_inversion.py ~/data/test/FernandinaSenDT128/mintpy/inputs/ifgramStack.h5 -w no
-```
+#### Option 3: [Install isce2 (development version) and mintpy (development version)](./isce2/README.md)
 
 ### Useful resources
 

@@ -10,12 +10,22 @@ if [ -z ${PYTHONPATH+x} ]; then export PYTHONPATH=""; fi
 
 ##---------------------- MintPy -----------------------##
 export MINTPY_HOME=${TOOL_DIR}/MintPy
-export PYTHONPATH=${PYTHONPATH}:${MINTPY_HOME}
-export PATH=${PATH}:${MINTPY_HOME}/mintpy
 export WEATHER_DIR=${DATA_DIR}/aux
 
+##---------------------- ARIA-tools -------------------##
+export ARIATOOLS_HOME=${TOOL_DIR}/ARIA-tools/tools
+
+##---------------------- SSARA ------------------------##
+export PATH=${PATH}:${TOOL_DIR}/utils/SSARA
+
+##---------------------- isce-proc --------------------##
+export ISCE_PROC_HOME=~/tools/isce-proc
+export PYTHONPATH=${PYTHONPATH}:${ISCE_PROC_HOME}/src
+export PATH=${PATH}:${ISCE_PROC_HOME}/src/isce_proc
+
 ##---------------------- ISCE2 ------------------------##
-# load required modules for compiling ISCE-2
+# installed from source 
+# load required modules for compiling isce2
 module load cuda/11.2
 #module load /home/geomod/apps/rhel7/modules/gcc/7.3.1
 #module load /home/geomod/apps/rhel7/modules/python3/anaconda
@@ -24,15 +34,19 @@ export ISCE_ROOT=${TOOL_DIR}/isce2
 export ISCE_HOME=${ISCE_ROOT}/install${ISCE_VERSION}/packages/isce
 echo "load ISCE-2 core modules from "$ISCE_HOME
 
-# make isce apps/libraries available/importable
+# make isce2 apps/libraries available/importable
 export PATH=${PATH}:${ISCE_ROOT}/install${ISCE_VERSION}/bin
 export PYTHONPATH=${PYTHONPATH}:${ISCE_ROOT}/install${ISCE_VERSION}/packages
 #export LD_LIBRARY=${LD_LIBRARY}:${ISCE_ROOT}/install${ISCE_VERSION}/lib
 
+# load isce2 core module with GPU support installed by Lijun
+#alias load_isce_gpu='echo "load ISCE-2 compiled with GPU support"; source /home/geomod/apps/rhel7/isce2.rc'
+
+#----------
 # source stack processors and PyCuAmpcor
-export ISCE_STACK=${TOOL_DIR}/isce2/src/isce2/contrib/stack                     #set ISCE_STACK to the dev version
-export PATH=${PATH}:${TOOL_DIR}/isce2/src/isce2/contrib/PyCuAmpcor/examples     #for cuDenseOffsets
-export PYTHONPATH=${PYTHONPATH}:${ISCE_STACK}                                   #import tops/stripmapStack as python modules
+export ISCE_STACK=${TOOL_DIR}/isce2/src/isce2/contrib/stack                     # set ISCE_STACK to the dev version
+export PYTHONPATH=${PYTHONPATH}:${ISCE_STACK}                                   # import tops/stripmapStack as python modules
+export PATH=${PATH}:${TOOL_DIR}/isce2/src/isce2/contrib/PyCuAmpcor/examples     # make cuDenseOffsets executable
 export DEMDB=${DATA_DIR}/aux/DEM
 
 # source ONLY ONE AT A TIME to avoid naming conflicts
@@ -41,4 +55,6 @@ alias load_tops_stack='export PATH=${PATH}:${ISCE_STACK}/topsStack; echo "load I
 
 ##---------------------- Miscellaneous ----------------##
 export VRT_SHARED_SOURCE=0
-export OMP_NUM_THREADS=4
+export HDF5_DISABLE_VERSION_CHECK=2    # 0 for abort; 1 for printout warning message; 2 for supress the warning message
+export HDF5_USE_FILE_LOCKING=FALSE
+export OMP_NUM_THREADS=16

@@ -1,43 +1,34 @@
-## Install ISCE-2 development version(s) from source and MintPy
+## Install isce2 (development version) and mintpy (development version)
 
 ### 1. [Install conda](../README.md#1-install-conda)
 
-### 2. Install MintPy and ISCE-2 to `isce2` environment
+### 2. Install ISCE-2 and MintPy to `isce2` environment
 
-#### a. Download
+#### a. [Download source code](../README.md#a-download-source-code)
 
-```bash
-# download source file
-cd ~/tools
-git clone https://github.com/insarlab/MintPy.git
-git clone https://github.com/yunjunz/conda_envs.git
-
-cd ~/tools
-mkdir -p isce2; cd isce2
-mkdir -p src build; cd src
-git clone https://github.com/yunjunz/isce2.git
-```
-
-#### b. Create `isce2` environment and install pre-requisites
+#### b. Install dependencies to `isce2` environment
 
 ```bash
 # create new environment
 conda create --name isce2 --yes
 conda activate isce2
 
-# install pre-requisites
+# install dependencies
 cd ~/tools
-mamba install -c conda-forge --file conda_envs/isce2/requirements.txt --file MintPy/requirements.txt --yes
+mamba install --file conda_envs/insar/requirements.txt --file MintPy/requirements.txt --file conda_envs/isce2/requirements.txt --yes
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
+
+# install mintpy
+python -m pip install -e MintPy
 ```
 
-#### c. Build and install feature branch to `isce2/install_$version$`
+#### c. Install ISCE-2 to `isce2/install_*` folder
 
 ```bash
-#CHANGE THIS for each feature environment
-export ISCE_VERSION='_pycuampcor'  #'_pycuampcor', '_dev'
+# CHANGE THIS for each feature branch
+export ISCE_VERSION='_pycuampcor'  # '_pycuampcor', '_dev', '_py310', etc.
 
-# checkout feature / default main branch where your code of interest is, i.e. pycuampcor, alos2, main, etc.
+# [optional] checkout feature / default branch where your code of interest is, i.e. pycuampcor, alos2, main, etc.
 cd ~/tools/isce2/src/isce2
 git checkout pycuampcor
 
@@ -45,7 +36,7 @@ git checkout pycuampcor
 cd ~/tools/isce2
 mkdir install${ISCE_VERSION}
 
-# load CUDA module on kamb
+# load CUDA module [on kamb]
 module load cuda/11.2
 
 # run cmake
@@ -63,7 +54,7 @@ make install
 
 #### d. Setup
 
-Define environment variable `ISCE_VERSION` and create an alias `load_isce2${ISCE_VERSION}` in `~/.bash_profile` file for easy activattion, _e.g._:
+Define environment variable `ISCE_VERSION` and create an alias `load_isce2${ISCE_VERSION}` in `~/.bash_profile` file for easy activattion:
 
 ```bash
 alias load_isce2_dev='export ISCE_VERSION="_dev"; conda activate isce2; source ~/tools/conda_envs/isce2/config.rc'
@@ -74,4 +65,5 @@ alias load_isce2_dev='export ISCE_VERSION="_dev"; conda activate isce2; source ~
 ```bash
 topsApp.py -h
 cuDenseOffsets.py -h
+smallbaselineApp.py -h
 ```

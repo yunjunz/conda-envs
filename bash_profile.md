@@ -22,42 +22,27 @@ export CLICOLOR=1
 export PS1="\h:\w>$ "
 
 
-# Python environment
-python_env='conda'  # port / conda
-
-if [ $python_env == 'port' ]; then
-    # >>> MacPorts >>>
-    if [ -z ${MANPATH+x} ]; then export MANPATH=""; fi
-    export GDAL_DRIVER_PATH=/opt/local/lib/gdalplugins
-    #For py37-pyhdf in macports
-    export INCLUDE_DIRS=/opt/local/include
-    export LIBRARY_DIRS=/opt/local/lib
-    # MacPorts Installer addition on 2017-09-02_at_01:27:12: adding an appropriate PATH variable for use with MacPorts.
-    export PATH=/opt/local/bin:/opt/local/sbin:${PATH}
-    export MANPATH=/opt/local/share/man:${MANPATH}
-    # Finished adapting your PATH environment variable for use with MacPorts.
-    # <<< MacPorts <<<
-
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/yunjunz/tools/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
 else
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/Users/yunjunz/tools/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
+    if [ -f "/Users/yunjunz/tools/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/Users/yunjunz/tools/mambaforge/etc/profile.d/conda.sh"
     else
-        if [ -f "/Users/yunjunz/tools/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "/Users/yunjunz/tools/miniconda3/etc/profile.d/conda.sh"
-        # not recommended anymore in conda 4.4+
-        #else
-        #    export PATH="/Users/yunjunz/tools/miniconda3/bin:$PATH"
-        fi
+        export PATH="/Users/yunjunz/tools/mambaforge/bin:$PATH"
     fi
-    unset __conda_setup
-    # <<< conda initialize <<<
 fi
+unset __conda_setup
+
+if [ -f "/Users/yunjunz/tools/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "/Users/yunjunz/tools/mambaforge/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
 
 
-# Conda environments
+# conda environments
 if [ -z ${PYTHONPATH+x} ]; then export PYTHONPATH=""; fi
 # private dev tools
 export PYTHONPATH=${PYTHONPATH}:~/tools/dev
@@ -65,12 +50,9 @@ export PATH=${PATH}:~/tools/dev/tools
 # manually installed packages: nodejs and npm (for jupyter-lab) and msrsync
 export PATH=${PATH}:/usr/local/bin:~/tools/bin
 
-# set isce2/3 installation method for insar/opera environment
-export ISCE_INSTALL_METHOD='conda'           # conda / source
 # env aliases
 alias load_insar='conda activate insar; source ~/tools/conda_envs/insar/config.rc'
-alias load_atbd='conda activate atbd; source ~/tools/ATBD/docs/config.rc'
-alias load_isce_dev='export ISCE_VERSION="_dev"; conda activate isce2; source ~/tools/conda_envs/isce2/config.rc'
+alias load_isce2_dev='export ISCE_VERSION="_dev"; conda activate isce2; source ~/tools/conda_envs/isce2/config.rc'
 alias load_fringe='conda activate fringe; source ~/tools/conda_envs/fringe/config.rc'
 alias load_opera='conda activate opera; source ~/tools/conda_envs/opera/config.rc'
 
