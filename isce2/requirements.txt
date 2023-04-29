@@ -21,4 +21,3 @@ xorg-libxdmcp
 xorg-libxft
 xorg-libxmu
 xorg-libxt
-

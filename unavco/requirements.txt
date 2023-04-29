@@ -9,5 +9,3 @@ jupyterlab
 jupyter_nbextensions_configurator
 nbdime              #for readable nb differences
 ipympl              #for interactive matplotlib
-# mintpy extra
-rich                #for rich terminal output
