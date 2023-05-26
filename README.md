@@ -63,7 +63,7 @@ conda activate insar
 
 # install dependenciues and isce2
 cd ~/tools
-mamba install --file conda_envs/insar/requirements.txt --file MintPy/requirements.txt isce2">2.6.3" --yes
+mamba install --file conda_envs/insar/requirements.txt --file MintPy/requirements.txt isce2">=2.6.3" --yes
 
 # install MintPy in editable mode
 python -m pip install -e MintPy
