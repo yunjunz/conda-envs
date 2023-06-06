@@ -8,6 +8,7 @@ awscli            #download
 wget              #download
 pv                #for tar progress bar during decompression
 pyfftw            #for unwrap_error
+opencv            #required by isce2 but not installed by conda
 # notebooks
 jupyterlab
 jupyter_nbextensions_configurator
