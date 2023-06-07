@@ -1,0 +1,16 @@
+# vim: set filetype=sh:
+echo "source ~/tools/conda_envs/eq_dyna/config.rc"
+
+# root directory
+export TOOL_DIR=~/tools
+export DATA_DIR=~/data   # data / nobak
+
+if [ -z ${PYTHONPATH+x} ]; then export PYTHONPATH=""; fi
+
+##---------------------- MintPy -----------------------##
+export RELAX_HOME=${TOOL_DIR}/relax
+export PATH=$PATH:$RELAX_HOME:$RELAX_HOME/util
+export GMT_SHAREDIR=${RELAX_HOME}/share
+export PROJ_LIB=$RELAX_HOME/share
+echo "Ready to run Relax."
+
