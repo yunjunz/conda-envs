@@ -1,7 +1,0 @@
-# gmt
-gmt
-pygmt
-# jupyter
-jupyterlab
-jupyter_nbextensions_configurator
-nbdime
