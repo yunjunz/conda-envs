@@ -5,12 +5,16 @@ Link: https://docs.anaconda.com/anaconda/user-guide/tasks/remote-jupyter-noteboo
 1. On the remote server, run
 
 ```bash
-cd ~
-screen -S julab -L -Logfile julab.log    # start a screen session (to keep it open for a long time)
-load_insar                               # load the python environment
-jupyter lab --no-browser --port=1235     # launch an jupyter instance and port to a specific random number (different for each user)
+# start a screen session (to keep it open for a long time)
+cd ~; screen -S julab -L -Logfile julab.log
 
-# Ctrl+D to detach from the screen session
+# load the python environment
+load_insar
+
+# launch a jupyter instance and port to a specific random number (different for each user)
+jupyter lab --no-browser --port=1235
+
+# Ctrl-A D or Ctrl-A Ctrl-D to detach from the screen session
 ```
 
 2. On your laptop, run in the terminal:
