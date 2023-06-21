@@ -24,9 +24,9 @@ jupyter lab --no-browser --port=1235
 ssh -N -f -L 8080:localhost:1235 <REMOTE_USER>@<REMOTE_HOST>
 ```
 
-where `-N` is for do not execute a remote command and just forwarding ports, `-f` option requests ssh to go to background, 8080 is the local port number. 
+where `-N` is for do not execute a remote command and just forwarding ports, the `-f` option requests ssh to go to the background, and 8080 is the local port number. 
 
-3. Then go to the following web address on your web browser: http://localhost:8080/lab. On the first time, you maybe asked for a token, it's in the output of the jupyter lab command in the screen session.
+3. Then go to the following web address on your web browser: http://localhost:8080/lab. On the first time, you may be asked for a token, it's in the output of the jupyter lab command in the screen session.
 
 Tips:
 
@@ -34,5 +34,5 @@ Tips:
 + Create an alias in the `~/.bash_profile` file to re-run the `ssh` command whenever the port connection is lost.
 
 ```bash
-alias kunlun_julab='ssh -N -f -L 8080:localhost:1235 host_kunlun'
+alias julab_kunlun='ssh -N -f -L 8080:localhost:1235 host_kunlun'
 ```
