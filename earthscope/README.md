@@ -1,27 +1,23 @@
-## Install InSAR data processing softwares for the [2022 UNAVCO short course (ISCE+)](https://www.unavco.org/event/2022-short-course-insar-processing-analysis-isce/)
+## Install InSAR data processing software for the [2023 EarthScope short course (ISCE+)](https://www.earthscope.org/event/2023-insar-isce-short-course/)
 
 ### 1. Install conda
 
 ```bash
 mkdir -p ~/tools; cd ~/tools
-
-# download, install and setup (mini/ana)conda
-# link: https://docs.conda.io/en/latest/miniconda.html
-# for Linux, use Miniconda3-latest-Linux-x86_64.sh
-# for macOS, opt 2: curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -o Miniconda3-latest-MacOSX-x86_64.sh
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-bash Miniconda3-latest-MacOSX-x86_64.sh -b -p ~/tools/miniconda3
-~/tools/miniconda3/bin/conda init bash
+mkdir -p ~/tools; cd ~/tools
+# for macOS, use Mambaforge-MacOSX-x86_64.sh, and optionally use `curl -L -O https://...` syntax to download
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
+bash Mambaforge-Linux-x86_64.sh -b -p ~/tools/mambaforge
+~/tools/mambaforge/bin/mamba init bash
 ```
 
-Close and restart the shell for changes to take effect.
+Close and restart the shell for changes to take effect. Then install the following utilities:
 
 ```bash
-conda config --add channels conda-forge
-conda install wget git tree mamba --yes
+mamba install wget git tree --yes
 ```
 
-### 2. Install ISCE-2, ARIA-tools and MintPy to the `unavco` environment
+### 2. Install ISCE-2, ARIA-tools and MintPy to the `earthscope` environment
 
 #### a. Download source code
 
@@ -33,36 +29,34 @@ git clone https://www.unavco.org/gitlab/unavco_public/ssara_client.git utils/SSA
 git clone https://github.com/yunjunz/conda_envs.git
 ```
 
-#### b. Create `unavco` environment and install dependencies
+#### b. Install dependencies
 
 ```bash
 # create new environment
-conda create --name unavco --yes
-conda activate unavco
+mamba create --name earthscope --yes
+mamba activate earthscope
 
 # install dependencies
 cd ~/tools
-mamba install -c conda-forge --file conda_envs/unavco/requirements.txt --file ARIA-tools/requirements.txt --yes
+mamba install --file conda_envs/earthscope/requirements.txt --file ARIA-tools/requirements.txt --yes
 
 # install dependencies not available on conda-forge
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
-python -m pip install ipynb          # import functions from *.ipynb files
-python -m pip install platemotion    # use the latest plate motion correction in mintpy
-python -m pip install sardem         # download Copernicus DEM
+python -m pip install ipynb    # import functions from *.ipynb files
 ```
 
 #### c. Setup
 
-Create an alias `load_unavco` in `~/.bash_profile` file for easy activattion, _e.g._:
+Create an alias `load_earthscope` in `~/.bash_profile` file for easy activation, _e.g._:
 
 ```bash
-alias load_unavco='conda activate unavco; source ~/tools/conda_envs/unavco/config.rc'
+alias load_earthscope='conda activate earthscope; source ~/tools/conda_envs/earthscope/config.rc'
 ```
 
 #### d. Test the installation
 
 ```bash
-load_unavco                # wram up the conda environment
+load_earthscope            # wram up the conda environment
 topsApp.py -h              # test ISCE-2
 ariaDownload.py -h         # test ARIA-tools
 smallbaselineApp.py -h     # test MintPy
@@ -83,7 +77,7 @@ export PATH=${PATH}:${ISCE_STACK}/topsStack
 stackSentinel.py -h
 ```
 
-### 2. Setup auxliary directory
+### 2. Setup auxiliary directory
 
 ```bash
 cd ~/bak
