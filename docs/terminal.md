@@ -35,6 +35,12 @@ export CLICOLOR=1
 export PS1="\h:\w>$ "
 
 
+# bash completion
+if [ -f ~/.bash_completion ]; then
+    . ~/.bash_completion
+fi
+
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/yunjunz/tools/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
