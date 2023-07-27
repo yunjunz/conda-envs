@@ -1,9 +1,8 @@
-## Install InSAR data processing software for the [2023 EarthScope short course (ISCE+)](https://www.earthscope.org/event/2023-insar-isce-short-course/)
+## Code installation for the [2023 EarthScope short course (ISCE+)](https://www.earthscope.org/event/2023-insar-isce-short-course/)
 
 ### 1. Install conda
 
 ```bash
-mkdir -p ~/tools; cd ~/tools
 mkdir -p ~/tools; cd ~/tools
 # for macOS, use Mambaforge-MacOSX-x86_64.sh, and optionally use `curl -L -O https://...` syntax to download
 wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
