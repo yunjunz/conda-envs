@@ -5,7 +5,6 @@ mintpy
 wget                #download pre-staged dataset
 awscli              #download pre-staged dataset
 pv                  #uncompress pre-staged dataset with progress bar
-jupyterlab<4.0      #to avoid compatibility issue with nbdime
+jupyterlab
 jupyter_nbextensions_configurator
-nbdime              #for readable nb differences
 ipympl              #for interactive matplotlib
