@@ -42,6 +42,7 @@ mamba install --file conda_envs/earthscope/requirements.txt --file ARIA-tools/re
 # install dependencies not available on conda-forge
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
 python -m pip install ipynb    # import functions from *.ipynb files
+python -m pip install jupyter_nbextensions_configurator
 ```
 
 #### c. Setup
