@@ -94,6 +94,7 @@ python -m pip install -e PySolid
 # install dependencies not available from conda
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
 python -m pip install ipynb     # import functions from *.ipynb files
+python -m pip install jupyter_nbextensions_configurator
 ```
 
 ##### c. Setup

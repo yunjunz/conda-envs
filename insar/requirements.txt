@@ -11,7 +11,7 @@ pyfftw            #for unwrap_error
 opencv            #required by isce2 but not installed by conda
 # notebooks
 jupyterlab
-jupyter_nbextensions_configurator
+#jupyter_nbextensions_configurator  # version 0.6.3 is required but not available on conda-forge yet
 nbdime            #for readable nb differences
 ipympl            #for interactive matplotlib
 # compilers
