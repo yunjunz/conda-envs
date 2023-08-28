@@ -1,6 +1,7 @@
 python
 astropy
 geopandas
+hyp3_sdk
 imagemagick
 seaborn
 scikit-learn
