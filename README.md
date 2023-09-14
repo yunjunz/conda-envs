@@ -18,25 +18,6 @@ Close and restart the shell for changes to take effect. Then install the followi
 mamba install wget git tree --yes
 ```
 
-For macOS bash users: macOS ships with an older version of the Bash shell, but [argcomplete](https://kislyuk.github.io/argcomplete/#global-completion) (optionally used by mintpy) requires the newer version, which can be installed as below:
-
-```bash
-# check the current Bash version: argcomplete requires bash>=4.2
-echo $BASH_VERSION
-
-# install via mamba
-mamba install bash
-
-# add the path to /etc/shells file
-echo "${CONDA_PREFIX}/bin/bash" | sudo tee -a /etc/shells
-
-# change your shell via chsh
-chsh -s "${CONDA_PREFIX}/bin/bash"
-
-# check the current Bash version
-echo $BASH_VERSION
-```
-
 ### 2. Install ISCE-2 and MintPy
 
 <details>
