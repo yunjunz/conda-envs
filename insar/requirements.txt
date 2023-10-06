@@ -4,6 +4,7 @@ geopandas
 hyp3_sdk
 imagemagick
 seaborn
+scalene           #profiler for CPU-GPU-memory
 scikit-learn
 awscli            #download
 wget              #download
