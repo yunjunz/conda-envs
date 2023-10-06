@@ -1,0 +1,8 @@
+python
+gdal
+geemap
+wget
+# notebooks
+jupyterlab
+ipympl
+
