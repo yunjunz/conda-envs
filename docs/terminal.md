@@ -74,6 +74,7 @@ alias load_insar='conda activate insar; source ~/tools/conda_envs/insar/config.r
 alias load_isce2_dev='export ISCE_VERSION="_dev"; conda activate isce2; source ~/tools/conda_envs/isce2/config.rc'
 alias load_fringe='conda activate fringe; source ~/tools/conda_envs/fringe/config.rc'
 alias load_opera='conda activate opera; source ~/tools/conda_envs/opera/config.rc'
+alias load_website='conda activate website; cd ~/tools/utils/yunjunz.github.io; bundle exec jekyll liveserve'
 
 # useful aliases and functions
 alias sou='source ~/.bash_profile; echo "sourceing ~/.bash_profile"'
