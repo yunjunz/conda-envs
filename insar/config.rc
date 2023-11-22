@@ -19,7 +19,7 @@ export ARIATOOLS_HOME=${TOOL_DIR}/ARIA-tools/tools
 export PATH=${PATH}:${TOOL_DIR}/utils/SSARA
 
 ##---------------------- isce-proc --------------------##
-export ISCE_PROC_HOME=~/tools/isce-proc
+export ISCE_PROC_HOME=${TOOL_DIR}/isce-proc
 export PYTHONPATH=${PYTHONPATH}:${ISCE_PROC_HOME}/src
 export PATH=${PATH}:${ISCE_PROC_HOME}/src/isce_proc
 
@@ -45,3 +45,11 @@ export VRT_SHARED_SOURCE=0
 export HDF5_DISABLE_VERSION_CHECK=2    # 0 for abort; 1 for printout warning message; 2 for supress the warning message
 export HDF5_USE_FILE_LOCKING=FALSE
 export OMP_NUM_THREADS=16
+
+##---------------------- Private Tools ----------------##
+# code - dev
+export PYTHONPATH=${PYTHONPATH}:${TOOL_DIR}/dev
+export PATH=${PATH}:${TOOL_DIR}/dev/tools
+# code - unwrap_error
+export PYTHONPATH=${PYTHONPATH}:${HOME}/Papers/unwrap_error/figs_src/src
+
