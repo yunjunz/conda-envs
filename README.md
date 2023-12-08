@@ -51,7 +51,7 @@ git clone https://github.com/insarlab/MintPy.git
 git clone https://github.com/insarlab/PyAPS.git
 git clone https://github.com/insarlab/PySolid.git
 git clone https://github.com/yunjunz/conda_envs.git
-git clone https://www.unavco.org/gitlab/unavco_public/ssara_client.git utils/SSARA
+git clone https://gitlab.com/earthscope/public/sar/ssara_client.git utils/SSARA
 ```
 
 ##### b. Install to `insar` environment
