@@ -53,7 +53,10 @@ git clone https://github.com/insarlab/MintPy.git
 git clone https://github.com/insarlab/PyAPS.git
 git clone https://github.com/insarlab/PySolid.git
 git clone https://github.com/yunjunz/conda-envs.git
-git clone https://gitlab.com/earthscope/public/sar/ssara_client.git utils/SSARA
+
+cd ~/tools/utils
+git clone https://gitlab.com/yunjunz/SSARA.git
+git clone https://github.com/yunjunz/sardem.git
 ```
 
 ##### b. Install to `insar` environment
@@ -78,6 +81,7 @@ python -m pip install -e PySolid
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
 python -m pip install ipynb     # import functions from *.ipynb files
 python -m pip install jupyter_nbextensions_configurator
+python -m pip install -e utils/sardem
 ```
 
 ##### c. Setup
