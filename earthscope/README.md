@@ -25,7 +25,7 @@ cd ~/tools
 git clone https://github.com/isce-framework/isce2.git isce2/src/isce2
 git clone https://github.com/aria-tools/ARIA-tools.git
 git clone https://www.unavco.org/gitlab/unavco_public/ssara_client.git utils/SSARA
-git clone https://github.com/yunjunz/conda_envs.git
+git clone https://github.com/yunjunz/conda-envs.git
 ```
 
 #### b. Install dependencies
@@ -37,7 +37,7 @@ mamba activate earthscope
 
 # install dependencies
 cd ~/tools
-mamba install --file conda_envs/earthscope/requirements.txt --file ARIA-tools/requirements.txt --yes
+mamba install --file conda-envs/earthscope/requirements.txt --file ARIA-tools/requirements.txt --yes
 
 # install dependencies not available on conda-forge
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
@@ -50,7 +50,7 @@ python -m pip install jupyter_nbextensions_configurator
 Create an alias `load_earthscope` in `~/.bash_profile` file for easy activation, _e.g._:
 
 ```bash
-alias load_earthscope='conda activate earthscope; source ~/tools/conda_envs/earthscope/config.rc'
+alias load_earthscope='conda activate earthscope; source ~/tools/conda-envs/earthscope/config.rc'
 ```
 
 #### d. Test the installation

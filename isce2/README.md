@@ -15,7 +15,7 @@ conda activate isce2
 
 # install dependencies
 cd ~/tools
-mamba install --file conda_envs/insar/requirements.txt --file MintPy/requirements.txt --file conda_envs/isce2/requirements.txt --yes
+mamba install --file conda-envs/insar/requirements.txt --file MintPy/requirements.txt --file conda-envs/isce2/requirements.txt --yes
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
 
 # install mintpy
@@ -57,7 +57,7 @@ make install
 Define environment variable `ISCE_VERSION` and create an alias `load_isce2${ISCE_VERSION}` in `~/.bash_profile` file for easy activattion:
 
 ```bash
-alias load_isce2_dev='export ISCE_VERSION="_dev"; conda activate isce2; source ~/tools/conda_envs/isce2/config.rc'
+alias load_isce2_dev='export ISCE_VERSION="_dev"; conda activate isce2; source ~/tools/conda-envs/isce2/config.rc'
 ```
 
 #### e. Test the installation

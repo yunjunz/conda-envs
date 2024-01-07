@@ -1,6 +1,6 @@
 # vim: set filetype=sh:
 # NOTE: require ${ISCE_VERSION}, e.g. in .bash_profile
-echo "source ~/tools/conda_envs/isce2/config.rc"
+echo "source ~/tools/conda-envs/isce2/config.rc"
 
 # root directory
 export TOOL_DIR=~/tools

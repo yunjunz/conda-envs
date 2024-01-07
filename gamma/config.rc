@@ -1,5 +1,5 @@
 # vim: set filetype=sh:
-echo "source ~/tools/conda_envs/gamma/config.rc"
+echo "source ~/tools/conda-envs/gamma/config.rc"
 
 # root directory
 export TOOL_DIR=~/tools

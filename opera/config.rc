@@ -1,6 +1,6 @@
 # vim: set filetype=sh:
 # NOTE: adjust use_isce_conda according to the machine: laptop/kamb
-echo "source ~/tools/conda_envs/opera/config.rc"
+echo "source ~/tools/conda-envs/opera/config.rc"
 
 # root directory
 export TOOL_DIR=~/tools

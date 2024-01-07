@@ -17,7 +17,7 @@ mkdir -p build install src; cd src
 git clone https://github.com/isce-framework/isce3.git
 
 cd ~/tools
-git clone https://github.com/yunjunz/conda_envs.git
+git clone https://github.com/yunjunz/conda-envs.git
 git clone https://github.com/opera-adt/COMPASS.git
 git clone https://github.com/opera-adt/s1-reader.git
 git clone https://gitlab.com/s1-etad/s1-etad.git ~/tools/utils/s1-etad
@@ -31,10 +31,10 @@ conda create --name opera --yes
 conda activate opera
 
 # option 1: install isce3 with conda
-mamba install --file ~/tools/conda_envs/opera/requirements.txt isce3
+mamba install --file ~/tools/conda-envs/opera/requirements.txt isce3
 
 # option 2: install isce3 from source (for Linux only)
-mamba install --file ~/tools/conda_envs/opera/requirements.txt --file ~/tools/conda_envs/isce3/requirements.txt
+mamba install --file ~/tools/conda-envs/opera/requirements.txt --file ~/tools/conda-envs/isce3/requirements.txt
 ```
 
 #### c. Build and install `isce3` from source
@@ -77,7 +77,7 @@ python -m pip install -e ./COMPASS
 Create an alias in `~/.bash_profile` file for easy activation.
 
 ```bash
-alias load_opera='conda activate opera; source ~/tools/conda_envs/opera/config.rc'
+alias load_opera='conda activate opera; source ~/tools/conda-envs/opera/config.rc'
 ```
 
 #### f. Test the installation

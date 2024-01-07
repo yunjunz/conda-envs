@@ -1,4 +1,4 @@
-## conda_envs
+## conda-envs
 
 Setup InSAR data processing codes on Linux / macOS using `conda` environments.
 
@@ -52,7 +52,7 @@ cd ~/tools
 git clone https://github.com/insarlab/MintPy.git
 git clone https://github.com/insarlab/PyAPS.git
 git clone https://github.com/insarlab/PySolid.git
-git clone https://github.com/yunjunz/conda_envs.git
+git clone https://github.com/yunjunz/conda-envs.git
 git clone https://gitlab.com/earthscope/public/sar/ssara_client.git utils/SSARA
 ```
 
@@ -65,7 +65,7 @@ conda activate insar
 
 # install dependenciues and isce2
 cd ~/tools
-mamba install --file conda_envs/insar/requirements.txt --file MintPy/requirements.txt isce2">=2.6.3" --yes
+mamba install --file conda-envs/insar/requirements.txt --file MintPy/requirements.txt isce2">=2.6.3" --yes
 
 # install MintPy in editable mode
 python -m pip install -e MintPy
@@ -85,7 +85,7 @@ python -m pip install jupyter_nbextensions_configurator
 Create an alias `load_insar` in `~/.bash_profile` file for easy activation, _e.g._:
 
 ```bash
-alias load_insar='conda activate insar; source ~/tools/conda_envs/insar/config.rc'
+alias load_insar='conda activate insar; source ~/tools/conda-envs/insar/config.rc'
 ```
 
 ##### d. Test the installation

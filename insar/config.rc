@@ -1,5 +1,5 @@
 # vim: set filetype=sh:
-echo "source ~/tools/conda_envs/insar/config.rc"
+echo "source ~/tools/conda-envs/insar/config.rc"
 
 # root directory
 export TOOL_DIR=~/tools

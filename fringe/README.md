@@ -15,7 +15,7 @@ git clone https://github.com/isce-framework/fringe.git
 
 #### b. Install dependencies to `fringe` environment
 
-You might need to modify the install directory in **conda_envs/fringe/config.rc** file.
+You might need to modify the install directory in **conda-envs/fringe/config.rc** file.
 
 ```bash
 # create new environment
@@ -23,14 +23,14 @@ conda create --name fringe --yes
 conda activate fringe
 
 # install pre-requisites
-mamba install --yes --file ~/tools/conda_envs/fringe/requirements.txt
+mamba install --yes --file ~/tools/conda-envs/fringe/requirements.txt
 ```
 
 #### c. Build and install FRInGE from source
 
 ```bash
 # install from source code
-source ~/tools/conda_envs/fringe/config.rc
+source ~/tools/conda-envs/fringe/config.rc
 
 cd ~/tools/FRInGE/build
 cmake -DCMAKE_INSTALL_PREFIX=../install ../src/fringe -DBLA_VENDOR=Generic
@@ -43,7 +43,7 @@ make install
 Create an alias `load_fringe` in `~/.bash_profile` file for easy activation, e.g.:
 
 ```bash
-alias load_insar='conda activate fringe; source ~/tools/conda_envs/fringe/config.rc'
+alias load_insar='conda activate fringe; source ~/tools/conda-envs/fringe/config.rc'
 ```
 
 #### e. Test the installation
