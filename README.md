@@ -4,12 +4,14 @@ Setup InSAR data processing codes on Linux / macOS using `conda` environments.
 
 ### 1. Install conda
 
+Install the Python environment with `conda/mamba`.
+
 ```bash
 mkdir -p ~/tools; cd ~/tools
-# for macOS, use Mambaforge-MacOSX-x86_64.sh, and optionally use `curl -L -O https://...` syntax to download
-wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
-bash Mambaforge-Linux-x86_64.sh -b -p ~/tools/mambaforge
-~/tools/mambaforge/bin/mamba init bash
+# for macOS, use Miniforge3-MacOSX-x86_64.sh, and optionally use `curl -L -O https://...` syntax to download
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+bash Miniforge3-Linux-x86_64.sh -b -p ~/tools/miniforge
+~/tools/miniforge/bin/mamba init bash
 ```
 
 Close and restart the shell for changes to take effect. Then install the following utilities:
