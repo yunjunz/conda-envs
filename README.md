@@ -17,7 +17,8 @@ bash Miniforge3-Linux-x86_64.sh -b -p ~/tools/miniforge
 Close and restart the shell for changes to take effect. Then install the following utilities:
 
 ```
-mamba install wget git tree --yes
+mamba install wget git tree numpy --yes
+pip install bypy
 ```
 
 ### 2. Install ISCE-2 and MintPy
