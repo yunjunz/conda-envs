@@ -39,6 +39,7 @@ export DEMDB=${DATA_DIR}/aux/DEM
 # source ONLY ONE AT A TIME to avoid naming conflicts
 alias load_stripmap_stack='export PATH=${PATH}:${ISCE_STACK}/stripmapStack; echo "load ISCE-2 stripmapStack from "${ISCE_STACK}/stripmapStack'
 alias load_tops_stack='export PATH=${PATH}:${ISCE_STACK}/topsStack; echo "load ISCE-2 topsStack from "${ISCE_STACK}/topsStack'
+alias load_alos_stack='export PATH=${PATH}:${ISCE_STACK}/alosStack; echo "load ISCE-2 alosStack from "${ISCE_STACK}/alosStack'
 
 ##---------------------- Miscellaneous ----------------##
 export VRT_SHARED_SOURCE=0
