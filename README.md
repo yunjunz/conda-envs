@@ -23,8 +23,7 @@ pip install bypy
 
 ### 2. Install ISCE-2 and MintPy
 
-<details>
-<summary><h4>Option 1: Install isce2 (conda version) and mintpy (conda version)</h4></summary>
+#### Option 1: Install isce2 (conda version) and mintpy (conda version)
 
 Both isce2 and mintpy are available on the conda-forge channel and can be install via `mamba` as:
 
@@ -37,7 +36,6 @@ Add below in your source file, e.g. `~/.bash_profile` for _bash_ users or `~/.cs
 ```bash
 export PATH=${PATH}:${ISCE_HOME}/bin:${ISCE_HOME}/applications  # ISCE_HOME/STACK are set by conda
 ```
-</details>
 
 #### Option 2: Install isce2 (conda version) and mintpy (development version)
 
