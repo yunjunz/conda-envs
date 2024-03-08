@@ -105,7 +105,8 @@ smallbaselineApp.py -h   # test MintPy
 
 ### Useful resources
 
-+ [conda cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)
++ [conda cheat sheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)
 + [Jupyter: Display hidden files](https://jupyterlab.readthedocs.io/en/stable/user/files.html#displaying-hidden-files)
++ [Jupyter: Run Notebooks on a remote server](docs/jupyter.md)
 + [Connect to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
-+ [bypy: Command line downloader for Baidu Yun](https://blog.csdn.net/PolarisRisingWar/article/details/121887801)
++ [`bypy`: Command line downloader for Baidu Yun](https://blog.csdn.net/PolarisRisingWar/article/details/121887801)
