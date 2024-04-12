@@ -8,7 +8,7 @@
 
 ```bash
 cd ~/tools
-git clone git@github.com:yunjunz/conda-envs.git
+git clone https://github.com/yunjunz/conda-envs.git
 
 mkdir -p gamma; cd gamma
 tar -xzvf GAMMA_SOFTWARE.linux64_ubuntu1804.tar.gz
@@ -36,6 +36,7 @@ fi
 # fix the weird dependency of gamma on libgdal.so.20
 # gamma seems hardwired libgdal version 20
 source ~/tools/conda-envs/gamma/config.rc
+mkdir -p ${GAMMA_HOME}/lib
 ln -s ${CONDA_PREFIX}/lib/libgdal.so ${GAMMA_HOME}/lib/libgdal.so.20
 ```
 
@@ -44,7 +45,7 @@ ln -s ${CONDA_PREFIX}/lib/libgdal.so ${GAMMA_HOME}/lib/libgdal.so.20
 Create an alias `load_gamma` in `~/.bash_profile` file for easy activation, e.g.:
 
 ```bash
-alias load_insar='conda activate gamma; source ~/tools/conda-envs/gamma/config.rc'
+alias load_gamma='conda activate gamma; source ~/tools/conda-envs/gamma/config.rc'
 ```
 
 #### d. Test the installation
