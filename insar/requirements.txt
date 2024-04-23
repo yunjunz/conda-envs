@@ -4,8 +4,9 @@ geopandas
 hyp3_sdk
 imagemagick
 seaborn
-scalene           #profiler for CPU-GPU-memory
 scikit-learn
+sentineleof       #download Sentinel-1 orbits
+scalene           #profiler for CPU-GPU-memory
 awscli            #download
 wget              #download
 pv                #for tar progress bar during decompression
