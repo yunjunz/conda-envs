@@ -6,6 +6,7 @@ imagemagick
 seaborn
 scikit-learn
 sentineleof       #download Sentinel-1 orbits
+asf_search        #download/search SAR data from ASF
 scalene           #profiler for CPU-GPU-memory
 awscli            #download
 wget              #download
