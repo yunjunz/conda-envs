@@ -26,7 +26,7 @@ conda activate mintpy
 # ii. install dependencies into the environment
 # run "conda install -c conda-forge mamba" if mamba is not installed yet.
 cd ~/tools/
-mamba install -c conda-forge --file ./MintPy/requirements.txt gdal"==3.6" jupyterlab ipympl pv
+mamba install -c conda-forge --file ./MintPy/requirements.txt gdal"==3.6" jupyterlab ipympl pv python"==3.11"
 ```
 
 #### c. Install MintPy
