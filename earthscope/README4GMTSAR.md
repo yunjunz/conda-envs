@@ -49,7 +49,12 @@ smallbaselineApp.py ~/tools/MintPy/docs/templates/FernandinaSenDT128.txt
 
 #### a. Download the pre-staged dataset
 
-Download the pre-staged compressed `SanFranBaySenD42.tar.xz` file from the USTC website into your local `~/data/test` directory.
+Download the pre-staged compressed `SanFranBaySenD42.tar.xz` file into your local `~/data/test` directory from [Zenodo](https://zenodo.org/records/12773014) as below or from the USTC website :
+
+```bash
+cd ~/data/test
+wget https://zenodo.org/records/12773014/files/SanFranBaySenD42.tar.xz
+```
 
 #### b. Start the Jupyter Notebook
 
@@ -60,4 +65,4 @@ jupyter-lab
 
 ### c. Open the notebook and run
 
-In the notebook browser, navigate on the left sidebar to `~/tools/utils/MintPy-tutorial/workflows` directory, then open the `smallbaselineApp_gmtsar.ipynb` file and run.
+In the notebook browser, navigate to `~/tools/utils/MintPy-tutorial/workflows` directory on the left sidebar, then open the `smallbaselineApp_gmtsar.ipynb` file and run.
