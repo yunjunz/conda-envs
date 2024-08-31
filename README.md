@@ -53,8 +53,7 @@ git clone https://github.com/insarlab/PyAPS.git
 git clone https://github.com/insarlab/PySolid.git
 git clone https://github.com/yunjunz/conda-envs.git
 
-mkdir ~/tools/utils
-cd ~/tools/utils
+mkdir -p ~/tools/utils; cd ~/tools/utils
 git clone https://gitlab.com/yunjunz/SSARA.git
 git clone https://github.com/yunjunz/sardem.git
 ```
