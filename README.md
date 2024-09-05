@@ -17,7 +17,7 @@ wsl --install
 If the installation failed due to network error, you can disable the Windows Subsystem for Linux and Virtual Machine feature and restart your machine. Or if you just prefer step by step instructions, you can also install it manually. See [Manual installation steps for older versions of WSL](https://learn.microsoft.com/en-gb/windows/wsl/install-manual) for more information. 
 
 
-1) Enable the Windows Subsystem for Linux.
+a. Enable the Windows Subsystem for Linux.
 
 Open PowerShell by right-clicking and selecting "Run as administrator" and run:
 
@@ -25,11 +25,11 @@ Open PowerShell by right-clicking and selecting "Run as administrator" and run:
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 ```
 
-2) Restart your machine.
+b. Restart your machine.
 
-3) Install your Linux distribution of choice, such as Ubuntu in your Mircosoft Store.
+c. Install your Linux distribution of choice, such as Ubuntu in your Mircosoft Store.
 
-4) Enable Virtual Machine feature.
+d. Enable Virtual Machine feature.
 
 Open PowerShell by right-clicking and selecting "Run as administrator" and run:
 
@@ -37,11 +37,11 @@ Open PowerShell by right-clicking and selecting "Run as administrator" and run:
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 ```
 
-5) Restart your machine.
+e. Restart your machine.
 
-6) Download the Linux kernel update package, double-click and run it.
+f. Download the Linux kernel update package, double-click and run it.
 
-7) Set WSL 2 as your default version. Open PowerShell and run:
+g. Set WSL 2 as your default version. Open PowerShell and run:
 
 ```bash
 wsl --set-default-version 2
