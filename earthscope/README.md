@@ -1,5 +1,6 @@
 ## Code installation for the [2023 EarthScope short course (ISCE+)](https://www.earthscope.org/event/2023-insar-isce-short-course/)
-### 0. (For Windows) [Install WSL](../README.md#0-for-windows-install-windows-subsystem-for-linux-wsl)
+
+### 0. (For Windows only) [Install Windows Subsystem for Linux](../docs/wsl.md)
 
 ### 1. Install conda
 
