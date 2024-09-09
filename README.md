@@ -1,6 +1,8 @@
 ## conda-envs
 
-Setup InSAR data processing codes on Linux / macOS using `conda` environments.
+Setup InSAR data processing codes on Linux / macOS / Windows using `conda` environments.
+
+### 0. (For Windows only) [Install Windows Subsystem for Linux](./docs/wsl.md)
 
 ### 1. Install conda
 
