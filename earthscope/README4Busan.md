@@ -24,10 +24,10 @@ mamba install wget git tree --yes
 
 ```bash
 cd ~/tools
-git clone https://github.com/isce-framework/isce2.git isce2/src/isce2
-git clone https://github.com/aria-tools/ARIA-tools.git
-git clone https://www.unavco.org/gitlab/unavco_public/ssara_client.git utils/SSARA
 git clone https://github.com/yunjunz/conda-envs.git
+git clone https://github.com/insarlab/MintPy.git
+git clone https://github.com/insarlab/PyAPS.git
+git clone https://github.com/insarlab/PySolid.git
 ```
 
 #### b. Install dependencies
@@ -39,9 +39,14 @@ mamba activate earthscope
 
 # install dependencies
 cd ~/tools
-mamba install --file conda-envs/earthscope/requirements.txt --file ARIA-tools/requirements.txt --yes
+mamba install --file conda-envs/insar/requirements.txt --file MintPy/requirements.txt --yes
+
 
 # install dependencies not available on conda-forge
+python -m pip install -e MintPy
+python -m pip install -e PyAPS
+export SETUPTOOLS_ENABLE_FEATURES="legacy-editable"
+python -m pip install -e PySolid
 ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
 python -m pip install ipynb    # import functions from *.ipynb files
 python -m pip install jupyter_nbextensions_configurator
@@ -59,7 +64,5 @@ alias load_earthscope='conda activate earthscope; source ~/tools/conda-envs/eart
 
 ```bash
 load_earthscope            # wram up the conda environment
-topsApp.py -h              # test ISCE-2
-ariaDownload.py -h         # test ARIA-tools
 smallbaselineApp.py -h     # test MintPy
 ```
