@@ -18,19 +18,18 @@ Close and restart the shell for changes to take effect. Then install the followi
 mamba install wget git tree --yes
 ```
 
-### 2. Install ISCE-2, ARIA-tools and MintPy to the `earthscope` environment
+### 2. Install ISCE-2 and MintPy to the `earthscope` environment
 
 #### a. Download source code
 
 ```bash
 cd ~/tools
 git clone https://github.com/yunjunz/conda-envs.git
+git clone https://github.com/isce-framework/isce2.git isce2/src/isce2
 git clone https://github.com/insarlab/MintPy.git
-git clone https://github.com/insarlab/PyAPS.git
-git clone https://github.com/insarlab/PySolid.git
 ```
 
-#### b. Install dependencies
+#### b. Install softwares
 
 ```bash
 # create new environment
@@ -39,17 +38,13 @@ mamba activate earthscope
 
 # install dependencies
 cd ~/tools
-mamba install --file conda-envs/insar/requirements.txt --file MintPy/requirements.txt --yes
-
+mamba install --file conda-envs/earthscope/requirements.txt
 
 # install dependencies not available on conda-forge
-python -m pip install -e MintPy
-python -m pip install -e PyAPS
-export SETUPTOOLS_ENABLE_FEATURES="legacy-editable"
-python -m pip install -e PySolid
-ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
-python -m pip install ipynb    # import functions from *.ipynb files
 python -m pip install jupyter_nbextensions_configurator
+
+# install the development version of mintpy
+python -m pip install -e MintPy
 ```
 
 #### c. Setup
@@ -64,5 +59,6 @@ alias load_earthscope='conda activate earthscope; source ~/tools/conda-envs/eart
 
 ```bash
 load_earthscope            # wram up the conda environment
+topsApp.py -h              # test ISCE-2
 smallbaselineApp.py -h     # test MintPy
 ```
