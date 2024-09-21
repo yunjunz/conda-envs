@@ -25,8 +25,9 @@ mamba install wget git tree --yes
 ```bash
 cd ~/tools
 git clone https://github.com/yunjunz/conda-envs.git
-git clone https://github.com/isce-framework/isce2.git isce2/src/isce2
 git clone https://github.com/insarlab/MintPy.git
+git clone https://github.com/insarlab/MintPy-tutorial.git utils/MintPy-tutorial
+git clone https://github.com/isce-framework/isce2.git isce2/src/isce2
 ```
 
 #### b. Install softwares
@@ -61,4 +62,11 @@ alias load_earthscope='conda activate earthscope; source ~/tools/conda-envs/eart
 load_earthscope            # wram up the conda environment
 topsApp.py -h              # test ISCE-2
 smallbaselineApp.py -h     # test MintPy
+```
+
+### 3. Start up the notebook environment
+
+```bash
+load_earthscope            # warm up the conda environment
+jupyter-lab                # start up the jupyter notebook
 ```
