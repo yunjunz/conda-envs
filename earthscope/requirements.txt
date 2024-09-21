@@ -1,5 +1,6 @@
 python
-pyfftw
+isce2
+mintpy
 # notebooks
 wget                #download pre-staged dataset
 awscli              #download pre-staged dataset
@@ -7,6 +8,3 @@ pv                  #uncompress pre-staged dataset with progress bar
 jupyterlab
 #jupyter_nbextensions_configurator  # version 0.6.3 is required but not available on conda-forge yet
 ipympl              #for interactive matplotlib
-# compilers
-cxx-compiler      #for scalene installation on Linux
-fortran-compiler  #for pysolid installation in development mode
