@@ -78,8 +78,8 @@ alias load_website='conda activate website; cd ~/tools/utils/yunjunz.github.io; 
 
 # useful aliases and functions
 alias sou='source ~/.bash_profile; echo "sourceing ~/.bash_profile"'
-alias ls='ls -GFh'
-alias ll='ls -GFhal'
+alias ls='ls -Fh --color=auto'
+alias ll='ls -Fhal --color=auto'
 alias m='more'
 alias rrsync='rsync -avzh --progress'
 alias rm=~/tools/utils/shell-safe-rm/bin/rm.sh
