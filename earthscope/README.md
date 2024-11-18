@@ -26,7 +26,7 @@ mamba install wget git tree --yes
 cd ~/tools
 git clone https://github.com/isce-framework/isce2.git isce2/src/isce2
 git clone https://github.com/aria-tools/ARIA-tools.git
-git clone https://www.unavco.org/gitlab/unavco_public/ssara_client.git utils/SSARA
+git clone https://gitlab.com/yunjunz/SSARA.git utils/SSARA
 git clone https://github.com/yunjunz/conda-envs.git
 ```
 
