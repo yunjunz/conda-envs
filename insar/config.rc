@@ -53,4 +53,6 @@ export PYTHONPATH=${PYTHONPATH}:${TOOL_DIR}/dev
 export PATH=${PATH}:${TOOL_DIR}/dev/tools
 # code - unwrap_error
 export PYTHONPATH=${PYTHONPATH}:${HOME}/Papers/unwrap_error/figs_src/src
-
+# sptools
+export SPTOOLS_HOME=${TOOL_DIR}/sptools
+export PYTHONPATH=${PYTHONPATH}:${SPTOOLS_HOME}/src
