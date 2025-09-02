@@ -56,4 +56,4 @@ export PYTHONPATH=${PYTHONPATH}:${HOME}/Papers/unwrap_error/figs_src/src
 # sptools
 export SPTOOLS_HOME=${TOOL_DIR}/sptools
 export PYTHONPATH=${PYTHONPATH}:${SPTOOLS_HOME}/src
-export PATH=${PATH}:${SPTOOLS_HOME}/src/sptools
+export PATH=${PATH}:${SPTOOLS_HOME}/src/sptools/bin
