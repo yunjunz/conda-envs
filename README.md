@@ -14,7 +14,7 @@ mkdir -p ~/tools; cd ~/tools
 # optionally use `curl -L -O https://...` syntax to download
 wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
 bash Miniforge3-Linux-x86_64.sh -b -p ~/tools/miniforge
-~/tools/miniforge/bin/mamba init bash
+~/tools/miniforge/bin/mamba shell
 ```
 
 Close and restart the shell for changes to take effect. Then install the following utilities:
