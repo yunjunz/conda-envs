@@ -1,10 +1,16 @@
-python
-isce2
-mintpy
-# notebooks
-wget                #download pre-staged dataset
-awscli              #download pre-staged dataset
-pv                  #uncompress pre-staged dataset with progress bar
+burst2safe
+compass
+gdal
+h5py
+isce3
 jupyterlab
-#jupyter_nbextensions_configurator  # version 0.6.3 is required but not available on conda-forge yet
-ipympl              #for interactive matplotlib
+jupyter_nbextensions_configurator
+libgdal-netcdf
+numpy
+matplotlib
+pyproj
+s1reader
+sardem
+sentineleof
+snaphu
+yaml
