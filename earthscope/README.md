@@ -18,16 +18,14 @@ Close and restart the shell for changes to take effect. Then install the followi
 mamba install wget git tree --yes
 ```
 
-### 2. Install ISCE-2, ARIA-tools and MintPy to the `earthscope` environment
+### 2. Install ISCE-3, COMPASS and MintPy to the `earthscope` environment
 
 #### a. Download source code
 
 ```bash
 cd ~/tools
-git clone https://github.com/isce-framework/isce2.git isce2/src/isce2
-git clone https://github.com/aria-tools/ARIA-tools.git
-git clone https://gitlab.com/yunjunz/SSARA.git utils/SSARA
 git clone https://github.com/yunjunz/conda-envs.git
+git clone https://github.com/opera-adt/burst_db
 ```
 
 #### b. Install dependencies
@@ -39,12 +37,11 @@ mamba activate earthscope
 
 # install dependencies
 cd ~/tools
-mamba install --file conda-envs/earthscope/requirements.txt --file ARIA-tools/requirements.txt --yes
+mamba install --file conda-envs/earthscope/requirements.txt --yes
 
 # install dependencies not available on conda-forge
-ln -s ${CONDA_PREFIX}/bin/cython ${CONDA_PREFIX}/bin/cython3
-python -m pip install ipynb    # import functions from *.ipynb files
-python -m pip install jupyter_nbextensions_configurator
+cd ~/tools/burst_db
+python -m pip install -e .
 ```
 
 #### c. Setup
