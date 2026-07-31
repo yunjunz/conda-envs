@@ -18,20 +18,6 @@ export PATH=${PATH}:${ARIATOOLS_HOME}/bin
 ##-------------- SSARA --------------------------------##
 export PATH=${PATH}:${TOOL_DIR}/utils/SSARA
 
-##-------------- ISCE2 --------------------------------##
-# ISCE_HOME/STACK are set by conda
-export PATH=${PATH}:${ISCE_HOME}/bin:${ISCE_HOME}/applications
-echo "load ISCE-2 core modules installed by conda-forge channel"
-
-# common settings (source stack processors and PyCuAmpcor)
-export ISCE_STACK=${TOOL_DIR}/isce2/src/isce2/contrib/stack    #set ISCE_STACK to the dev version
-export PYTHONPATH=${PYTHONPATH}:${ISCE_STACK}                  #import tops/stripmapStack as python modules
-export DEMDB=${DATA_DIR}/aux/DEM
-
-# source ONLY ONE AT A TIME to avoid naming conflicts
-alias load_stripmap_stack='export PATH=${PATH}:${ISCE_STACK}/stripmapStack; echo "load ISCE-2 stripmapStack from "${ISCE_STACK}/stripmapStack'
-alias load_tops_stack='export PATH=${PATH}:${ISCE_STACK}/topsStack; echo "load ISCE-2 topsStack from "${ISCE_STACK}/topsStack'
-
 ##---------------------- Miscellaneous ----------------##
 export VRT_SHARED_SOURCE=0
 export HDF5_DISABLE_VERSION_CHECK=2    # 0 for abort; 1 for printout warning message; 2 for supress the warning message

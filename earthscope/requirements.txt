@@ -1,3 +1,4 @@
+asf_search
 burst2safe
 compass
 gdal
@@ -10,7 +11,6 @@ matplotlib
 mintpy
 netcdf4
 numpy
-psutil
 rasterio
 sardem
 sentineleof
